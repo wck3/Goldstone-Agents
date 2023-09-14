@@ -9,10 +9,12 @@ import Login from './Pages/Login';
 function App() {
   return (
     <div className="App">
+      {window.location.pathname !== '/login'}
       <Navbar/>
+      {}
       <Routes>
         <Route path="/Login" element={<Login/>} />
-        <Route path="/" element={<Home/>} />
+        <Route path="/Home" element={<Home/>} />
         <Route path="/Tools"  element={<Tools/>} />
       </Routes>
     </div>

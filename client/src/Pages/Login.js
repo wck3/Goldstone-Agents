@@ -4,67 +4,45 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from "./Login.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import logo from '../Media/Gold_slogan.png'
+
 
 // User Regex for validation
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = 'http://localhost:4000/user/login-verify';
 
-function Register (){
+function Login (){
     const userRef = useRef();
     const errRef = useRef();
+    const navigate = useNavigate();
 
-    const [email, setEmail] = useState(false);
-    const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
-    
-    const [pwd, setPwd] = useState(false);
-    const [validPwd, setValidPwd] = useState(false);
-    const [pwdFocus, setPwdFocus] = useState(false);
-
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState(false);
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        const result = EMAIL_REGEX.test(email);
-        //console.log(result);
-        //console.log(email);
-        if(result){
-            setValidEmail(email);
-        }
-        else{
-            setValidEmail(null);
-        }
-   
-    
-    }, [email]);
+        userRef.current.focus();
+    }, []);
 
     useEffect(() => {
-        const result = PWD_REGEX.test(pwd);
-        //console.log(result);
-        //console.log(pwd);
-        if(result){
-            setValidPwd(pwd);
-        }
-        else{
-            setValidPwd(null);
-        }
+        setErrMsg('');
       
-    }, [pwd]);
-
-    
+    }, [email, pwd]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // prevent js hacking
         const v1 = EMAIL_REGEX.test(email);
         const v2 = PWD_REGEX.test(pwd);
-        if(!v1 || !v2 ){
+        /*if(!v1 || !v2 ){
             setErrMsg("Invalid Entry");
             return;
-        }
+        }*/
 
         try{
             const response =  await axios.post(REGISTER_URL, 
@@ -81,53 +59,81 @@ function Register (){
                 setErrMsg('No Server Response');
             }
             else if(err.response?.status === 409){
-                setErrMsg('Username or Email Taken');
+                setErrMsg('incorrect Credentials');
             }
             else{
-                setErrMsg('Registration Failed');
+                setErrMsg('Login Failed');
             }
             errRef.current.focus();
         }
-    }
-    return (
-        <div class="Login">
 
-            <div className='login-graphic'>
-                <h1>hi</h1>
+     
+
+        setEmail('');
+        setPwd('');
+        //window.location.replace("http://localhost:3000/Home");
+        /*if(success === 'True'){
+
+           window.location.replace("http://localhost:3000/");
+          
+        } */ 
+      
+        
+    }
+
+
+    return (
+        <div className="Login">
+
+          
+            <section className='form'>
+               
+                    <p ref={errRef} className={errMsg ? styles.errmsg : "hide"}>{errMsg}</p>
+                    <h1>Welcome</h1>
+                    <h2>PLEASE LOGIN</h2>
+                    <form onSubmit={handleSubmit}>
+                        <input 
+                            required
+                            type="email"
+                            ref={userRef}
+                            id="email" 
+                            autoComplete="off" 
+                            onChange={(e) => setEmail(e.target.value)} 
+                            value={email}
+                            placeholder='EMAIL'
+                        />
+                    
+                        <input 
+                            required 
+                            type="password" 
+                            id="pwd"  
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            placeholder='PASSWORD'
+                        />
+                    
+            
+                        <button>SIGN IN</button>
+
+                    
+                    </form>
+              
+                
+            </section>
+
+
+            <div className='login-graphic' >
+
+                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}>
+
+                </div>
+                <img  className="logo" src={logo} alt="Goldstone Hub"/>
             </div>
         
-            <section>
-                <p ref={errRef} className={errMsg ? styles.errmsg : "hide"}>{errMsg}</p>
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    
-                    <label htmlFor="email">Email</label>
-                    <input 
-                        required
-                        type="email" 
-                        id="email" 
-                        autoComplete="off" 
-                        onChange={(e) => setEmail(e.target.value)} 
-                    />
-                
-                    <label htmlFor="password">Password</label>
-                    <input 
-                        required 
-                        type="password" 
-                        id="pwd"  
-                        onChange={(e) => setPwd(e.target.value)} 
-                    />
-                
-        
-                    <button disabled={ !validEmail || !validPwd ? true : false }>Sign In</button>
-
-                
-                </form>
-            </section>
 
         
         </div>
     )
 }
 
-export default Register;
+export default Login;

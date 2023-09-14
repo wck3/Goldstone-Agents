@@ -1,0 +1,11 @@
+.slide{
+    background-image: 'url(${slides[currentIndex].url})';
+    width:100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.sliders{
+    height:100%;
+}
