@@ -13,7 +13,8 @@ import logo from '../Media/Gold_slogan.png'
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-const REGISTER_URL = 'http://localhost:4000/user/login-verify';
+//const REGISTER_URL = 'http://localhost:4000/users/register';
+const REGISTER_URL = 'http://localhost:4000/users/login';
 
 function Login (){
     const userRef = useRef();
@@ -47,11 +48,11 @@ function Login (){
         try{
             const response =  await axios.post(REGISTER_URL, 
                 JSON.stringify({email, pwd}),{
-                    headers : {'Content-Type': 'applications/json' },
+                    headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
-            console.log(response.data);
+            console.log(response.data, "it worked!");
             setSuccess(true);
     
         } catch (err){
@@ -84,54 +85,38 @@ function Login (){
 
     return (
         <div className="Login">
-
-          
-            <section className='form'>
-               
-                    <p ref={errRef} className={errMsg ? styles.errmsg : "hide"}>{errMsg}</p>
-                    <h1>Welcome</h1>
-                    <h2>PLEASE LOGIN</h2>
-                    <form onSubmit={handleSubmit}>
-                        <input 
-                            required
-                            type="email"
-                            ref={userRef}
-                            id="email" 
-                            autoComplete="off" 
-                            onChange={(e) => setEmail(e.target.value)} 
-                            value={email}
-                            placeholder='EMAIL'
-                        />
-                    
-                        <input 
-                            required 
-                            type="password" 
-                            id="pwd"  
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            placeholder='PASSWORD'
-                        />
-                    
-            
-                        <button>SIGN IN</button>
-
-                    
-                    </form>
-              
+            <div className='login-form'>
+                <p ref={errRef} className={errMsg ? styles.errmsg : "hide"}>{errMsg}</p>
+                <h1>Welcome</h1>
+                <h2>PLEASE LOGIN</h2>
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        required
+                        type="email"
+                        ref={userRef}
+                        id="email" 
+                        autoComplete="off" 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        value={email}
+                        placeholder='EMAIL'
+                    />
                 
-            </section>
-
-
+                    <input 
+                        required 
+                        type="password" 
+                        id="pwd"  
+                        onChange={(e) => setPwd(e.target.value)}
+                        value={pwd}
+                        placeholder='PASSWORD'
+                    />
+                    <button>SIGN IN</button>
+                </form>
+            </div>
+            
             <div className='login-graphic' >
-
-                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}>
-
-                </div>
+                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}></div>
                 <img  className="logo" src={logo} alt="Goldstone Hub"/>
             </div>
-        
-
-        
         </div>
     )
 }

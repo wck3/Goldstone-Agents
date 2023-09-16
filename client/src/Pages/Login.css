@@ -10,17 +10,14 @@
     background-size: cover;
     position: relative;
     width: 70%;
-    height: 100vh;
 }
 
-section {
+.login-form {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 30%;
-    height:100vh;
-    padding: 1em;
 }
 
 .background{
@@ -28,42 +25,43 @@ section {
     min-width:100%;
     height:100%;
     background-size: cover;
-    filter: contrast(55%);
+
+    /*border-image: linear-gradient(#cbcbcb,  #d0ad50) 45;*/
+    border-left: 1em solid #d0ad50;
 }
 
 .login-graphic img{
-    filter: drop-shadow(.4em .1em .2em #292929);
+    z-index: 1;
 }
 
-section h1{
+.login-form h1{
     font-family: 'Alex Brush', sans-serif;
     font-size: 6em;
-    width: 100%;
     text-align: center;
 }
-section h2{
+.login-form h2{
     font-size: 2em;
     width:100%;
     text-align: center;
 }
 
-section  h2, label, input, button{
+.login-form  h2, .login-form input, .login-form button{
     font-family: 'Montserrat', sans-serif;
     color: #292929;
 }
 
-form {
+.login-form form{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding-bottom: 1rem;
+    width:100%;
     
 }
 
-
 input, button, textarea {
   font-family: 'Nunito', sans-serif;
-  font-size: 4vh;
+  font-size: 1.5em;
   padding: 0.25rem;
 
 }
@@ -73,30 +71,31 @@ input{
     outline: none;
     font-family: 'Montserrat', sans-serif;
     background-color: transparent;
-    border-bottom: 2px solid #292929;
+    border-bottom: .1em solid #292929;
     margin:1em;
 }
 
-label, button {
+.login-form button {
+  display: flex;
+  align-items: center;
   margin-top: 1rem;  
   padding: 0.5rem;
   background-color: #292929;
+  text-align: center;
   color:#dbba6f;
+  border: none;
+  max-width:35%;
+  border-radius: .5em;
+  height:1.8em;
 }
 
-form{
+
+.login-form form{
     display: flex;
     align-items: center;
 }
 
-button{
-    border: none;
-    width:35%;
-    font-size: 3vh;
-    border-radius: 10px;
-}
-
-button:hover{
+.login-form button:hover{
     color:#292929;
     background-color: #dbba6f;
 }
@@ -113,29 +112,121 @@ button:hover{
     margin-bottom: 0.5rem;
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1064px){
     .Login{
         flex-direction: column;
+        justify-content: flex-start;
     }
     
+
+    .background{
+        border-left:none;
+    }
     .login-graphic{
         order: 1;   
-        height:20%;
         width:100%;
+        height: 20%;
     }
-    section{
-        font-size: 3vh;
-    }
-    
     .login-graphic img{
         max-height: 100%;
         max-width: 80%;
     }
     
-    section{
+    .login-form{
         width: 100%;
+        height:80%;
         order:2;
+        justify-content: safe center;
+        border-top: 1em solid #d0ad50;
+
+    }
+
+    .login-form h1{
+        font-size: 5;
+    }
+    .login-form h2{
+        font-size: 2.5em;
+    }
+    .login-form input, .login-form button{
+        font-size: 1.2em;
     }
 
 }
 
+
+@media (max-width: 440px){
+    .login-form h1{
+        font-size: 7em;
+    }
+    .login-form h2{
+        font-size: 2.5em;
+    }
+    .login-form input, .login-form button{
+        font-size: 1.2em;
+    }
+
+}
+
+/*@media (max-width: 920px){
+    .login-form h1{
+        font-size: 16vh;
+    }
+    .login-form h2{
+        font-size: 5vh;
+    }
+    .login-form input, .login-form button{
+        font-size: 3vh;
+    }
+}*/
+
+/*@media (max-width: 900px){
+    .login-form h1{
+        font-size: 16vh;
+    }
+    .login-form h2{
+        font-size: 5vh;
+    }
+    .login-form input, .login-form button{
+        font-size: 3vh;
+    }
+}
+
+@media (max-width: 424px){
+    .login-form h1{
+        font-size: 12vh;
+    }
+    .login-form h2{
+        font-size: 4.5vh;
+    }
+
+}
+
+@media (max-width: 400px){
+    .login-form h1{
+        font-size: 14vh;
+    }
+
+    .login-form h2{
+        font-size: 5vh;
+    }
+
+    .login-form input{
+        font-size: 3vh;
+    }
+
+    .login-form button{
+        font-size: 3vh;
+    }
+}
+
+@media (max-width: 300px){
+    .login-form h1{
+        font-size: 12vh;
+    }
+
+    .login-form h2{
+        font-size: 4vh;
+    }
+
+
+}*/
