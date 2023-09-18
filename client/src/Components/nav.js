@@ -4,6 +4,7 @@ import logo from '../Media/Gold_Nav.png'
 import { useRef } from 'react';
 import './nav.css';
 import {FaBars, FaTimes} from "react-icons/fa"
+import Logout from "../helpers/logout"
 
 export default function Navbar(){
 
@@ -25,7 +26,6 @@ export default function Navbar(){
     if(location !== "/Login"){
 
         return(
-            
             <div className="nav">
                 <Link to="/" className="nav-link">
                     <img  className="nav-logo" src={logo} alt="Goldstone Hub"/>
@@ -43,7 +43,7 @@ export default function Navbar(){
                     <Link to="/Documents" onClick={hideNav}>DOCS</Link>
                     <Link to="/Contacts" onClick={hideNav}>CONTACTS</Link>
                     <Link to="/Account" onClick={hideNav} >ACCOUNT</Link>
-                    <Link to="/Logout" onClick={hideNav}>LOGOUT</Link>
+                    <Link to="/Login" onClick={Logout}>LOGOUT</Link>
                 </div> 
                 
                 <div className="nav-wave wave-2 ">
@@ -60,8 +60,6 @@ export default function Navbar(){
         );
 
     }
-
-
 
 };
 

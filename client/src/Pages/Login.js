@@ -1,38 +1,28 @@
 import React from 'react';
-import { useRef, useState, useEffect } from "react";
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import styles from "./Login.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
+import { useRef, useState, useEffect, useFocus } from "react";
 import { useNavigate } from 'react-router-dom';
-import logo from '../Media/Gold_slogan.png'
+import styles from "./Login.css";
+import axios from 'axios';
+import logo from '../Media/Gold_slogan.png';
 
+axios.defaults.withCredentials = true;
 
 // User Regex for validation
-
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-//const REGISTER_URL = 'http://localhost:4000/users/register';
-const REGISTER_URL = 'http://localhost:4000/users/login';
+const LOGIN_URL = 'http://localhost:4000/users/login';
 
 function Login (){
-    const userRef = useRef();
-    const errRef = useRef();
     const navigate = useNavigate();
-
-    const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
+    const errRef = useRef();
+    
+    const emailRef = useRef();
+    const [email, setEmail] = useState();
+    const [pwd, setPwd] = useState();
     const [errMsg, setErrMsg] = useState(false);
-    const [success, setSuccess] = useState(false);
-
-    useEffect(() => {
-        userRef.current.focus();
-    }, []);
-
+    
     useEffect(() => {
         setErrMsg('');
-      
     }, [email, pwd]);
 
     const handleSubmit = async (e) => {
@@ -40,67 +30,69 @@ function Login (){
         // prevent js hacking
         const v1 = EMAIL_REGEX.test(email);
         const v2 = PWD_REGEX.test(pwd);
-        /*if(!v1 || !v2 ){
-            setErrMsg("Invalid Entry");
+        if(!v1 || !v2){  
+            
+            setEmail('');
+            setPwd('');
+            setTimeout(() => {
+                setErrMsg("INVALID CREDENTIALS");
+            }, 0)
+            
+          
+            emailRef.current.focus();
             return;
-        }*/
-
+        }
         try{
-            const response =  await axios.post(REGISTER_URL, 
+            const response =  await axios.post(LOGIN_URL, 
                 JSON.stringify({email, pwd}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
-            console.log(response.data, "it worked!");
-            setSuccess(true);
-    
-        } catch (err){
-            if(!err?.response){
-                setErrMsg('No Server Response');
+            if(response.data.length > 0){
+                navigate("/");
+            }
+        } catch (err){ 
+            setEmail('');
+            setPwd('');
+            if(!err.response){
+                setTimeout(() => {
+                    setErrMsg('No Server Response');
+                }, 0)
             }
             else if(err.response?.status === 409){
-                setErrMsg('incorrect Credentials');
+                setTimeout(() => {
+                    setErrMsg('INVALID CREDENTIALS');
+                }, 0)
             }
             else{
-                setErrMsg('Login Failed');
-            }
+                setTimeout(() => {
+                    setErrMsg('LOGIN FAILED');
+                }, 0)
+            }  
+            emailRef.current.focus();
             errRef.current.focus();
         }
-
-     
-
-        setEmail('');
-        setPwd('');
-        //window.location.replace("http://localhost:3000/Home");
-        /*if(success === 'True'){
-
-           window.location.replace("http://localhost:3000/");
-          
-        } */ 
-      
         
+        return;
     }
-
 
     return (
         <div className="Login">
             <div className='login-form'>
-                <p ref={errRef} className={errMsg ? styles.errmsg : "hide"}>{errMsg}</p>
                 <h1>Welcome</h1>
                 <h2>PLEASE LOGIN</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>    
                     <input 
                         required
                         type="email"
-                        ref={userRef}
                         id="email" 
                         autoComplete="off" 
                         onChange={(e) => setEmail(e.target.value)} 
                         value={email}
+                        ref={emailRef}
                         placeholder='EMAIL'
                     />
-                
                     <input 
                         required 
                         type="password" 
@@ -109,6 +101,7 @@ function Login (){
                         value={pwd}
                         placeholder='PASSWORD'
                     />
+                    <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
                     <button>SIGN IN</button>
                 </form>
             </div>
@@ -118,7 +111,7 @@ function Login (){
                 <img  className="logo" src={logo} alt="Goldstone Hub"/>
             </div>
         </div>
-    )
+    );
 }
 
 export default Login;
