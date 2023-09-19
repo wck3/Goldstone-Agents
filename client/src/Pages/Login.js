@@ -1,133 +1,117 @@
 import React from 'react';
-import { useRef, useState, useEffect } from "react";
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import styles from "./Login.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRef, useState, useEffect, useFocus } from "react";
+import { useNavigate } from 'react-router-dom';
+import styles from "./Login.css";
 import axios from 'axios';
+import logo from '../Media/Gold_slogan.png';
+
+axios.defaults.withCredentials = true;
 
 // User Regex for validation
-
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-const REGISTER_URL = '/register';
+const LOGIN_URL = 'http://localhost:4000/users/login';
 
-function Register (){
-    const userRef = useRef();
+function Login (){
+    const navigate = useNavigate();
     const errRef = useRef();
-
-    const [email, setEmail] = useState(false);
-    const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
     
-    const [pwd, setPwd] = useState(false);
-    const [validPwd, setValidPwd] = useState(false);
-    const [pwdFocus, setPwdFocus] = useState(false);
-
+    const emailRef = useRef();
+    const [email, setEmail] = useState();
+    const [pwd, setPwd] = useState();
     const [errMsg, setErrMsg] = useState(false);
-    const [success, setSuccess] = useState(false);
-
-    useEffect(() => {
-        const result = EMAIL_REGEX.test(email);
-        //console.log(result);
-        //console.log(email);
-        if(result){
-            setValidEmail(email);
-        }
-        else{
-            setValidEmail(null);
-        }
-   
     
-    }, [email]);
-
     useEffect(() => {
-        const result = PWD_REGEX.test(pwd);
-        //console.log(result);
-        //console.log(pwd);
-        if(result){
-            setValidPwd(pwd);
-        }
-        else{
-            setValidPwd(null);
-        }
-      
-    }, [pwd]);
-
-    
+        setErrMsg('');
+    }, [email, pwd]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // prevent js hacking
         const v1 = EMAIL_REGEX.test(email);
         const v2 = PWD_REGEX.test(pwd);
-        if(!v1 || !v2 ){
-            setErrMsg("Invalid Entry");
+        if(!v1 || !v2){  
+            
+            setEmail('');
+            setPwd('');
+            setTimeout(() => {
+                setErrMsg("INVALID CREDENTIALS");
+            }, 0)
+            
+          
+            emailRef.current.focus();
             return;
         }
-
         try{
-            const response =  await axios.post(REGISTER_URL, 
+            const response =  await axios.post(LOGIN_URL, 
                 JSON.stringify({email, pwd}),{
-                    headers : {'Content-Type': 'applications/json' },
+                    headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
-            console.log(response.data);
-            setSuccess(true);
-    
-        } catch (err){
-            if(!err?.response){
-                setErrMsg('No Server Response');
+            if(response.data.length > 0){
+                navigate("/");
+            }
+        } catch (err){ 
+            setEmail('');
+            setPwd('');
+            if(!err.response){
+                setTimeout(() => {
+                    setErrMsg('No Server Response');
+                }, 0)
             }
             else if(err.response?.status === 409){
-                setErrMsg('Username or Email Taken');
+                setTimeout(() => {
+                    setErrMsg('INVALID CREDENTIALS');
+                }, 0)
             }
             else{
-                setErrMsg('Registration Failed');
-            }
+                setTimeout(() => {
+                    setErrMsg('LOGIN FAILED');
+                }, 0)
+            }  
+            emailRef.current.focus();
             errRef.current.focus();
         }
-    }
-    return (
-        <div class="Login">
-
-            <div className='login-graphic'>
-                <h1>hi</h1>
-            </div>
         
-            <section>
-                <p ref={errRef} className={errMsg ? styles.errmsg : "hide"}>{errMsg}</p>
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    
-                    <label htmlFor="email">Email</label>
+        return;
+    }
+
+    return (
+        <div className="Login">
+            <div className='login-form'>
+                <h1>Welcome</h1>
+                <h2>PLEASE LOGIN</h2>
+                <form onSubmit={handleSubmit}>    
                     <input 
                         required
-                        type="email" 
+                        type="email"
                         id="email" 
                         autoComplete="off" 
                         onChange={(e) => setEmail(e.target.value)} 
+                        value={email}
+                        ref={emailRef}
+                        placeholder='EMAIL'
                     />
-                
-                    <label htmlFor="password">Password</label>
                     <input 
                         required 
                         type="password" 
                         id="pwd"  
-                        onChange={(e) => setPwd(e.target.value)} 
+                        onChange={(e) => setPwd(e.target.value)}
+                        value={pwd}
+                        placeholder='PASSWORD'
                     />
-                
-        
-                    <button disabled={ !validEmail || !validPwd ? true : false }>Sign In</button>
-
-                
+                    <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
+                    <button>SIGN IN</button>
                 </form>
-            </section>
-
-        
+            </div>
+            
+            <div className='login-graphic' >
+                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}></div>
+                <img  className="logo" src={logo} alt="Goldstone Hub"/>
+            </div>
         </div>
-    )
+    );
 }
 
-export default Register;
+export default Login;
