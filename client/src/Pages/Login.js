@@ -17,8 +17,8 @@ function Login (){
     const errRef = useRef();
     
     const emailRef = useRef();
-    const [email, setEmail] = useState();
-    const [pwd, setPwd] = useState();
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState(false);
     
     useEffect(() => {

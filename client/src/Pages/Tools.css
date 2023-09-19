@@ -1,6 +1,15 @@
 .Tools{
     display: flex;
+    flex-direction: column;
     
+}
+
+.tool-category{
+    background-color: #292929;
+    color:#ffffff;
+    margin-top:1em;
+    margin-bottom:1em;
+    padding:1em;
 }
 
 .Tools h1{
@@ -11,3 +20,4 @@
     color: #dbba6f;
     font-weight: 400;
 }
+

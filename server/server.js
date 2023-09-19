@@ -19,10 +19,11 @@ app.get('/', (req, res) => {
 
 
 const blogRouter = require('./routes/blog')
-
 app.use("/blog/", blogRouter)
 
-
 const userRouter = require('./routes/user')
-
 app.use("/users/", userRouter)
+
+const toolsRouter = require('./routes/tools')
+app.use("/tools/", toolsRouter)
+
