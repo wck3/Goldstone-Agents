@@ -4,14 +4,6 @@
     
 }
 
-.tool-category{
-    background-color: #292929;
-    color:#ffffff;
-    margin-top:1em;
-    margin-bottom:1em;
-    padding:1em;
-}
-
 .Tools h1{
     text-align: left;
     padding-left: 3.5em;
@@ -20,4 +12,68 @@
     color: #dbba6f;
     font-weight: 400;
 }
+
+.tool-category{
+    background-color: #292929;
+    color:#ffffff;
+    font-size:1.5em;
+}
+
+.tool-category h1{
+    text-transform: uppercase;
+    padding-left:initial;
+    margin:0;
+    text-align: center;
+}
+
+.wave-container{
+    position:relative;
+    padding:0;
+    margin:-1px;
+}
+
+.wave-bottom{
+    transform: scale(-1);
+    margin-bottom: -10em;
+}
+
+
+.box-wave{
+    position:relative;
+    z-index: 1;
+    min-width: 100%;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.box-wave svg{
+    position: relative;
+    display: block;
+    min-width: calc(390% + 1.3px);
+    max-width: 100%;
+    height: 8em;
+    max-height: 18em;
+}
+
+.box-wave-2{
+    transform: translateY(7em);
+}
+
+.fill-2{
+    fill:#dbba6f
+}
+.fill-1{
+    fill: #292929;
+}
+
+.tool-category ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.tool-category li{
+    padding:1em;
+}
+
 
