@@ -25,6 +25,69 @@ router.use(
     })
 );
 
+router.get("/account", (req, res) => {
+    if (req.session.user) {
+        try{
+            let query = "SELECT email, fName, lName, role_id FROM USERS WHERE email = " + "'" + req.body.email + "';" 
+            connection.query(query, function (error, results){
+                if (error) throw error;
+                // no account found
+                if(results.length === 0){
+                    res.status(409).send();
+                }
+                else{ 
+                    res.send(results[0]); 
+                }
+            });
+        }
+        catch (error){
+            console.log(error);
+            res.status(500);
+        }
+    }
+})
+
+router.post("/update-account", (req, res) => {
+
+   try{
+        const u_id = req.body.uID;
+        const fName = req.body.firstname;
+        const lName = req.body.lastName;
+        const pwd = req.body.pwd;
+        const currentPwd = req.body.currentPwd;
+        let query = 'SELECT password from USERS WHERE user_id='+u_id+';';
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no account found
+            //console.log(results)
+            if(pwd_verify(currentPwd, results[0]) && currentPwd !== pwd){
+
+                console.log('success');
+                update_user(u_id, fName, lName, pwd);
+                //let query = 'UPDATE USERS SET fName=' + r
+            }
+            else{
+                res.status(409).send(false);
+            }
+        });
+        
+    }
+        catch(error){
+        console.log(error);
+        res.status(500);
+    }
+
+    function update_user(u_id, fName, lName, pwd){
+        var query = "UPDATE USERS SET fName='" + fName + "',lName='" + lName +"',";
+        if(pwd != ''){
+            query += "pwd='" + pwd + '"';
+        }
+        query += "WHERE user_id=" + u_id + ";"
+        console.log(query); 
+    }
+
+});
+
 router.get("/login", (req, res) => {
     if (req.session.user) {
         //send login status and session data
@@ -36,15 +99,23 @@ router.get("/login", (req, res) => {
 
 router.post('/login', async (req , res) => {
     try{
-        let query = "SELECT email, password FROM USERS WHERE email = " + "'" + req.body.email + "';" 
+        let query = "SELECT user_id, email, fName, lName, role_id, password FROM USERS WHERE email = " + "'" + req.body.email + "';" 
         connection.query(query, function (error, results){
             if (error) throw error;
             // no account found
             if(results.length === 0){
                 res.status(409).send();
             }
-            else{ 
-                pwd_verify(results[0]); 
+            else if(pwd_verify(req.body.pwd, results[0])){ 
+                req.session.user = {
+                    user_id: results[0].user_id, 
+                    fName: results[0].fName, 
+                    lName: results[0].lName, 
+                    email: results[0].email,
+                    role_id: results[0].role_id,
+                    role: results[0].role
+                };
+                res.status(200).send('Success');
             }
         });
     }
@@ -52,24 +123,15 @@ router.post('/login', async (req , res) => {
         console.log(error);
         res.status(500);
     }
-    async function pwd_verify(user){
-        if(await bcrypt.compare(req.body.pwd, user.password)){
-            // set session data
-            req.session.user = {
-                user_id: user.user_id, 
-                fName: user.fName, 
-                lName: user.lName, 
-                email: user.email,
-                role_id: user.role_id,
-                role: user.role
-            };
-            res.status(200).send('Success');
-        }
-        else{
-            res.status(409).send("Invalid Credentials")
-        }
+   
+}); 
+
+async function pwd_verify(pwd, user){
+    if(await bcrypt.compare(pwd, user.password)){
+        return true
     }
-});
+    return false
+}
 
 router.post('/logout', async(req, res) => {
     req.session.destroy((err) => {
@@ -92,13 +154,16 @@ router.post('/register', async (req , res) => {
         let query = "INSERT INTO USERS VALUES(NULL, 'bill', 'k'," + "'" + user.email + "', 1, '" + user.pwd + "');"   
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
-            console.log(results);
+            //console.log(results);
           });
     }
     catch{
         res.status(500)
     }
 });
+
+
+
 
 router.get('/account/:id', (req , res) => {
     

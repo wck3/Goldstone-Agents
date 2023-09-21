@@ -29,7 +29,7 @@ router.get("/get-tools", (req, res) => {
                     category: item.category,
                     info: JSON.parse(item.info) // Parse the JSON string to an object
                   }));
-                  console.log(data);
+                  //console.log(data);
                 res.send(data); 
             }
         });
