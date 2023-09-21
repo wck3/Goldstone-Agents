@@ -17,8 +17,8 @@ function Login (){
     const errRef = useRef();
     
     const emailRef = useRef();
-    const [email, setEmail] = useState();
-    const [pwd, setPwd] = useState();
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState(false);
     
     useEffect(() => {
@@ -31,14 +31,11 @@ function Login (){
         const v1 = EMAIL_REGEX.test(email);
         const v2 = PWD_REGEX.test(pwd);
         if(!v1 || !v2){  
-            
             setEmail('');
             setPwd('');
             setTimeout(() => {
                 setErrMsg("INVALID CREDENTIALS");
             }, 0)
-            
-          
             emailRef.current.focus();
             return;
         }
@@ -49,6 +46,8 @@ function Login (){
                     withCredentials: true
                 }
             );
+
+            // user validated, send to homepage
             if(response.data.length > 0){
                 navigate("/");
             }

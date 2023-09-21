@@ -14,7 +14,9 @@ function App() {
   useEffect(() => {
     Logged_in().then((status) => {
         if(status.loggedIn === false){
+          
           navigate('/Login')   
+          console.log("Not logged in");
         }
       })
   }, []);

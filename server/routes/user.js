@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-require('dotenv').config();
+require('dotenv').config({ path: "../.env" });
 
 const connection = mysql.createPool({
     host: process.env.MYSQL_HOST, 
