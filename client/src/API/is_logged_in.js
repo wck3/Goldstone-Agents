@@ -10,5 +10,6 @@ export default async function Logged_in(){
         return session.loggedIn;
     }
 
-    return session.loggedIn;;
+
+    return session.loggedIn;
 };      

@@ -1,13 +1,77 @@
 .Home{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
     
 }
 
 .Home h1{
-    text-align: left;
-    padding-left: 3.5em;
-    width:100%;
+    max-width:100%;
     font-family: 'Montserrat', sans-serif;
     color: #dbba6f;
     font-weight: 400;
 }
+
+.pg-title{
+    text-align: center;
+    max-width: 100%;
+    z-index: 2;
+    margin-bottom: 2em;
+}
+.event-block{
+    display: flex;
+    min-height:25em;
+    box-sizing: border-box;
+    margin-bottom: 4em;
+}
+
+.event-block.odd {
+    flex-direction: row-reverse; /* Reverse the order for odd blocks */
+}
+
+.block-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50%;
+}
+
+.block-img img{
+    width:90%;
+    height:100%;
+    background-color: gray;
+    border-radius: 25px;
+    aspect-ratio: 4/2;
+}
+
+.block-content{
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 1em;
+    text-align: center;
+}
+
+.block-content ul{
+    list-style: none;
+}
+
+.block-content h2{
+    margin-bottom: 1em;
+}
+
+.block-content li{
+    display: flex;
+    justify-content: center;
+}
+
+.block-content p{
+    width: 75%;
+}
+
+

@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 
-const blogRouter = require('./routes/blog')
-app.use("/blog/", blogRouter)
+const blogRouter = require('./routes/events')
+app.use("/events/", blogRouter)
 
 const userRouter = require('./routes/user')
 app.use("/users/", userRouter)
