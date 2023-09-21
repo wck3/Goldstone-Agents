@@ -6,15 +6,14 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import NotFound from './Components/404';
 import { useEffect } from 'react';
-import Logged_in from './API/get_session';
+import Logged_in from './API/is_logged_in';
 
 function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
     Logged_in().then((status) => {
-        if(status.loggedIn === false){
-          
+        if(status === false){
           navigate('/Login')   
           console.log("Not logged in");
         }
