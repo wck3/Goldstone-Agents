@@ -6,7 +6,7 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import NotFound from './Components/404';
 import { useEffect } from 'react';
-import Logged_in from './helpers/get_session';
+import Logged_in from './API/get_session';
 
 function App() {
   const navigate = useNavigate();

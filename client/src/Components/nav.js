@@ -4,7 +4,7 @@ import logo from '../Media/Gold_Nav.png'
 import { useRef } from 'react';
 import './nav.css';
 import {FaBars, FaTimes} from "react-icons/fa"
-import Logout from "../helpers/logout"
+import Logout from "../API/logout"
 
 export default function Navbar(){
 
