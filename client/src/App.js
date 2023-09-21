@@ -11,7 +11,7 @@ import Logged_in from './helpers/get_session';
 function App() {
   const navigate = useNavigate();
 
-  /*useEffect(() => {
+  useEffect(() => {
     Logged_in().then((status) => {
         if(status.loggedIn === false){
           
@@ -19,7 +19,7 @@ function App() {
           console.log("not logged in");
         }
       })
-  }, []);*/
+  }, []);
 
   return (
     <div className="App">
