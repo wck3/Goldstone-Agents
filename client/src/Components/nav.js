@@ -11,14 +11,11 @@ export default function Navbar(){
     const navRef = useRef();
 
     const showNav = () => {
-      
         navRef.current.classList.toggle("show_nav");
-        //navRef.current.classList.remove("hide_nav");
     }
 
     const hideNav = () => {
         navRef.current.classList.remove("show_nav");
-
     }
         
     const location = window.location.pathname;

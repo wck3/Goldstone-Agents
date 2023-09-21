@@ -1,7 +1,6 @@
 import React from "react";
 import {useRef, useState} from 'react';
 
-
 // pagination page selector
 const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
     const clickRef = useRef();

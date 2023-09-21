@@ -16,7 +16,7 @@ function App() {
         if(status.loggedIn === false){
           
           navigate('/Login')   
-          console.log("not logged in");
+          console.log("Not logged in");
         }
       })
   }, []);
