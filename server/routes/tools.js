@@ -10,24 +10,17 @@ const connection = mysql.createPool({
     password: process.env.MYSQL_PWD
 })
 
-
-
-
 router.get("/get-tools", (req, res) => {
-    //const query = 'SELECT T.*, C.category FROM TOOLS T JOIN T_CATEGORY C ON T.cat_id=C.c_id';
     const query =  "\
     SELECT C.category,JSON_ARRAYAGG(JSON_OBJECT('id', T.tool_id, 'title', T.title, 'description', T.description, 'link', T.hyperlink,'img',T.img_path)) AS info\
     FROM TOOLS T\
     JOIN T_CATEGORY C ON T.cat_id = C.c_id\
     GROUP BY C.c_id, C.category; ";
     
-    
     try{
-
-    
         connection.query(query, function (error, results){
             if (error) throw error;
-            // no account found
+            // no items found
             if(results.length === 0){
                 res.status(409).send();
             }
@@ -37,7 +30,6 @@ router.get("/get-tools", (req, res) => {
                     info: JSON.parse(item.info) // Parse the JSON string to an object
                   }));
                   console.log(data);
-        
                 res.send(data); 
             }
         });
@@ -46,7 +38,6 @@ router.get("/get-tools", (req, res) => {
         console.log(error);
         res.status(500);
     }
-    
 });
 
 module.exports = router
