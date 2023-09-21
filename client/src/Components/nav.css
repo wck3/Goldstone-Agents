@@ -130,7 +130,7 @@
         min-width: 100vw;
         min-height: 100%;
         background-color: #292929;
-        transform: translateX(100vw);
+        transform: translateX(200vw);
         font-size: 2rem;
         margin: 0;
         overflow-y: scroll;
