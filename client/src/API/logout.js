@@ -6,16 +6,15 @@ const Logout = async(e) =>{
     const LOGOUT_URL = "http://localhost:4000/users/logout";
     try{
         // post logout request to API
-        const response = await axios.post(LOGOUT_URL, { } , { withCredentials: true })
-        if(response){
-            window.location.href='/login';
-        }
+        await axios.post(LOGOUT_URL, { } , { withCredentials: true })
     }
     catch (err){
         if(!err.response){
             console.log('No Server Response');
         }
     }
+    
+    window.location.href='/login';
 };
 
 export default Logout;

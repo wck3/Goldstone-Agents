@@ -25,7 +25,8 @@ router.use(
     })
 );
 
-router.get("/account", (req, res) => {
+/*router.get("/account", (req, res) => {
+    // check if user is logged in
     if (req.session.user) {
         try{
             let query = "SELECT email, fName, lName, role_id FROM USERS WHERE email = " + "'" + req.body.email + "';" 
@@ -35,7 +36,8 @@ router.get("/account", (req, res) => {
                 if(results.length === 0){
                     res.status(409).send();
                 }
-                else{ 
+                else{
+                    // account information
                     res.send(results[0]); 
                 }
             });
@@ -45,45 +47,56 @@ router.get("/account", (req, res) => {
             res.status(500);
         }
     }
-})
+})*/
 
 router.post("/update-account", (req, res) => {
 
    try{
+        // new account information from forms
         const u_id = req.body.uID;
         const fName = req.body.firstname;
         const lName = req.body.lastName;
         const pwd = req.body.pwd;
         const currentPwd = req.body.currentPwd;
+
+        // need to check credentials
         let query = 'SELECT password from USERS WHERE user_id='+u_id+';';
         connection.query(query, function (error, results){
             if (error) throw error;
-            // no account found
-            //console.log(results)
             if(pwd_verify(currentPwd, results[0]) && currentPwd !== pwd){
-
-                console.log('success');
+                // update user if password found
                 update_user(u_id, fName, lName, pwd);
-                //let query = 'UPDATE USERS SET fName=' + r
             }
             else{
                 res.status(409).send(false);
             }
         });
-        
-    }
-        catch(error){
+    } catch(error){
         console.log(error);
         res.status(500);
     }
 
-    function update_user(u_id, fName, lName, pwd){
-        var query = "UPDATE USERS SET fName='" + fName + "',lName='" + lName +"',";
-        if(pwd != ''){
-            query += "pwd='" + pwd + '"';
+    async function update_user(u_id, fName, lName, pwd){
+        var query = "UPDATE USERS SET fName='" + fName + "',lName='" + lName +"'";
+        // prevent clearing password in db if user does not try to change their password
+        if(pwd != ''){ 
+            const hashedPwd = await bcrypt.hash(req.body.pwd, 10)
+            query += ", password='" + hashedPwd + "' ";
         }
         query += "WHERE user_id=" + u_id + ";"
-        console.log(query); 
+        connection.query(query, function (error, results){
+            if (error) throw error;
+
+            if(results){
+                // information updated, now update session with new information
+                req.session.user.fName=fName;
+                req.session.user.lName=lName;
+                res.status(200).send();
+            }
+            else{
+                res.status(409).send(false);
+            }
+        }); 
     }
 
 });
@@ -106,7 +119,9 @@ router.post('/login', async (req , res) => {
             if(results.length === 0){
                 res.status(409).send();
             }
+            // validate password
             else if(pwd_verify(req.body.pwd, results[0])){ 
+                // user validated, store session data
                 req.session.user = {
                     user_id: results[0].user_id, 
                     fName: results[0].fName, 
@@ -123,7 +138,6 @@ router.post('/login', async (req , res) => {
         console.log(error);
         res.status(500);
     }
-   
 }); 
 
 async function pwd_verify(pwd, user){
@@ -134,20 +148,23 @@ async function pwd_verify(pwd, user){
 }
 
 router.post('/logout', async(req, res) => {
+    
+    // destroy session on logout
     req.session.destroy((err) => {
         if (err) {
           res.status(500).send('Error logging out');
         } else {
+          // clear client cookie if session is destroyed
           res.clearCookie('userID')
           res.status(200).send("succesfully logged out");
         }
     });
 });
 
-router.post('/register', async (req , res) => {
-    console.log(req.body);
-    res.json(req.body);
 
+router.post('/register', async (req , res) => {
+    //console.log(req.body);
+    //res.json(req.body);
     try{
         const hashedPwd = await bcrypt.hash(req.body.pwd, 10)
         const user = {email : req.body.email, pwd : hashedPwd}
