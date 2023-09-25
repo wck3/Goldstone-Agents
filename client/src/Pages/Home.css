@@ -75,6 +75,28 @@
     width: 75%;
 }
 
+@media  (max-width:1024px){
+
+    .event-block, .event-block.odd{
+        flex-direction: column;
+       
+    }
+    .block-content, .block-img{
+        width: 100%;
+        max-width: 100%;
+      
+    }
+
+    .block-img{
+        justify-content: center;
+    }
+    
+
+    .block-content{
+        order:-1;
+        margin-bottom: 1em;
+    }
+}
 
 
 
