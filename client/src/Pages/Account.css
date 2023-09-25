@@ -59,7 +59,8 @@
 }
 
 .edit-name form input, .edit-pwd form input{
-    max-width:75%;
+    min-width:50%;
+    max-width: 75%;
 }
 
 .instructions{

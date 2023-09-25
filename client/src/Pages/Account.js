@@ -8,11 +8,11 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Account(){
-    
-    const errRef = useRef();
+    // state to store session information
     const [account, setAccount] = useState();
+    // form states
     const [uID, setUID] = useState('');
-    const [firstname, setFirstName] = useState('');
+    const [firstname, setFirstName] = useState(''); 
     const [lastName, setLastName] = useState('');
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(true);
@@ -21,8 +21,12 @@ export default function Account(){
     const [validMatch, setValidMatch] = useState(true);
     const [matchFocus, setMatchFocus] = useState(false);
     const [currentPwd, setCurrentPwd] = useState('');
+
+    // message states
+    const errRef = useRef();
     const [errMsg, setErrMsg] = useState(false);
     const [successMsg, setSuccess] = useState(false);
+
     const EDIT_URL = 'http://localhost:4000/users/update-account';
     const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -31,7 +35,6 @@ export default function Account(){
         const storedMessage = localStorage.getItem('successMsg');
         if(storedMessage){
             setSuccess(storedMessage);
-
             const timer = setTimeout(() => {
                 setSuccess(false);
                 localStorage.removeItem('successMsg');
@@ -48,19 +51,17 @@ export default function Account(){
             try {
                 // fetch all tools to display
                 const result = await get_session();
-                if(result.loggedIn !== false){
+                if(result.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);
                     setLastName(result.user.lName);
                     setUID(result.user.user_id);
                 }
-                //console.log(account)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
         fetchAccount();
-        
     }, [])
 
     // clear error message if form is changed
@@ -79,7 +80,6 @@ export default function Account(){
         }
         const match = matchPwd === pwd;
         setValidMatch(match);
-        // eslint-disable-next-line
     }, [pwd, matchPwd]);
     
     
@@ -94,7 +94,6 @@ export default function Account(){
             }, 0)
             return
         }
-    
 
         // prevent js hacking
         const v1 = pwd === '' || PWD_REGEX.test(pwd);
@@ -118,7 +117,7 @@ export default function Account(){
                     withCredentials: true
                 }
             );
-
+            
             // user validated, send success message and reload
             if(response){
                 const success='SUCCESSFULLY UPDATED ACCOUNT';

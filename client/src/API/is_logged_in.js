@@ -7,7 +7,5 @@ export default async function Logged_in(){
     if(session.loggedIn === true){
         return session.loggedIn;
     }
-
-
     return session.loggedIn;
 };      
