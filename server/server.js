@@ -12,7 +12,6 @@ app.use(
 app.listen(4000);
 
 app.get('/', (req, res) => {
-    console.log('Here')
     res.status(500).json({message:'Error'})
     res.send('Hi')
 });

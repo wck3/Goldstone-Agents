@@ -13,6 +13,8 @@ const Logout = async(e) =>{
             console.log('No Server Response');
         }
     }
+    
+    window.location.href='/login';
 };
 
 export default Logout;

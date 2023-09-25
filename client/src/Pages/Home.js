@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 export default function Home(){
     const[Events, setEvents] = useState();
 
+    const [aspectRatio, setAspectRatio] = useState(null);
+
     useEffect(() => {
         async function fetchEventsAndSetState() {
             try {
@@ -31,7 +33,7 @@ export default function Home(){
             {Events?.map( (eBlock, index) => (
                 <div key={eBlock.block_id} className={`event-block ${index % 2 === 0 ? 'even' : 'odd'}`}>
                     <div className="block-img">
-                        <img></img>
+                        <img src={eBlock.img_path}></img>
                     </div>
                     <div className="block-content">
                         <h1>{eBlock.headline}</h1>
