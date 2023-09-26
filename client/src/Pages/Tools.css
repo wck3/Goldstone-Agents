@@ -55,7 +55,7 @@
 .wave-bottom{
     transform: scale(-1);
     margin-bottom: -12em;
-    margin-top:-1px;
+    margin-top:-2px;
 }
 
 .box-wave{
@@ -135,27 +135,7 @@ p{
     border-radius: 100%;      
 }
 
-.dot{
-    height: 15px;
-    width: 15px;
-    background-color: #dbba6f;
-    border-radius: 50%;
-    display: inline-block;
-}
 
-
-
-.dot:hover{
-    height: 15px;
-    width: 15px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.clicked .dot{
-    background-color: #cbcbcb;
-}
 
 
 @media (max-width: 768px) {

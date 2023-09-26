@@ -1,0 +1,73 @@
+.Contacts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Contacts h1, .contact-name{
+    max-width:100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #dbba6f;
+    font-weight: 400;
+}
+
+.contact-name{
+    font-size: 1.5em;
+}
+
+.contact-title{
+    font-size: 1.2em;
+}
+
+.icon{
+    margin-right: .5em;
+}
+
+.contact-info{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.contact{
+    transition: transform 0.3s ease; /* Add a transition for the sliding effect */
+    transform: translateX(0); /* Initialize the transform property */
+}
+
+.contact.hidden{
+    transform: translateX(-100vw);
+}
+
+.pagination{
+    margin-top: 2em;
+}
+
+.contact{
+    display: flex;
+    margin: 0 2em;
+}
+
+.contact ul{
+    list-style:none;
+}
+
+.contact img{
+    height:15em;
+    width:15em;
+    border-radius: 100%;
+}
+
+.contact li{
+    text-align: center;
+    width:100%;
+    margin: 0 1em;
+}
+
+.contact a{
+    text-decoration: none;
+    color:black
+}
+
+.contact a:hover{
+    color:#dbba6f
+}

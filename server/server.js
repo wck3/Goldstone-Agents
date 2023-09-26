@@ -26,3 +26,6 @@ app.use("/users/", userRouter)
 const toolsRouter = require('./routes/tools')
 app.use("/tools/", toolsRouter)
 
+const contactsRouter = require('./routes/contacts')
+app.use("/contacts/", contactsRouter)
+

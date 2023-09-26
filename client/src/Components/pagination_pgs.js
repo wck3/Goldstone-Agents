@@ -1,5 +1,8 @@
 import React from "react";
 import {useRef, useState} from 'react';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './pagination_pgs.css';
 
 // pagination page selector
 const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
@@ -20,15 +23,60 @@ const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
         setActivePage(number);
         paginate(number);
     };
-   
+    
+    // shift page left if left arrow clicked 
+    const leftArrow = () => {
+        if(activePage !== 1){
+            setActivePage(activePage-1)
+            paginate(activePage-1);
+        }
+        else{
+            setActivePage(totalPages)
+            paginate(totalPages)
+        }
+        
+    };
+    // shift page right if right arrow clicked 
+    const rightArrow = () => {
+        if(activePage !== totalPages){
+            setActivePage(activePage+1)
+            paginate(activePage+1);
+        }
+        else{
+            setActivePage(1)
+            paginate(1)
+        }
+    };
+
+    // prevent highlighting text when clicking arrows
+    const handleMouseDown = (e) =>{
+        if(e.detail > 1){
+            e.preventDefault();
+        }
+    }
+
+    const morePages = totalPages > 2;
+    const moreThanOne = totalPages > 1;
     return(
+
+        <>
+        {moreThanOne ? 
         <div className="pages">
-            {pageNumbers?.map(number =>(
+             
+            <a onClick={() => leftArrow()}  onMouseDown={(e) => handleMouseDown(e)} ref={clickRef}>
+                <FontAwesomeIcon icon={faArrowLeft} className='arrow'/>
+            </a>
+            {morePages ? pageNumbers?.map(number =>(
                 <a onClick={() => handleClick(number)} key={number}  ref={clickRef} className={ number == activePage ? "page-selector clicked" : "page-selector"}>
                     <span className="dot"></span>
-                </a>    
-            ))}
+                </a>
+            )): ''}
+            <a onClick={() => rightArrow()}  onMouseDown={(e) => handleMouseDown(e)} ref={clickRef}>
+                <FontAwesomeIcon icon={faArrowRight} className='arrow'/>
+            </a>
         </div>
+        : ' '}
+        </>
     );
 };
 
