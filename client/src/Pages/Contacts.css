@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.Contacts .pg-title{
+    margin-bottom: 1em;
 }
 
 .Contacts h1, .contact-name{
@@ -24,9 +29,10 @@
 }
 
 .contact-info{
+    width:100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-   
 }
 
 .contact{
@@ -49,17 +55,18 @@
 
 .contact ul{
     list-style:none;
+    margin:1em 0;
 }
 
 .contact img{
-    height:15em;
-    width:15em;
+    height:12em;
+    width:12em;
     border-radius: 100%;
 }
 
+
 .contact li{
     text-align: center;
-    width:100%;
     margin: 0 1em;
 }
 
@@ -70,4 +77,69 @@
 
 .contact a:hover{
     color:#dbba6f
+}
+
+
+.meeting{
+    margin-top:3em;
+    text-align: center;
+
+}
+
+.card-container{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+}
+.card-title{
+    font-size: 1.5em;
+}
+
+.card{
+    min-width: 44%;
+    margin:1em;
+    background-color: #292929;
+    border-radius: 25px;
+    border: solid #dbba6f 5px;
+    cursor: pointer; 
+}
+
+.socials{
+    margin-top:3em;
+}
+
+
+
+@media (max-width:624px){
+
+    .contact-info{
+        width:100%;
+    }
+    .contact{
+        max-width: 50%;
+        margin:0;
+    }
+
+
+    .contact li{
+        margin:0 .4em;
+    }
+
+    .contact img{
+        height:10em;
+        width:10em;
+    }
+
+    .Contacts{
+        font-size: .75em;
+    }
+
+}
+
+@media (max-width:300px){
+    .Contacts{
+        font-size: .5em;
+    }
+
 }

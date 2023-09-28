@@ -37,7 +37,7 @@ export default function Contacts(){
         <div className="Contacts">
             <h1 className="pg-title">CONTACTS</h1>
             <div className="contact-info">
-                 {currentContacts?.map( (contact) => (
+                 {contacts?.map( (contact) => (
                     <div className="contact">
                         <ul>
                             <li> <img src={contact.contact_img}></img></li>
@@ -55,14 +55,35 @@ export default function Contacts(){
                     </div>
                 ))}
             </div>
-            <div className="pagination">
-                <Pagination_Pages
-                    postsPerPage={contactsPerPage}
-                    totalPosts={contacts?.length}
-                    paginate={paginate}
-                />
+           
+            <div className="meeting"> 
+                <h1 className="pg-title">SCHEDULE A MEETING</h1>
+                <div className="card-container">
+                    
+                    <div className="card card-1">
+                        <h1 className="card-title">MEET WITH CARRIE</h1>
+                    </div>
+                    
+                    <div className="card card-2">
+                        <h1 className="card-title">MEET WITH ERIN</h1>
+
+                    </div>
+                    
+                    <div className="card card-3">
+                        <h1 className="card-title">MEET WITH JENNIFER</h1>
+
+                    </div>
+                
+                </div>
             </div>
 
+            <div className="socials">
+                <h1 className="pg-title">SOCIALS</h1>
+                <ul>
+                    <li><img src="/images/socials/facebook.png"></img><a href="https://www.facebook.com/GoldstoneNewJersey">@GoldstoneNewJersey</a></li>
+                </ul>
+            </div>
+    
         </div>
 
     );
