@@ -56,7 +56,7 @@ export default function Contacts(){
                 ))}
             </div>
            
-            <div className="meeting"> 
+            {/*<div className="meeting"> 
                 <h1 className="pg-title">SCHEDULE A MEETING</h1>
                 <div className="card-container">
                     
@@ -75,12 +75,42 @@ export default function Contacts(){
                     </div>
                 
                 </div>
-            </div>
+                 </div>*/}
 
             <div className="socials">
                 <h1 className="pg-title">SOCIALS</h1>
                 <ul>
-                    <li><img src="/images/socials/facebook.png"></img><a href="https://www.facebook.com/GoldstoneNewJersey">@GoldstoneNewJersey</a></li>
+                    <li>
+                        <a href="https://www.instagram.com/goldstonerealestate/">
+                            <img src="/images/socials/instagram.png"></img> 
+                            @goldstonerealestate
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.facebook.com/GoldstoneNewJersey">
+                           <img src="/images/socials/facebook.png"></img>
+                            @GoldstoneNewJersey
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
+                            <img src="/images/socials/LinkedIn.png"></img>
+                            @goldstone-real-estate
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@goldstonerealtynj">  
+                            <img src="/images/socials/tikTok.png"></img>
+                            @goldstonerealtynj
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/@goldstonerealtynj"> 
+                            <img src="/images/socials/youTube.png"></img>
+                            @goldstonerealtynj
+                        </a>
+                    </li>
                 </ul>
             </div>
     
