@@ -158,7 +158,7 @@ export default function Account(){
     
     return(
         <div className="Account">
-            <h1 className="pg-title">ACCOUNT</h1>
+            <h1 className="pg-title">EDIT ACCOUNT</h1>
             {account !== undefined ? (
             <>  
             <h2>{account.user.fName} {account.user.lName}</h2>

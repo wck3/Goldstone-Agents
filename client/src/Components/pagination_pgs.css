@@ -1,0 +1,40 @@
+
+
+.dot{
+    height: 15px;
+    width: 15px;
+    background-color: #dbba6f;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+
+.dot:hover{
+    height: 15px;
+    width: 15px;
+    background-color: #d0ad50 ;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.clicked .dot{
+    background-color: #cbcbcb;
+}
+
+.arrow{
+    font-size: 2em;
+    color:#d0ad50;
+    margin: 0 1em;
+}
+
+.arrow:hover{
+    color:#dbba6f
+}
+
+.pages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -62,13 +62,13 @@
     max-height: 18em;
     z-index: -1;
 }
-.wave-2{
+.nav-wave.wave-2{
     top:1em;
 }
 .shape-fill-2{
     fill:#dbba6f
 }
-.nav-wave .shape-fill{
+.shape-fill{
     fill: #292929;
 }
 
