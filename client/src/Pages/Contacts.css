@@ -1,0 +1,221 @@
+.Contacts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Contacts .pg-title{
+    margin-bottom: 1em;
+}
+
+.Contacts h1, .contact-name{
+    max-width:100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #dbba6f;
+    font-weight: 400;
+}
+
+.contact-name{
+    font-size: 1.5em;
+}
+
+.contact-title{
+    font-size: 1.2em;
+}
+
+.icon{
+    margin-right: .5em;
+}
+
+.contact-info{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact{
+    transition: transform 0.3s ease; /* Add a transition for the sliding effect */
+    transform: translateX(0); /* Initialize the transform property */
+}
+
+.contact.hidden{
+    transform: translateX(-100vw);
+}
+
+.pagination{
+    margin-top: 2em;
+}
+
+.contact{
+    display: flex;
+    margin: 0 2em;
+}
+
+.contact ul{
+    list-style:none;
+    margin:1em 0;
+}
+
+.contact img{
+    height:12em;
+    width:12em;
+    border-radius: 100%;
+}
+
+
+.contact li{
+    text-align: center;
+    margin: 0 1em;
+}
+
+.contact a{
+    text-decoration: none;
+    color:black
+}
+
+.contact a:hover{
+    color:#dbba6f
+}
+
+
+.meeting{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:3em;
+    text-align: center;
+}
+
+.card-container{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card-title{
+    font-size: 1.5em;
+}
+
+.card{
+    width: 30%;
+    padding: 1em;
+    margin:1em;
+    background-color: #292929;
+    border-radius: 25px;
+    border: solid #dbba6f 5px;
+    transition: height 1s ease-in-out;
+}
+
+.card img{
+    max-width:20em;
+    max-height:15em;
+    aspect-ratio: 16/9;
+    margin:1em;
+    object-fit: contain;
+   
+}
+.card .card-body{
+    display: flex;
+    justify-content: center;
+}
+.card .card-text{
+    width:20em;
+    text-align: left;
+    color:#FFFFFF;
+    padding:1em;
+   
+}
+
+.socials{
+    margin-top:3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+}
+
+.socials ul{
+    display: flex;
+    justify-content: center;
+    max-width: 70%;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.socials li{
+    margin:1em;
+    width:20em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials li > a{
+    display: flex;
+    width:90%;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color:#000000;
+    font-weight: 600;
+}
+
+.socials img{
+    height:5em;
+    width:5em;
+    margin-right: 1em;
+}
+
+@media (max-width:1024px){
+
+   .socials ul{
+        max-width: 100%;
+    }
+ 
+   .card-container{
+        min-width:100%;
+        flex-direction: column;
+    }
+
+    .card{
+        width:100%;
+        margin: 1em 0;
+    }
+
+}
+
+@media (max-width:624px){
+
+    .contact-info{
+        width:100%;
+    }
+    .contact{
+        max-width: 50%;
+        margin:0;
+    }
+
+
+    .contact li{
+        margin:0 .4em;
+    }
+
+    .contact img{
+        height:10em;
+        width:10em;
+    }
+
+    .Contacts{
+        font-size: .75em;
+    }
+
+}
+
+@media (max-width:300px){
+    .Contacts{
+        font-size: .5em;
+    }
+
+}

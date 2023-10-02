@@ -1,0 +1,229 @@
+.Login{
+    height:100vh;
+    display: flex;
+}
+
+.login-graphic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    position: relative;
+    width: 70%;
+}
+
+.login-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+}
+
+.background{
+    position: absolute;
+    min-width:100%;
+    height:100%;
+    background-size: cover;
+
+    /*border-image: linear-gradient(#cbcbcb,  #d0ad50) 45;*/
+    border-left: 1em solid #d0ad50;
+}
+
+.login-graphic img{
+    z-index: 1;
+}
+
+.login-form h1{
+    font-family: 'Alex Brush', sans-serif;
+    font-size: 5em;
+    text-align: center;
+}
+.login-form h2{
+    font-size: 1.5em;
+    width:100%;
+    text-align: center;
+}
+
+.login-form  h2, .login-form input, .login-form button{
+    font-family: 'Montserrat', sans-serif;
+    color: #292929;
+}
+
+.login-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+    width:100%;
+    
+}
+
+input, button, textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5em;
+  padding: 0.25rem;
+
+}
+
+input{
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border-bottom: .1em solid #292929;
+    margin:1em;
+}
+
+.login-form button {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;  
+  padding: 0.5rem;
+  background-color: #292929;
+  text-align: center;
+  color:#dbba6f;
+  border: none;
+  max-width:35%;
+  border-radius: .5em;
+  height:1.8em;
+}
+
+
+.login-form form{
+    display: flex;
+    align-items: center;
+}
+
+.login-form button:hover{
+    color:#292929;
+    background-color: #dbba6f;
+}
+
+.offscreen {
+    display: none;
+}
+
+.login-form h3{
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1064px){
+    .Login{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .background{
+        border-left:none;
+    }
+    .login-graphic{
+        order: 1;   
+        width:100%;
+        height: 20%;
+    }
+    .login-graphic img{
+        max-height: 100%;
+        max-width: 80%;
+    }
+    
+    .login-form{
+        width: 100%;
+        height:80%;
+        order:2;
+        justify-content: safe center;
+        border-top: 1em solid #d0ad50;
+
+    }
+
+    .login-form h1{
+        font-size: 5em;
+    }
+    .login-form h2{
+        font-size: 1.5em;
+    }
+    .login-form input, .login-form button{
+        font-size: 1.2em;
+    }
+
+}
+
+
+@media (max-width: 440px){
+    .login-form h1{
+        font-size: 7em;
+    }
+    .login-form h2{
+        font-size: 2.5em;
+    }
+    .login-form input, .login-form button{
+        font-size: 1.2em;
+    }
+
+}
+
+/*@media (max-width: 920px){
+    .login-form h1{
+        font-size: 16vh;
+    }
+    .login-form h2{
+        font-size: 5vh;
+    }
+    .login-form input, .login-form button{
+        font-size: 3vh;
+    }
+}*/
+
+/*@media (max-width: 900px){
+    .login-form h1{
+        font-size: 16vh;
+    }
+    .login-form h2{
+        font-size: 5vh;
+    }
+    .login-form input, .login-form button{
+        font-size: 3vh;
+    }
+}
+
+@media (max-width: 424px){
+    .login-form h1{
+        font-size: 12vh;
+    }
+    .login-form h2{
+        font-size: 4.5vh;
+    }
+
+}
+
+@media (max-width: 400px){
+    .login-form h1{
+        font-size: 14vh;
+    }
+
+    .login-form h2{
+        font-size: 5vh;
+    }
+
+    .login-form input{
+        font-size: 3vh;
+    }
+
+    .login-form button{
+        font-size: 3vh;
+    }
+}
+
+@media (max-width: 300px){
+    .login-form h1{
+        font-size: 12vh;
+    }
+
+    .login-form h2{
+        font-size: 4vh;
+    }
+
+
+}*/
