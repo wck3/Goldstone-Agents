@@ -6,9 +6,7 @@ import { useState, useEffect } from 'react';
 
 export default function Home(){
     const[Events, setEvents] = useState();
-
-    const [aspectRatio, setAspectRatio] = useState(null);
-
+    
     useEffect(() => {
         async function fetchEventsAndSetState() {
             try {
