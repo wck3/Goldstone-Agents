@@ -3,14 +3,10 @@ import './Contacts.css';
 import get_contacts from '../API/get_contacts';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Pagination_Pages from "../Components/pagination_pgs";
-
 import { useState, useEffect } from 'react';
 
 export default function Contacts(){
     const [contacts, setContacts] = useState();
-    const [contactsPerPage] = useState(4);
-    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         async function fetchContactsAndSetState() {
@@ -25,17 +21,11 @@ export default function Contacts(){
         fetchContactsAndSetState();
     }, []);
 
-    // Get current posts
-    const indexOfLastPost = currentPage * contactsPerPage;
-    const indexOfFirstPost = indexOfLastPost - contactsPerPage;
-    
-    // Change page
-    const paginate = (pageNumber) => { setCurrentPage(pageNumber) };
-    const currentContacts = contacts?.slice(indexOfFirstPost, indexOfLastPost);
-  
     return(
         <div className="Contacts">
             <h1 className="pg-title">CONTACTS</h1>
+            { contacts !== undefined ? (
+            <>
             <div className="contact-info">
                  {contacts?.map( (contact) => (
                     <div className="contact">
@@ -56,28 +46,50 @@ export default function Contacts(){
                 ))}
             </div>
            
-            {/*<div className="meeting"> 
+            <div className="meeting"> 
                 <h1 className="pg-title">SCHEDULE A MEETING</h1>
                 <div className="card-container">
-                    
                     <div className="card card-1">
                         <h1 className="card-title">MEET WITH CARRIE</h1>
+                        <img src="/images/meeting/meeting1.jpg"></img>
+                        <div className="card-body">
+                            <p className="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
+                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
+                            Cras quis tincidunt ex. Pellentesque 
+                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
+                            </p>
+                        </div>
                     </div>
-                    
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
-
+                        <img src="/images/meeting/meeting2.jpg"></img>
+                        <div className="card-body">
+                            <p className="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
+                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
+                            Cras quis tincidunt ex. Pellentesque 
+                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
+                            </p>
+                        </div>
                     </div>
-                    
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
-
+                        <img src="/images/meeting/meeting3.jpg"></img>
+                        <div className="card-body">
+                            <p className="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
+                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
+                            Cras quis tincidunt ex. Pellentesque 
+                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
+                            </p>
+                        </div>
                     </div>
-                
                 </div>
-                 </div>*/}
+            </div>
+            </>):(<span></span>)}
 
-            <div className="socials">
+            {/*<div className="socials">
                 <h1 className="pg-title">SOCIALS</h1>
                 <ul>
                     <li>
@@ -112,10 +124,8 @@ export default function Contacts(){
                         </a>
                     </li>
                 </ul>
-            </div>
+                 </div>*/}
     
         </div>
-
     );
-
 }
