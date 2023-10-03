@@ -51,7 +51,7 @@ export default function Account(){
             try {
                 // fetch all tools to display
                 const result = await get_session();
-                if(result.loggedIn === true){
+                if(result?.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);
                     setLastName(result.user.lName);
