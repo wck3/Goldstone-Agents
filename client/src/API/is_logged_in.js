@@ -5,7 +5,10 @@ export default async function Logged_in(){
     try{ 
         const session = await get_session();
         if(session.loggedIn !== undefined && session.loggedIn === true){
-            return session.loggedIn;
+            return true;
+        }
+        else{
+            return false;
         }
     }
     catch{   
