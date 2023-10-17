@@ -5,13 +5,15 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-require('dotenv').config({ path: "../.env" });
+const path = require('path');
+require('dotenv').config({path: path.resolve(__dirname, '..', '.env')  });
+
 
 const connection = mysql.createPool({
     host: process.env.MYSQL_HOST, 
     user: process.env.MYSQL_USER,
     database: process.env.MYSQL_DB,
-    password: process.env.MYSQL_PWD
+    password: process.env.MYSQL_PWD,
 })
 
 router.use(cookieParser())
