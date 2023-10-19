@@ -89,4 +89,67 @@
     color:#292929;
     background-color: #dbba6f;
 }
+
+
+.commission  h2, .commission input, .commission button{
+    font-family: 'Montserrat', sans-serif;
+    color: #292929;
+}
+
+
+
+.commission form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+    width:100%;
+    
+
+
+}
+
+
+.commission input, button, textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5em;
+  padding: 0.25rem;
   
+
+}
+
+.commission textarea{
+    border: .1em solid #292929;
+    width:25%;
+    margin:1em;
+}
+
+.commission input{
+    border: none;
+    width:15%;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border-bottom: .1em solid #292929;
+    margin:1em;
+}
+
+.commission button {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;  
+  padding: 0.5rem;
+  background-color: #292929;
+  text-align: center;
+  color:#dbba6f;
+  border: none;
+  max-width:35%;
+  border-radius: .5em;
+  height:1.8em;
+}
+
+
+.commission form{
+    display: flex;
+    align-items: center;
+}

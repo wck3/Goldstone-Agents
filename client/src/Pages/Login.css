@@ -59,14 +59,14 @@
     
 }
 
-input, button, textarea {
+.login-form input, button, textarea {
   font-family: 'Nunito', sans-serif;
   font-size: 1.5em;
   padding: 0.25rem;
 
 }
 
-input{
+.login-form input{
     border: none;
     outline: none;
     font-family: 'Montserrat', sans-serif;
