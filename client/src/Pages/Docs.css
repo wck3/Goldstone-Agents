@@ -1,0 +1,157 @@
+.Docs h1{
+    max-width:100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #dbba6f;
+    font-weight: 400;
+}
+
+
+
+.Docs .pg-title{
+    text-align: center;
+    max-width: 100%;
+    margin-bottom:1em;
+}
+
+
+.pdf-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pdf-view a, a:visited{
+    text-decoration: none;
+    color:#dbba6f
+}
+
+.pdf-links a:hover{
+    color:gray
+}
+
+.pdf-links ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    font-size: 1.2em;
+}
+
+.pdf-links li{
+    margin:1em;
+}
+
+.pdf-links{
+    display: flex;
+    justify-content: center;
+    min-width:10%;
+}
+
+.pdf-render{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+
+}
+
+.pdf-render object{
+    width: 50%;
+    height:65em;
+}
+.commission{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+.commission p{
+    width:35%;
+    text-align: center;
+}
+
+.commission button {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    margin-top: 1rem;  
+    padding: 0.5rem;
+    background-color: #292929;
+    text-align: center;
+    color:#dbba6f;
+    border: none;
+    max-width:35%;
+    border-radius: .5em;
+    height:1.8em;
+}
+
+
+.commission button:hover{
+    color:#292929;
+    background-color: #dbba6f;
+}
+
+
+.commission  h2, .commission input, .commission button{
+    font-family: 'Montserrat', sans-serif;
+    color: #292929;
+}
+
+
+
+.commission form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+    width:100%;
+    
+
+
+}
+
+
+.commission input, button, textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5em;
+  padding: 0.25rem;
+  
+
+}
+
+.commission textarea{
+    border: .1em solid #292929;
+    width:25%;
+    margin:1em;
+}
+
+.commission input{
+    border: none;
+    width:15%;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border-bottom: .1em solid #292929;
+    margin:1em;
+}
+
+.commission button {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;  
+  padding: 0.5rem;
+  background-color: #292929;
+  text-align: center;
+  color:#dbba6f;
+  border: none;
+  max-width:35%;
+  border-radius: .5em;
+  height:1.8em;
+}
+
+
+.commission form{
+    display: flex;
+    align-items: center;
+}
