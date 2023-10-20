@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const path = require('path');
 require('dotenv').config({path: path.resolve(__dirname, '..', '.env')  });
 
@@ -8,7 +8,8 @@ const connection = mysql.createPool({
     host: process.env.MYSQL_HOST, 
     user: process.env.MYSQL_USER,
     database: process.env.MYSQL_DB,
-    password: process.env.MYSQL_PWD
+    password: process.env.MYSQL_PWD,
+    port:3306
 })
 
 router.get("/get-contacts", (req, res) => {
