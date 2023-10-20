@@ -35,14 +35,6 @@
     justify-content: center;
 }
 
-.contact{
-    transition: transform 0.3s ease; /* Add a transition for the sliding effect */
-    transform: translateX(0); /* Initialize the transform property */
-}
-
-.contact.hidden{
-    transform: translateX(-100vw);
-}
 
 .pagination{
     margin-top: 2em;
@@ -50,7 +42,8 @@
 
 .contact{
     display: flex;
-    margin: 0 2em;
+    margin: 0 0em;
+    font-size: 1em;
 }
 
 .contact ul{
@@ -59,8 +52,8 @@
 }
 
 .contact img{
-    height:12em;
-    width:12em;
+    height:11em;
+    width:11em;
     border-radius: 100%;
 }
 

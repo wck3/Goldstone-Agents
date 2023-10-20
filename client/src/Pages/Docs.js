@@ -40,7 +40,7 @@ export default function Docs(){
                     </object>
                 </div>
             </div>
-            <div className="commission">
+            {/*<div className="commission">
                 <h1 className="pg-title">MONEY MATTERS</h1>
                 <p>Fill out the form below to request your commission statement from our Execute Manager, Erin. 
                     The button will send a request to Erin, and she will send your commission statement back via email as soon as possible.
@@ -116,7 +116,7 @@ export default function Docs(){
                         <button>REQUEST STATEMENT</button>
                     </form>
                
-            </div>
+        </div>*/}
         </div>
     )  
 }
