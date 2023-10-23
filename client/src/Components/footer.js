@@ -1,22 +1,82 @@
 import React from "react";
 import "./footer.css";
+import {Link} from 'react-router-dom';
+import { faInstagram, faFacebookF,faLinkedin, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function Footer(){
     return(
         <div className="Footer">
-              <div className="foot-wave wave-2 ">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="30 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className="shape-fill-2"></path>
-                </svg>   
-            </div>
-            <div className="foot-wave wave-1" >
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="30 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className="shape-fill"></path>
-                </svg>   
-            </div>
-           
-        </div>
+            <ul className="foot-content">
 
+                <li className="foot-contact">
+                    <h3>CONTACTS</h3>
+                    <ul>
+                        <li>
+                            <p>101 CRAWFORDS CORNER RD</p>
+                            <p>HOLMDEL, NJ 07733</p>
+                        
+                        </li>
+                        <li>
+                            <p>2446 CHURCH RD</p>
+                            <p>TOMS RIVER, NJ 08753</p>
+                        
+                        </li>
+                        <li>
+                            <p><a href='tel:7328983400'>732-898-3400</a></p>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li className="foot-goto">
+                    <h3>GO TO</h3>
+                    <Link to="/" >EVENTS</Link>
+                    <Link to="/Tools">TOOLS</Link>
+                    <Link to="/Documents" >GOLDSTONE DOCS</Link>
+                    <Link to="/Contacts" >CONTACTS</Link>
+                    <Link to="/Account" >ACCOUNT</Link>
+                </li>
+
+                <li className="foot-socials">
+                    <h3>SOCIALS</h3>
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/goldstonerealestate/">
+                                <FontAwesomeIcon icon={faInstagram}/> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/GoldstoneNewJersey">
+                                <FontAwesomeIcon icon={faFacebookF}/> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
+                                <FontAwesomeIcon icon={faLinkedin}/> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.tiktok.com/@goldstonerealtynj">  
+                                <FontAwesomeIcon icon={faTiktok}/> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@goldstonerealtynj"> 
+                                <FontAwesomeIcon icon={faYoutube}/> 
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li className="foot-other">
+                    <h3>OTHER</h3>
+                    <a href="/#">FEEDBACK</a>
+                    <a href="/#">GOLDSTONE LOGOS</a>
+                </li>
+            
+            </ul>
+         
+        </div>
     );
 }

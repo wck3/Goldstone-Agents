@@ -27,11 +27,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<><Navbar/><Home/></>} />
-        <Route exact path="/Tools"  element={<><Navbar/><Tools/></>} />
-        <Route exact path="/Documents"  element={<><Navbar/><Docs/></>} />
-        <Route exact path="/Contacts"  element={<><Navbar/><Contacts/></>} />
-        <Route exact path="/Account"  element={<><Navbar/><Account/></>} />
+        <Route exact path="/" element={<><Navbar/><Home/><Footer/></>} />
+        <Route exact path="/Tools"  element={<><Navbar/><Tools/><Footer/></>} />
+        <Route exact path="/Documents"  element={<><Navbar/><Docs/><Footer/></>} />
+        <Route exact path="/Contacts"  element={<><Navbar/><Contacts/><Footer/></>} />
+        <Route exact path="/Account"  element={<><Navbar/><Account/><Footer/></>} />
         <Route exact path="/Login" element={<Login/>} />
         <Route exact path='*' element={<NotFound/>} />
       </Routes>

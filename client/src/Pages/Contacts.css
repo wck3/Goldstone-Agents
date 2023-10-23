@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom:5em;
 }
 
 .Contacts .pg-title{
@@ -122,53 +123,9 @@
    
 }
 
-.socials{
-    margin-top:3em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    align-items: center;
-}
-
-.socials ul{
-    display: flex;
-    justify-content: center;
-    max-width: 70%;
-    flex-wrap: wrap;
-    list-style: none;
-}
-
-.socials li{
-    margin:1em;
-    width:20em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.socials li > a{
-    display: flex;
-    width:90%;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    color:#000000;
-    font-weight: 600;
-}
-
-.socials img{
-    height:5em;
-    width:5em;
-    margin-right: 1em;
-}
 
 @media (max-width:1024px){
 
-   .socials ul{
-        max-width: 100%;
-    }
- 
    .card-container{
         min-width:100%;
         flex-direction: column;
