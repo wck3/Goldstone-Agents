@@ -21,6 +21,11 @@ export default function Contacts(){
         fetchContactsAndSetState();
     }, []);
 
+    const goToLink = async (e) => {
+        e.preventDefault();
+        window.location.href = e.target.value;
+    };
+
     return(
         <div className="Contacts">
             <h1 className="pg-title">CONTACTS</h1>
@@ -58,8 +63,10 @@ export default function Contacts(){
                                 <li>New Agent Onboarding</li>
                                 <li>Business Strategy Sessions</li>
                                 <li>Coaching</li>
-                                <li>Schedule a chat!</li>
                             </ul>
+                        </div>
+                        <div className="card-footer">
+                            <button value="https://calendly.com/carriemcnally" onClick={goToLink}>SCHEDULE NOW</button>
                         </div>
                     </div>
                     <div className="card card-2">
@@ -74,6 +81,9 @@ export default function Contacts(){
                                 <li>Onboarding Paperwork</li>
                             </ul>
                         </div>
+                        <div className="card-footer">
+                            <button value="https://calendly.com/erinkaminski" onClick={goToLink}>SCHEDULE NOW</button>
+                        </div>
                     </div>
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
@@ -81,10 +91,13 @@ export default function Contacts(){
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Headshots</li>
-                                <li>Marketing Strategy meeting</li>
-                                <li>Business Card Design meeting</li>
-                                <li>Sign Design meeting</li>
+                                <li>Marketing Strategies</li>
+                                <li>Business Card Design</li>
+                                <li>Sign Design</li>
                             </ul>
+                        </div>
+                        <div className="card-footer">
+                            <button value="https://calendly.com/marketingwithjenn" onClick={goToLink}>SCHEDULE NOW</button>
                         </div>
                     </div>
                 </div>

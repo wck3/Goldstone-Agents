@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import GoldLogo from '../Media/Gold_Nav.png';
 import {Link} from 'react-router-dom';
 import { faInstagram, faFacebookF,faLinkedin, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,9 +9,48 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function Footer(){
     return(
         <div className="Footer">
-            <ul className="foot-content">
+                <div className="foot-1">
+                    <div className="foot-socials">
+                        <a href='/'><img className="logo" alt="GOLDSTONE REALTY" src={GoldLogo}/></a>
+                        <ul>
+                            <li>
+                                <a href="https://www.instagram.com/goldstonerealestate/">
+                                    <FontAwesomeIcon icon={faInstagram}/> 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/GoldstoneNewJersey">
+                                    <FontAwesomeIcon icon={faFacebookF}/> 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
+                                    <FontAwesomeIcon icon={faLinkedin}/> 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.tiktok.com/@goldstonerealtynj">  
+                                    <FontAwesomeIcon icon={faTiktok}/> 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/@goldstonerealtynj"> 
+                                    <FontAwesomeIcon icon={faYoutube}/> 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
-                <li className="foot-contact">
+                <div className="foot-goto">
+                    <h3>GO TO</h3>
+                    <Link to="/" >EVENTS</Link>
+                    <Link to="/Tools">TOOLS</Link>
+                    <Link to="/Documents" >GOLDSTONE DOCS</Link>
+                    <Link to="/Contacts" >CONTACTS</Link>
+                    <Link to="/Account" >ACCOUNT</Link>
+                </div>
+
+                <div className="foot-contact">
                     <h3>CONTACTS</h3>
                     <ul>
                         <li>
@@ -27,55 +67,34 @@ export default function Footer(){
                             <p><a href='tel:7328983400'>732-898-3400</a></p>
                         </li>
                     </ul>
-                </li>
-                
-                <li className="foot-goto">
-                    <h3>GO TO</h3>
-                    <Link to="/" >EVENTS</Link>
-                    <Link to="/Tools">TOOLS</Link>
-                    <Link to="/Documents" >GOLDSTONE DOCS</Link>
-                    <Link to="/Contacts" >CONTACTS</Link>
-                    <Link to="/Account" >ACCOUNT</Link>
-                </li>
+                </div>
+            </div>
 
-                <li className="foot-socials">
-                    <h3>SOCIALS</h3>
-                    <ul>
-                        <li>
-                            <a href="https://www.instagram.com/goldstonerealestate/">
-                                <FontAwesomeIcon icon={faInstagram}/> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/GoldstoneNewJersey">
-                                <FontAwesomeIcon icon={faFacebookF}/> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
-                                <FontAwesomeIcon icon={faLinkedin}/> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.tiktok.com/@goldstonerealtynj">  
-                                <FontAwesomeIcon icon={faTiktok}/> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/@goldstonerealtynj"> 
-                                <FontAwesomeIcon icon={faYoutube}/> 
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <div className="foot-2">
 
-                <li className="foot-other">
-                    <h3>OTHER</h3>
-                    <a href="/#">FEEDBACK</a>
-                    <a href="/#">GOLDSTONE LOGOS</a>
-                </li>
+                <ul>
+                   
+                    <li>
+                        <a href="/#">PUBLIC SITE</a>
+                    </li>
+                  
+                    <li>
+                        <a href="/#">FEEDBACK</a>
+                    </li>
+                    <li>
+                        <a href="/#">GOLDSTONE LOGOS</a>
+                    </li>
+                    <li>
+                        <a href="/#">TERMS OF SERVICE</a>
+                    </li>
+                </ul>
+
+                <p>© GOLDSTONE REALTY (2023)</p>
+              
+               
+            </div>
             
-            </ul>
+         
          
         </div>
     );

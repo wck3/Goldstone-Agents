@@ -1,49 +1,98 @@
 .Footer{
     display:flex;
     flex-wrap: wrap;
-    justify-content: center;
     background-color: #292929;
     margin-top: auto;
     border-top: 15px solid #dbba6f;
     color:#dbba6f;
     font-family: 'Montserrat', sans-serif;
-    padding: 1em 0 1em 0 ;
+    justify-content: space-between;
+
+}
+.Footer a, .Footer a:visited{
+    color:#dbba6f;
+    text-decoration: none;
+}
+
+.Footer h3{
+    text-align: left;
+    width:100%;
+}
+
+
+.foot-1{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:100%;
+    align-items: center;
+}
+
+.foot-2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    font-size: .8em;
+    color: #cbcbcb
 
 }
 
-.foot-content{
+.foot-2 p{
+    width: 100%;
+    text-align: center;
+}
+
+.foot-2 ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.foot-2 li:first-child{
+    list-style: none;
+}
+
+.foot-2 li{
+    margin: .5em 1em .5em 1em;
+}
+
+.foot-2 li > a{
+ color:#cbcbcb;
+}
+
+.foot-2 li > a:hover{
+    color:#dbba6f
+}
+/*.foot-content{
     display:flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     width:100%;
-
-
+    background-color: red;
 }
+
+
 
 .foot-content li{
    
     margin-bottom: .5em;
     margin-right: 2em;
 
-}
-
-.Footer a, .Footer a:visited{
-    color:#dbba6f;
-    text-decoration: none;
-}
+}*/
 
 
 
-
-.Footer h3{
-    text-align: left;
-    width:100%;
-}
 .foot-contact{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top:1em;
+    margin-right: 1em;
 }
 
 .foot-contact li{
@@ -55,6 +104,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left:1em;
+    margin-top:1em;
+    
 }
 
 .foot-socials ul{
@@ -66,7 +118,10 @@
     margin: .5em 0;
 }
 
-
+.foot-socials img{
+    width:15em;
+    max-width: 100%;
+}
 .foot-socials li{
     margin:0;
     margin-right:.5em;
