@@ -56,7 +56,8 @@
 
 .pdf-render object{
     width: 50%;
-    height:65em;
+    height:50em;
+    text-align: center;
 }
 .commission{
     display: flex;

@@ -53,36 +53,38 @@ export default function Contacts(){
                         <h1 className="card-title">MEET WITH CARRIE</h1>
                         <img src="/images/meeting/meeting1.jpg"></img>
                         <div className="card-body">
-                            <p className="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
-                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
-                            Cras quis tincidunt ex. Pellentesque 
-                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
-                            </p>
+                            <ul className="card-text">
+                                <li>Comprehensive training classes </li>
+                                <li>New Agent Onboarding</li>
+                                <li>Business Strategy Sessions</li>
+                                <li>Coaching</li>
+                                <li>Schedule a chat!</li>
+                            </ul>
                         </div>
                     </div>
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
                         <img src="/images/meeting/meeting2.jpg"></img>
                         <div className="card-body">
-                            <p className="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
-                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
-                            Cras quis tincidunt ex. Pellentesque 
-                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
-                            </p>
+                            <ul className="card-text">
+                                <li>New Agent Orientation</li>
+                                <li>G.O.L.D Program</li>
+                                <li>1-on-1 meeting</li>
+                                <li>Introduction Meeting</li>
+                                <li>Onboarding Paperwork</li>
+                            </ul>
                         </div>
                     </div>
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
                         <img src="/images/meeting/meeting3.jpg"></img>
                         <div className="card-body">
-                            <p className="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
-                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
-                            Cras quis tincidunt ex. Pellentesque 
-                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
-                            </p>
+                            <ul className="card-text">
+                                <li>Headshots</li>
+                                <li>Marketing Strategy meeting</li>
+                                <li>Business Card Design meeting</li>
+                                <li>Sign Design meeting</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

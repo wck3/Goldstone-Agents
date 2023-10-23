@@ -9,7 +9,7 @@
 }
 .nav-content{
     margin:.5em;
-    max-width:40%;
+    max-width:100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -22,6 +22,7 @@
     margin:.5em;
     color:#dbba6f;
     font-size: 1.5em;
+    text-align: center;
     font-weight: 400;
     font-family: 'Montserrat', sans-serif;
 }

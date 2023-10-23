@@ -35,9 +35,9 @@ export default function Navbar(){
                     <button className="nav-btn nav-close-btn"  onClick={hideNav}>
                             <FaTimes size={30}/>
                     </button>
-                    <Link to="/" onClick={hideNav}>HOME</Link>
+                    <Link to="/" onClick={hideNav}>EVENTS</Link>
                     <Link to="/Tools"onClick={hideNav}>TOOLS</Link>
-                    <Link to="/Documents" onClick={hideNav}>DOCS</Link>
+                    <Link to="/Documents" onClick={hideNav}>GOLDSTONE DOCS</Link>
                     <Link to="/Contacts" onClick={hideNav}>CONTACTS</Link>
                     <Link to="/Account" onClick={hideNav} >ACCOUNT</Link>
                     <Link to="/Login" onClick={Logout}>LOGOUT</Link>

@@ -195,7 +195,7 @@ export default function Account(){
                             
                             onChange={(e) => setPwd(e.target.value)} 
                             value={pwd} 
-                            placeholder="PASSWORD" 
+                            placeholder="NEW PASSWORD" 
                             aria-invalid={validPwd ? "false" : "true" }
                             onFocus={() => setPwdFocus(true)}
                             onBlur={() => setPwdFocus(true)}

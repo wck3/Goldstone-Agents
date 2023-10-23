@@ -1,7 +1,6 @@
 .Tools{
     display: flex;
     flex-direction: column;
-    
 }
 
 .Tools h1{
@@ -15,12 +14,12 @@
     text-align: center;
     max-width: 100%;
     z-index: 2;
-    margin-bottom: -3em;
+    margin-bottom:1em;
 }
 
 .tool-category{
-    background-color: #292929;
-    color:#ffffff;
+    background-color: rgb(0, 0, 0, .05);
+
 }
 
 .tool-category a{
@@ -86,6 +85,19 @@
     fill: #292929;
 }
 
+.tool-category{
+    margin-top:2em;
+    margin-bottom:2em;
+    padding:1em;
+}
+
+.tool-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .tool-category ul{
     display: flex;
     flex-direction: row;
@@ -99,16 +111,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-   
-    width: 25%;
-    margin-top:1em;
-    margin-bottom: 1em;
+    justify-content: center;
+    max-width: 25%;
     box-sizing: border-box;
     height:10em;
 }
 
+.tool-category p{
+    text-align: center;
+
+}
 .tool-category li > h2{
-    text-align: left;
+    text-align: center;
     width:100%;
 }
 

@@ -67,37 +67,12 @@
 .edit-name input, .edit-pwd input, .submit input{
     border: none;
     outline: none;
+    font-size: 1.2em;
     font-family: 'Montserrat', sans-serif;
     background-color: transparent;
     border-bottom: .1em solid #292929;
     margin:1em;
  
-}
-
-.login-form form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-bottom: 1rem;
-    width:100%;
-    
-}
-
-
-
-
-.login-form button {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;  
-  padding: 0.5rem;
-  background-color: #292929;
-  text-align: center;
-  color:#dbba6f;
-  border: none;
-  max-width:35%;
-  border-radius: .5em;
-  height:1.8em;
 }
 
 .instructions{

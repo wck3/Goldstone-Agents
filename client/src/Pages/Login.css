@@ -89,12 +89,6 @@
   height:1.8em;
 }
 
-
-.login-form form{
-    display: flex;
-    align-items: center;
-}
-
 .login-form button:hover{
     color:#292929;
     background-color: #dbba6f;
