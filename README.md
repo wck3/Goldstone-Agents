@@ -1,5 +1,4 @@
 # Goldstone-Hub Built with react, node.js, mysql
-## UPDATE 10/2/2023 Goldstone Hub Should be deployed for demonstration within the next 2 weeks
 
 Goldstone Hub is a user-friendly platform designed for real estate professionals. It offers a streamlined experience with the following features:
 
