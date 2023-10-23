@@ -24,7 +24,7 @@ export default function Footer(){
                         
                         </li>
                         <li>
-                            <p>732-898-3400</p>
+                            <p><a href='tel:7328983400'>732-898-3400</a></p>
                         </li>
                     </ul>
                 </li>
@@ -71,8 +71,8 @@ export default function Footer(){
 
                 <li className="foot-other">
                     <h3>OTHER</h3>
-                    <a>FEEDBACK</a>
-                    <a>GOLDSTONE LOGOS</a>
+                    <a href="/#">FEEDBACK</a>
+                    <a href="/#">GOLDSTONE LOGOS</a>
                 </li>
             
             </ul>

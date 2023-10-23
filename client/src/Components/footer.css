@@ -18,13 +18,22 @@
     flex-wrap: wrap;
     width:100%;
 
+
 }
 
 .foot-content li{
    
     margin-bottom: .5em;
     margin-right: 2em;
+
 }
+
+.Footer a, .Footer a:visited{
+    color:#dbba6f;
+    text-decoration: none;
+}
+
+
 
 
 .Footer h3{
@@ -65,12 +74,9 @@
 
 
 .Footer a:hover{
-    color:#FFFFFF;
+    color:#cbcbcb;
 }
 
-.foot-socials li > a:visited{
-    color:#dbba6f
-}
 
 
 .foot-goto{
@@ -98,10 +104,24 @@
 }
 
 
-@media (max-width:644px){
+@media (max-width:386px){
 
     .foot-content{
-        width:auto;
-        justify-content: left;
+        align-items: center;
     }
+
+   .foot-content li{
+        width:80%;
+   }
+
+   .foot-contact{
+        align-items: flex-start;
+   }
+
+   .foot-socials{
+    align-items: flex-start;
+   }
+   .foot-socials li{
+        width:max-content;
+   }
 }
