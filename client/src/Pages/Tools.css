@@ -1,6 +1,7 @@
 .Tools{
     display: flex;
     flex-direction: column;
+    margin-bottom: 2em;
 }
 
 .Tools h1{
@@ -87,7 +88,7 @@
 
 .tool-category{
     margin-top:2em;
-    margin-bottom:2em;
+    margin-bottom:3em;
     padding:1em;
 }
 

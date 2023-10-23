@@ -1,3 +1,7 @@
+.Docs{
+    margin-bottom: 3em;
+}
+
 .Docs h1{
     max-width:100%;
     font-family: 'Montserrat', sans-serif;
@@ -32,12 +36,14 @@
 .pdf-links ul{
     display: flex;
     flex-direction: row;
-    list-style-type: none;
     font-size: 1.2em;
 }
-
 .pdf-links li{
     margin:1em;
+}
+.pdf-links li:first-child{
+    list-style-type: none;
+ 
 }
 
 .pdf-links{

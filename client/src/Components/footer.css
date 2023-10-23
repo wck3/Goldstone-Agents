@@ -1,34 +1,107 @@
 .Footer{
-    position: relative;
-    bottom:0;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #292929;
+    margin-top: auto;
+    border-top: 15px solid #dbba6f;
+    color:#dbba6f;
+    font-family: 'Montserrat', sans-serif;
+    padding: 1em 0 1em 0 ;
+
+}
+
+.foot-content{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+
+}
+
+.foot-content li{
+   
+    margin-bottom: .5em;
+    margin-right: 2em;
+}
+
+
+.Footer h3{
+    text-align: left;
+    width:100%;
+}
+.foot-contact{
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foot-contact li{
+    list-style: none;
+    margin:.5em 0;
+}
+
+.foot-socials{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foot-socials ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    font-size: 1.5em;
+    margin: .5em 0;
+}
+
+
+.foot-socials li{
+    margin:0;
+    margin-right:.5em;
+}
+
+
+.Footer a:hover{
+    color:#FFFFFF;
+}
+
+.foot-socials li > a:visited{
+    color:#dbba6f
+}
+
+
+.foot-goto{
+    display: flex;
+    flex-direction: column;
+}
+
+.foot-goto h3{
+    margin-bottom: .5em;
+}
+
+.foot-goto  a{
+    text-decoration: none;
+}
+
+
+.foot-other{
+    display: flex;
+    flex-direction: column;
+}
+
+.foot-other h3{
+    margin-bottom: .5em;
 
 }
 
 
-.foot-wave{
-    position:relative;
-    min-width: 100%;
-    line-height: 0;
-    overflow: hidden;
-    bottom:0;
-}
+@media (max-width:644px){
 
-.foot-wave svg{
-    position: relative;
-    display: block;
-    min-width: calc(390% + 1.3px);
-    max-width: 100%;
-    height: 18em;
-    max-height: 18em;
-}
-
-.foot-wave.wave-2{
-    transform: translateY(-10.5px);
-    z-index: -1;
-}
-
-.foot-wave .shape-fill{
-    fill: #292929;
+    .foot-content{
+        width:auto;
+        justify-content: left;
+    }
 }
