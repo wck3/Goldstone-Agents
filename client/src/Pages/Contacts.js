@@ -59,7 +59,7 @@ export default function Contacts(){
                         <img src="/images/meeting/meeting1.jpg"></img>
                         <div className="card-body">
                             <ul className="card-text">
-                                <li>Comprehensive training classes </li>
+                                <li>Comprehensive training classes</li>
                                 <li>New Agent Onboarding</li>
                                 <li>Business Strategy Sessions</li>
                                 <li>Coaching</li>
@@ -74,10 +74,10 @@ export default function Contacts(){
                         <img src="/images/meeting/meeting2.jpg"></img>
                         <div className="card-body">
                             <ul className="card-text">
-                                <li>New Agent Orientation</li>
+                                <li>New Agent Orientations</li>
                                 <li>G.O.L.D Program</li>
-                                <li>1-on-1 meeting</li>
-                                <li>Introduction Meeting</li>
+                                <li>1-on-1 meetings</li>
+                                <li>Introduction Meetings</li>
                                 <li>Onboarding Paperwork</li>
                             </ul>
                         </div>
@@ -92,8 +92,8 @@ export default function Contacts(){
                             <ul className="card-text">
                                 <li>Headshots</li>
                                 <li>Marketing Strategies</li>
-                                <li>Business Card Design</li>
-                                <li>Sign Design</li>
+                                <li>Business Card Designs</li>
+                                <li>Sign Designs</li>
                             </ul>
                         </div>
                         <div className="card-footer">

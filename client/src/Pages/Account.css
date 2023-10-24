@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6em;
 }
 
 .Account h1{
@@ -21,13 +22,15 @@
 .Account .pg-title{
     text-align: center;
     max-width: 100%;
-    margin-bottom:1em;
 }
 
 .edit-account{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width:100%;
+    margin-top:2em;
     
 }
 
@@ -38,10 +41,12 @@
 
 .edit-account h1{
     text-align: center;
+    padding:.2em;
 }
 
 .edit-name, .edit-pwd{
-    min-width: 30%;
+    min-width: 25%;
+    max-width: 65%;
     background-color: #292929;
     border-radius: 25px;
     height:max-content;
@@ -60,7 +65,7 @@
 
 .edit-name form input, .edit-pwd form input{
     min-width:50%;
-    max-width: 75%;
+    max-width: 85%;
 }
 
 
@@ -76,7 +81,7 @@
 }
 
 .instructions{
-    width:75%;
+    width:50%;
     color:red;
     padding: .5em;
 }
@@ -108,6 +113,11 @@
     .edit-account{
         flex-direction:column;
         align-items: center;
+    
+    }
+
+    .edit-name, .edit-pwd{
+        min-width: 65%;
     }
     .submit form{
         display: flex;
@@ -128,7 +138,6 @@
     }
     .edit-name, .edit-pwd{
         max-width: 75%;
-
     }
 
 }

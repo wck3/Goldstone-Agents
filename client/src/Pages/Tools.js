@@ -3,6 +3,8 @@ import './Tools.css';
 import axios from 'axios';
 import {useState, useEffect } from "react";
 import Pagination_Pages from "../Components/pagination_pgs";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 
 async function get_tools(){
     axios.defaults.withCredentials = true;
@@ -48,7 +50,6 @@ export default function Tools(){
         <div className="Tools">
             <h1 className="pg-title">EXTERNAL TOOLS</h1>
             
-            <div className="tool-sections">
             {data?.map((tool) => (
                 
                 <div key={tool.category} className="tool-category">
@@ -58,7 +59,11 @@ export default function Tools(){
                             {/* display paginated by using individual currently active page and desired postsPerPage*/}
                             {tool.info.slice(paginationInfo[tool.category].currentPage * postsPerPage - postsPerPage, paginationInfo[tool.category].currentPage * postsPerPage).map((data) => (
                                 <li key={data.id}>
-                                    <h2><a href={data.link} target="_blank" rel="noreferrer noopener">{data.title}</a></h2>
+                                    <h2>
+                                        <a href={data.link} target="_blank" rel="noreferrer noopener">
+                                            {data.title} <FontAwesomeIcon icon={faExternalLink} className="ext"/>
+                                        </a>
+                                    </h2>
                                     <p>{data.description}</p>
                                 </li>
                             ))}
@@ -75,7 +80,7 @@ export default function Tools(){
                 </div>
             ))}
             </div>
-        </div>
+    
     );
 };
 

@@ -36,7 +36,7 @@ export default function Home(){
                     <div className="block-content">
                         <h1>{eBlock.headline}</h1>
                         <ul>
-                            <li><h2>{eBlock.day} {eBlock.time}</h2></li>
+                            <li><h2>{eBlock.day} {eBlock.time}, {eBlock.location}</h2></li>
                             <li><p>{eBlock.description}</p></li>
                         </ul>
                     </div>

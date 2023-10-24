@@ -40,16 +40,16 @@ export default function Footer(){
                             </li>
                         </ul>
                     </div>
-
-                <div className="foot-goto">
-                    <h3>GO TO</h3>
-                    <Link to="/" >EVENTS</Link>
-                    <Link to="/Tools">TOOLS</Link>
-                    <Link to="/Documents" >GOLDSTONE DOCS</Link>
-                    <Link to="/Contacts" >CONTACTS</Link>
-                    <Link to="/Account" >ACCOUNT</Link>
-                </div>
-
+                    
+                    <div className="foot-goto">
+                        <h3>NAVIGATE</h3>
+                        <Link to="/" >EVENTS</Link>
+                        <Link to="/Tools">TOOLS</Link>
+                        <Link to="/Documents" >GOLDSTONE DOCS</Link>
+                        <Link to="/Contacts" >CONTACTS</Link>
+                        <Link to="/Account" >ACCOUNT</Link>
+                    </div>
+                
                 <div className="foot-contact">
                     <h3>CONTACTS</h3>
                     <ul>
