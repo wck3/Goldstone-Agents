@@ -127,7 +127,7 @@ router.get("/login", (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        let query = "SELECT user_id, email, fName, lName, role_id, password FROM USERS WHERE email = " + "'" + req.body.email + "';"
+        let query = "SELECT u.user_id, u.email, u.fName, u.lName, u.role_id, u.password, r.name as role FROM USERS u join Roles r on u.role_id = r.id WHERE email = " + "'" + req.body.email + "';"
         connection.query(query, async function (error, results) {
             if (error) throw error;
             // no account found
