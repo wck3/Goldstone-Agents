@@ -51,7 +51,7 @@ export default function Footer(){
                     </div>
                 
                 <div className="foot-contact">
-                    <h3>CONTACTS</h3>
+                    <h3>LOCATIONS</h3>
                     <ul>
                         <li>
                             <p>101 CRAWFORDS CORNER RD</p>
@@ -73,13 +73,12 @@ export default function Footer(){
             <div className="foot-2">
 
                 <ul>
-                   
                     <li>
-                        <a href="/#">PUBLIC SITE</a>
+                        <a href="https://www.goldstonerealty.com/">PUBLIC SITE</a>
                     </li>
                   
                     <li>
-                        <a href="/#">FEEDBACK</a>
+                        <a href="https://forms.gle/WHrMePq4pPsPKfg5A">FEEDBACK</a>
                     </li>
                     <li>
                         <a href="/#">GOLDSTONE LOGOS</a>

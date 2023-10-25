@@ -1,5 +1,5 @@
 .Docs{
-    margin-bottom: 3em;
+    margin-bottom: 3em;  
 }
 
 .Docs h1{
@@ -35,8 +35,10 @@
 
 .pdf-links ul{
     display: flex;
+    justify-content: center;
     flex-direction: row;
     font-size: 1.2em;
+    flex-wrap:wrap
 }
 .pdf-links li{
     margin:1em;
@@ -62,8 +64,10 @@
 
 .pdf-render object{
     width: 50%;
-    height:50em;
     text-align: center;
+    aspect-ratio: 9/10;
+
+
 }
 .commission{
     display: flex;
@@ -161,4 +165,23 @@
 .commission form{
     display: flex;
     align-items: center;
+}
+
+
+
+@media (max-width:540px){
+
+    .Docs{
+        margin-bottom: 0;
+    }
+    .pdf-links ul{
+        flex-direction: column;
+    }
+
+    .pdf-links li{
+        margin:.5em;
+    }
+    .pdf-links li:first-child{
+        list-style: disc;
+    }
 }

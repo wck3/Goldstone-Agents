@@ -66,7 +66,9 @@ export default function Contacts(){
                             </ul>
                         </div>
                         <div className="card-footer">
-                            <button value="https://calendly.com/carriemcnally" onClick={goToLink}>SCHEDULE NOW</button>
+                            <a href="https://calendly.com/carriemcnally">
+                                <button value="https://calendly.com/carriemcnally" onClick={goToLink}>SCHEDULE NOW</button>
+                            </a>
                         </div>
                     </div>
                     <div className="card card-2">
@@ -82,7 +84,9 @@ export default function Contacts(){
                             </ul>
                         </div>
                         <div className="card-footer">
-                            <button value="https://calendly.com/erinkaminski" onClick={goToLink}>SCHEDULE NOW</button>
+                            <a href="https://calendly.com/erinkaminski">
+                                <button value="https://calendly.com/erinkaminski" onClick={goToLink}>SCHEDULE NOW</button>
+                            </a>
                         </div>
                     </div>
                     <div className="card card-3">
@@ -97,7 +101,10 @@ export default function Contacts(){
                             </ul>
                         </div>
                         <div className="card-footer">
-                            <button value="https://calendly.com/marketingwithjenn" onClick={goToLink}>SCHEDULE NOW</button>
+                            <a href="https://calendly.com/marketingwithjenn">
+                                <button value="https://calendly.com/marketingwithjenn" onClick={goToLink}>SCHEDULE NOW</button>
+                            </a>
+                           
                         </div>
                     </div>
                 </div>

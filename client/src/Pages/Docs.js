@@ -2,30 +2,22 @@ import React from "react";
 import "./Docs.css"
 import { useState } from "react";
 
+
 export default function Docs(){
     const [url, setURL] = useState('/forms/WK_Resume.pdf');
     const [name, setName] = useState('BUSINESS CARDS');
-
-    const [address, setAddress] = useState(''); 
-    const [percentage, setPercentage] = useState('');
-    const [fee, setFee] = useState('');
-    const [price, setPrice] = useState('');
-    const [license, setLicense] = useState('');
-    const [etc, setEtc] = useState('');
 
     const handlePDF = (e) => {
         e.preventDefault();
         setURL(e.target.href);
         setName(e.target.innerText);
     }
-    const handleSubmit = async (e) => {
-        e.preventDefault();
 
-    }
-    
+  
+
     return(
         <div className="Docs">
-            <h1 className="pg-title">DOCUMENTS</h1>
+            <h1 className="pg-title">GOLDSTONE DOCUMENTS</h1>
             <div className="pdf-view">
                 <div className="pdf-links">
                     <ul>
@@ -35,12 +27,22 @@ export default function Docs(){
                     </ul>
                 </div>
                 <div className="pdf-render">
-                    <object type="application/pdf" data={url}>
-                        <a href={url}>VIEW {name}</a>
+                    <object id="pdf-object" type="application/pdf" data={url}>
+                        <h2>YOUR BROWSER DOES NOT SUPPORT PDF PREVIEWS</h2>
+                        <br/>
+                        <a href={url}>VIEW {name} HERE</a>
                     </object>
                 </div>
             </div>
-            {/*<div className="commission">
+            {/*
+            
+            const [address, setAddress] = useState(''); 
+            const [percentage, setPercentage] = useState('');
+            const [fee, setFee] = useState('');
+            const [price, setPrice] = useState('');
+            const [license, setLicense] = useState('');
+            const [etc, setEtc] = useState('');
+            <div className="commission">
                 <h1 className="pg-title">MONEY MATTERS</h1>
                 <p>Fill out the form below to request your commission statement from our Execute Manager, Erin. 
                     The button will send a request to Erin, and she will send your commission statement back via email as soon as possible.

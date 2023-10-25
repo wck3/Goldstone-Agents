@@ -104,6 +104,9 @@
     position: relative;
 }
 
+.card a{
+    text-decoration: none;
+}
 
 .card img{
     max-width:20em;
@@ -113,16 +116,16 @@
     object-fit: contain;
    
 }
-.card .card-body{
+.card-body{
     display: flex;
     justify-content: center;
+    margin-bottom:1em;
 }
 .card .card-text{
     width:20em;
     text-align: left;
     color:#FFFFFF;
-    padding:1em;
-   
+    padding:1em;   
 }
 
 .card-body ul{
@@ -131,26 +134,34 @@
     justify-content: center;
     align-items: center;
     max-width:20em;
-    list-style-type: "-";
-    text-transform: uppercase;
+    text-transform: uppercase; 
+    list-style: '\2605';
+}
+
+.card-body li::marker{
+    color:#dbba6f;
 }
 
 .card-body li{
     width:15em;
 }
 
+
+
 .card-footer{
     position: absolute;
     display: flex;  
-    bottom:1.5em;
+    bottom:1.1em;
     left:0;
     width:100%;
+
     justify-content: center;
   
 }
 
 .card-footer button {
-    
+    display: flex;
+    align-items: center;
     margin-top: 1rem;  
     padding: 0.5rem;
     background-color: #dbba6f;

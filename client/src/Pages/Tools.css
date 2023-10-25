@@ -78,6 +78,8 @@
 .tool-category li > p, li > h2{
     display: flex;
     justify-content: center;
+    text-wrap:balance;
+    text-align: center;
 }
 
 .tool-category li > h2{

@@ -62,8 +62,8 @@
 .foot-goto{
     display: flex;
     flex-direction: column;
-    margin-left: 2em;
-    margin-right: 1em;
+    margin-left: 3em;
+    margin-right: 2em;
 }
 
 .foot-goto h3{
@@ -119,10 +119,9 @@
     margin: .5em 1em .5em 1em;
 }
 
-.foot-2 li > a{
+.foot-2 li > a, .foot-2 li > a:visited{
  color:#cbcbcb;
 }
-
 
 .foot-2 li > a:hover{
     color:#dbba6f
