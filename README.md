@@ -1,6 +1,6 @@
 # Goldstone-Agents Built with react, node.js, mysql
 
-Goldstone Hub is a user-friendly platform designed for real estate professionals. It offers a streamlined experience with the following features:
+Goldstone Agents is a user-friendly platform designed for real estate professionals. It offers a streamlined experience with the following features:
 
 ### Onboarding
 - Easy setup with business cards and reminders.
