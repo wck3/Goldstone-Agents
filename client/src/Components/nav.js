@@ -15,10 +15,11 @@ export default function Navbar(){
 
     const navRef = useRef();
 
+    
+    // responsive classnames, for hamburger button
     const showNav = () => {
         navRef.current.classList.toggle("show_nav");
     }
-
     const hideNav = () => {
         navRef.current.classList.remove("show_nav");
     }

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 export default function Events(){
     const[Events, setEvents] = useState();
     
+    // fetch events from basck end
     useEffect(() => {
         async function fetchEventsAndSetState() {
             try {
@@ -18,16 +19,12 @@ export default function Events(){
             }
         }
         fetchEventsAndSetState();
+    }, []);
 
-        
-      }, []);
-
-      //console.log(Events)
     return(
         
         <div className="Events">
             <h1 className="pg-title">WEEK AT A GLANCE</h1>
-
             {Events?.map( (eBlock, index) => (
                 <div key={eBlock.block_id} className={`event-block ${index % 2 === 0 ? 'even' : 'odd'}`}>
                     <div className="block-img">
@@ -40,10 +37,7 @@ export default function Events(){
                             <li><p>{eBlock.description}</p></li>
                         </ul>
                     </div>
-                    
-
                 </div>
-
             ))}
 
             {}

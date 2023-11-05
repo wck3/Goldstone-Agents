@@ -15,12 +15,14 @@ const LOGIN_URL = 'http://localhost:4000/users/login';
 function Login (){
     const navigate = useNavigate();
     const errRef = useRef();
-    
     const emailRef = useRef();
+    
+    // form states
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState(false);
     
+    // clear form when an error occurs
     useEffect(() => {
         setErrMsg('');
     }, [email, pwd]);
