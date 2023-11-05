@@ -28,7 +28,7 @@ export default function Docs(){
                 </div>
                 <div className="pdf-render">
                     <object id="pdf-object" type="application/pdf" data={url}>
-                        <h2>YOUR BROWSER DOES NOT SUPPORT PDF PREVIEWS</h2>
+                        <h2>PDF PREVIEWS NOT SUPPORTED ON MOBILE DEVICES</h2>
                         <br/>
                         <a href={url}>VIEW {name} HERE</a>
                     </object>
