@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
-import get_session from "../API/get_session";
+import get_from from "../API/get_from";
 import axios from "axios";
 import './Account.css';
 import styles from "./Account.css";
@@ -49,8 +49,8 @@ export default function Account(){
     useEffect( () => {
         async function fetchAccount(){
             try {
-                // fetch all tools to display
-                const result = await get_session();
+                // fetch all user information from session to display
+                const result = await get_from("http://localhost:4000/users/login");
                 if(result?.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);

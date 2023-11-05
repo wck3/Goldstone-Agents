@@ -1,4 +1,4 @@
-.Home{
+.Events{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,14 +8,14 @@
     
 }
 
-.Home h1{
+.Events h1{
     max-width:100%;
     font-family: 'Montserrat', sans-serif;
     color: #dbba6f;
     font-weight: 400;
 }
 
-.Home .pg-title{
+.Events .pg-title{
     text-align: center;
     max-width: 100%;
     margin-bottom: 1em;

@@ -1,6 +1,6 @@
 import React from "react";
 import './Contacts.css';
-import get_contacts from '../API/get_contacts';
+import get_from from "../API/get_from";
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
@@ -12,7 +12,7 @@ export default function Contacts(){
         async function fetchContactsAndSetState() {
             try {
                 // fetch all contacts to display
-                const result = await get_contacts();
+                const result = await get_from("http://localhost:4000/contacts/get-contacts");
                 setContacts(result);
             } catch (error) {
               console.error('Error fetching data:', error);

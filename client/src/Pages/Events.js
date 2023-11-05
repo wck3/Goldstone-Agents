@@ -1,17 +1,17 @@
 import React from "react";
-import './Home.css';
-import Get_Events from '../API/get_events';
+import './Events.css';
+import get_from from '../API/get_from.js';
 
 import { useState, useEffect } from 'react';
 
-export default function Home(){
+export default function Events(){
     const[Events, setEvents] = useState();
     
     useEffect(() => {
         async function fetchEventsAndSetState() {
             try {
                 // fetch all tools to display
-                const result = await Get_Events();
+                const result = await get_from("http://localhost:4000/events/get-events");
                 setEvents(result);
             } catch (error) {
               console.error('Error fetching data:', error);
@@ -25,7 +25,7 @@ export default function Home(){
       //console.log(Events)
     return(
         
-        <div className="Home">
+        <div className="Events">
             <h1 className="pg-title">WEEK AT A GLANCE</h1>
 
             {Events?.map( (eBlock, index) => (
@@ -36,7 +36,7 @@ export default function Home(){
                     <div className="block-content">
                         <h1>{eBlock.headline}</h1>
                         <ul>
-                            <li><h2>{eBlock.day} {eBlock.time},{eBlock.location}</h2></li>
+                            <li><h2>{eBlock.day} {eBlock.time}, {eBlock.location}</h2></li>
                             <li><p>{eBlock.description}</p></li>
                         </ul>
                     </div>
