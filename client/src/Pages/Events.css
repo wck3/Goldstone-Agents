@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    margin-bottom: 7em;
+    margin-bottom: 1em;
     
 }
 
@@ -15,18 +15,32 @@
     font-weight: 400;
 }
 
+.Events h1 > a{
+    text-decoration: none;
+}
+
+.Events h1 > a:hover{
+    color:#292929;
+}
+
 .Events .pg-title{
     text-align: center;
     max-width: 100%;
     margin-bottom: 2em;
 }
+
+.link-calendar{
+    margin-top: 1em;
+    margin-bottom: 0em;
+}
+
 .event-block{
     display: flex;
     justify-content: center;
     min-height:25em;
     box-sizing: border-box;
     flex-direction: row-reverse;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 
 .event-block.odd {
@@ -103,6 +117,10 @@
     .block-img{
         margin-bottom: 1em;
     }
+
+    .link-calendar{
+        width:80%;
+    }
 }
 
 @media (max-width:400px){
@@ -129,6 +147,5 @@
     }
 
 }
-
 
 

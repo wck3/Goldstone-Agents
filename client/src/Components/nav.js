@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import logo from '../Media/Gold_Nav.png'
+import logo from '../Media/Gold_White.png'
 import { useRef, useState, useEffect } from 'react';
 import './nav.css';
 import {FaBars, FaTimes} from "react-icons/fa"
@@ -12,22 +12,17 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 export default function Navbar(){
 
     const [role, setRole] = useState('');
-
     const navRef = useRef();
 
-    
-    // responsive classnames, for hamburger button
+    // responsive classes for hamburger button
     const showNav = () => {
         navRef.current.classList.toggle("show_nav");
     }
     const hideNav = () => {
         navRef.current.classList.remove("show_nav");
     }
-        
-    const location = window.location.pathname;
-
+    
     useEffect(() => {
-
         async function fetchSession() {
             try {
                 // fetch session data to retrieve user role
@@ -40,10 +35,7 @@ export default function Navbar(){
         fetchSession();
     }, []);
 
-
-    
-    if(location !== "/Login"){
-
+    if(window.location.pathname !== "/Login"){
         return(
             <div className="nav">
                 <Link to="/" className="nav-link">
@@ -65,7 +57,6 @@ export default function Navbar(){
                     <Link to="/Account" onClick={hideNav} >ACCOUNT</Link>
                     {role === "Admin" && (
                         <div className="dropdown">
-                        
                             <Link id="dropdown-title" to='/#'>ADMIN <FontAwesomeIcon icon={faCaretDown}/></Link>
                             <div class="dropdown-content">
                                 <Link to="/Admin/Edit-Events" onClick={hideNav}>EDIT EVENTS</Link>
@@ -91,9 +82,7 @@ export default function Navbar(){
                 </div>
             </div>
         );
-
     }
-
 };
 
 

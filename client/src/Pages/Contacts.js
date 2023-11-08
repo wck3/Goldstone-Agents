@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 export default function Contacts(){
     const [contacts, setContacts] = useState();
 
+    // retrieve contact information from the back end
     useEffect(() => {
         async function fetchContactsAndSetState() {
             try {
@@ -21,6 +22,7 @@ export default function Contacts(){
         fetchContactsAndSetState();
     }, []);
 
+    // send user to link when button is clicked
     const goToLink = async (e) => {
         e.preventDefault();
         window.location.href = e.target.value;
@@ -56,7 +58,7 @@ export default function Contacts(){
                 <div className="card-container">
                     <div className="card card-1">
                         <h1 className="card-title">MEET WITH CARRIE</h1>
-                        <img src="/images/meeting/carrie.png"></img>
+                        <img src="/images/meeting/meeting1.jpg"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Comprehensive training classes</li>
@@ -71,9 +73,10 @@ export default function Contacts(){
                             </a>
                         </div>
                     </div>
+
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
-                        <img src="/images/meeting/erin.png"></img>
+                        <img src="/images/meeting/meeting2.jpg"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>New Agent Orientations</li>
@@ -89,9 +92,10 @@ export default function Contacts(){
                             </a>
                         </div>
                     </div>
+
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
-                        <img src="/images/meeting/jennifer.png"></img>
+                        <img src="/images/meeting/meeting3.jpg"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Headshots</li>
@@ -104,50 +108,12 @@ export default function Contacts(){
                             <a href="https://calendly.com/marketingwithjenn">
                                 <button value="https://calendly.com/marketingwithjenn" onClick={goToLink}>SCHEDULE NOW</button>
                             </a>
-                           
                         </div>
                     </div>
                 </div>
             </div>
             </>):(<span></span>)}
 
-            {/*<div className="socials">
-                <h1 className="pg-title">SOCIALS</h1>
-                <ul>
-                    <li>
-                        <a href="https://www.instagram.com/goldstonerealestate/">
-                            <img src="/images/socials/instagram.png"></img> 
-                            @goldstonerealestate
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.facebook.com/GoldstoneNewJersey">
-                           <img src="/images/socials/facebook.png"></img>
-                            @GoldstoneNewJersey
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
-                            <img src="/images/socials/LinkedIn.png"></img>
-                            @goldstone-real-estate
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.tiktok.com/@goldstonerealtynj">  
-                            <img src="/images/socials/tikTok.png"></img>
-                            @goldstonerealtynj
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/@goldstonerealtynj"> 
-                            <img src="/images/socials/youTube.png"></img>
-                            @goldstonerealtynj
-                        </a>
-                    </li>
-                </ul>
-                 </div>*/}
-    
         </div>
     );
 }

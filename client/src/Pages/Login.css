@@ -10,6 +10,8 @@
     background-size: cover;
     position: relative;
     width: 70%;
+    border-left: 1em solid #d0ad50;
+    background-color: #292929;
 }
 
 .login-form {
@@ -25,9 +27,12 @@
     min-width:100%;
     height:100%;
     background-size: cover;
+    overflow:hidden;
+    opacity: 90%;
+}
 
-    /*border-image: linear-gradient(#cbcbcb,  #d0ad50) 45;*/
-    border-left: 1em solid #d0ad50;
+.background img{
+    width: 80%;
 }
 
 .login-graphic img{
@@ -118,6 +123,7 @@
         order: 1;   
         width:100%;
         height: 20%;
+        border: none;
     }
     .login-graphic img{
         max-height: 100%;

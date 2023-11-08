@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./Login.css";
 import axios from 'axios';
 import logo from '../Media/Gold_slogan.png';
+import gif from '../Media/login_vid.gif'
 
 axios.defaults.withCredentials = true;
 
@@ -108,16 +109,8 @@ function Login (){
             </div>
             
             <div className='login-graphic' >
-                <div className="background" > 
-                <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/oibai9jw_90?autoplay=1&loop=1&controls=0&showinfo=0&autohide=1"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
-                </div>
-                <i mg  className="logo" src={logo} alt="Goldstone Hub"/>
+                <div className="background"  style={{backgroundImage: 'url(' + require('../Media/login_vid.gif') + ')'}}> </div>
+                <img  className="logo" src={logo} alt="Goldstone Hub"/>
             </div>
         </div>
     );

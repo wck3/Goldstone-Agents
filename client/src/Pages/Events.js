@@ -1,6 +1,8 @@
 import React from "react";
 import './Events.css';
 import get_from from '../API/get_from.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 
 import { useState, useEffect } from 'react';
 
@@ -39,9 +41,7 @@ export default function Events(){
                     </div>
                 </div>
             ))}
-            <h1 className="pg-title"><a href="/#">CLICK HERE TO VIEW THE MONTHLY CALENDAR</a></h1>
-
-            {}
+            <h1 className="pg-title link-calendar"><a href="https://drive.google.com/drive/folders/1mP9SfL0yKRX6_zzLqAQWvy4D9bFiZZy9">CLICK HERE FOR OUR MONTHLY CALENDAR <FontAwesomeIcon icon={faExternalLink} /></a></h1>
         </div>
         
     );
