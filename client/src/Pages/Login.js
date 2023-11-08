@@ -108,8 +108,16 @@ function Login (){
             </div>
             
             <div className='login-graphic' >
-                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}></div>
-                <img  className="logo" src={logo} alt="Goldstone Hub"/>
+                <div className="background" > 
+                <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/oibai9jw_90?autoplay=1&loop=1&controls=0&showinfo=0&autohide=1"
+        frameborder="0"
+        allowfullscreen>
+    </iframe>
+                </div>
+                <i mg  className="logo" src={logo} alt="Goldstone Hub"/>
             </div>
         </div>
     );

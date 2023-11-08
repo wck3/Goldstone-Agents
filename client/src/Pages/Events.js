@@ -24,7 +24,7 @@ export default function Events(){
     return(
         
         <div className="Events">
-            <h1 className="pg-title">WEEK AT A GLANCE</h1>
+            <h1 className="pg-title">OUR UPCOMING EVENTS</h1>
             {Events?.map( (eBlock, index) => (
                 <div key={eBlock.block_id} className={`event-block ${index % 2 === 0 ? 'even' : 'odd'}`}>
                     <div className="block-img">
@@ -39,6 +39,7 @@ export default function Events(){
                     </div>
                 </div>
             ))}
+            <h1 className="pg-title"><a href="/#">CLICK HERE TO VIEW THE MONTHLY CALENDAR</a></h1>
 
             {}
         </div>

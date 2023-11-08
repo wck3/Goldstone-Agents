@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import GoldLogo from '../Media/Gold_Nav.png';
+import GoldLogo from '../Media/Gold_White.png';
 import {Link} from 'react-router-dom';
 import { faInstagram, faFacebookF,faLinkedin, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -74,18 +74,18 @@ export default function Footer(){
 
                 <ul>
                     <li>
-                        <a href="https://www.goldstonerealty.com/">PUBLIC SITE</a>
+                        <a href="https://www.goldstonerealty.com/">OUR PUBLIC SITE</a>
                     </li>
                   
                     <li>
                         <a href="https://forms.gle/WHrMePq4pPsPKfg5A">FEEDBACK</a>
                     </li>
                     <li>
-                        <a href="/#">GOLDSTONE LOGOS</a>
+                        <a href="https://drive.google.com/drive/folders/1FY1aZLJytvLeEIXgp8VrDGuJskeGEnMH">GOLDSTONE LOGOS</a>
                     </li>
-                    <li>
+                    {/*<li>
                         <a href="/#">TERMS OF SERVICE</a>
-                    </li>
+                    </li>*/}
                 </ul>
 
                 <p>© GOLDSTONE REALTY (2023)</p>

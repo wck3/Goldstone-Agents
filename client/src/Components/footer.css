@@ -10,17 +10,25 @@
 
 }
 .Footer a, .Footer a:visited{
-    color:#dbba6f;
+    color:#cbcbcb;
     text-decoration: none;
 }
 
 .Footer a:hover{
-    color:#cbcbcb;
+    color:#dbba6f;
 }
 
 .Footer h3{
     text-align: left;
     width:100%;
+}
+
+.Footer .foot-socials a{
+    color:#dbba6f;
+}
+
+.foot-socials a:hover{
+    color:#cbcbcb;
 }
 
 
@@ -82,6 +90,7 @@
 
 .foot-contact li{
     list-style: none;
+    color:#cbcbcb;
     margin:.5em 0;
 }
 

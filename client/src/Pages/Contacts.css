@@ -109,8 +109,8 @@
 }
 
 .card img{
-    max-width:20em;
-    max-height:15em;
+    max-width:18em;
+    max-height:13em;
     aspect-ratio: 16/9;
     margin:1em;
     object-fit: contain;

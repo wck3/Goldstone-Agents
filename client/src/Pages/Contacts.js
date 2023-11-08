@@ -56,7 +56,7 @@ export default function Contacts(){
                 <div className="card-container">
                     <div className="card card-1">
                         <h1 className="card-title">MEET WITH CARRIE</h1>
-                        <img src="/images/meeting/meeting1.jpg"></img>
+                        <img src="/images/meeting/carrie.png"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Comprehensive training classes</li>
@@ -73,7 +73,7 @@ export default function Contacts(){
                     </div>
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
-                        <img src="/images/meeting/meeting2.jpg"></img>
+                        <img src="/images/meeting/erin.png"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>New Agent Orientations</li>
@@ -91,7 +91,7 @@ export default function Contacts(){
                     </div>
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
-                        <img src="/images/meeting/meeting3.jpg"></img>
+                        <img src="/images/meeting/jennifer.png"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Headshots</li>
