@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./Login.css";
 import axios from 'axios';
 import logo from '../Media/Gold_slogan.png';
+import gif from '../Media/login_vid.gif'
 
 axios.defaults.withCredentials = true;
 
@@ -15,12 +16,14 @@ const LOGIN_URL = 'http://localhost:4000/users/login';
 function Login (){
     const navigate = useNavigate();
     const errRef = useRef();
-    
     const emailRef = useRef();
+    
+    // form states
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState(false);
     
+    // clear form when an error occurs
     useEffect(() => {
         setErrMsg('');
     }, [email, pwd]);
@@ -106,7 +109,7 @@ function Login (){
             </div>
             
             <div className='login-graphic' >
-                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}></div>
+                <div className="background"  style={{backgroundImage: 'url(' + require('../Media/login_vid.gif') + ')'}}> </div>
                 <img  className="logo" src={logo} alt="Goldstone Hub"/>
             </div>
         </div>

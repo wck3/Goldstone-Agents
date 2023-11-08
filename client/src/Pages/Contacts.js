@@ -1,6 +1,6 @@
 import React from "react";
 import './Contacts.css';
-import get_contacts from '../API/get_contacts';
+import get_from from "../API/get_from";
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
@@ -8,11 +8,12 @@ import { useState, useEffect } from 'react';
 export default function Contacts(){
     const [contacts, setContacts] = useState();
 
+    // retrieve contact information from the back end
     useEffect(() => {
         async function fetchContactsAndSetState() {
             try {
                 // fetch all contacts to display
-                const result = await get_contacts();
+                const result = await get_from("http://localhost:4000/contacts/get-contacts");
                 setContacts(result);
             } catch (error) {
               console.error('Error fetching data:', error);
@@ -20,6 +21,12 @@ export default function Contacts(){
         }
         fetchContactsAndSetState();
     }, []);
+
+    // send user to link when button is clicked
+    const goToLink = async (e) => {
+        e.preventDefault();
+        window.location.href = e.target.value;
+    };
 
     return(
         <div className="Contacts">
@@ -53,79 +60,60 @@ export default function Contacts(){
                         <h1 className="card-title">MEET WITH CARRIE</h1>
                         <img src="/images/meeting/meeting1.jpg"></img>
                         <div className="card-body">
-                            <p className="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
-                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
-                            Cras quis tincidunt ex. Pellentesque 
-                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
-                            </p>
+                            <ul className="card-text">
+                                <li>Comprehensive training classes</li>
+                                <li>New Agent Onboarding</li>
+                                <li>Business Strategy Sessions</li>
+                                <li>Coaching</li>
+                            </ul>
+                        </div>
+                        <div className="card-footer">
+                            <a href="https://calendly.com/carriemcnally">
+                                <button value="https://calendly.com/carriemcnally" onClick={goToLink}>SCHEDULE NOW</button>
+                            </a>
                         </div>
                     </div>
+
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
                         <img src="/images/meeting/meeting2.jpg"></img>
                         <div className="card-body">
-                            <p className="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
-                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
-                            Cras quis tincidunt ex. Pellentesque 
-                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
-                            </p>
+                            <ul className="card-text">
+                                <li>New Agent Orientations</li>
+                                <li>G.O.L.D Program</li>
+                                <li>1-on-1 meetings</li>
+                                <li>Introduction Meetings</li>
+                                <li>Onboarding Paperwork</li>
+                            </ul>
+                        </div>
+                        <div className="card-footer">
+                            <a href="https://calendly.com/erinkaminski">
+                                <button value="https://calendly.com/erinkaminski" onClick={goToLink}>SCHEDULE NOW</button>
+                            </a>
                         </div>
                     </div>
+
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
                         <img src="/images/meeting/meeting3.jpg"></img>
                         <div className="card-body">
-                            <p className="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat interdum odio sit amet rhoncus. 
-                            Proin mauris tortor, aliquet ut gravida auctor, tincidunt aliquet nisi. Nunc fringilla volutpat ligula at vehicula. 
-                            Cras quis tincidunt ex. Pellentesque 
-                            commodo sagittis imperdiet. Pellentesque et sodales elit, et cursus felis. Sed tempor dignissim nunc.
-                            </p>
+                            <ul className="card-text">
+                                <li>Headshots</li>
+                                <li>Marketing Strategies</li>
+                                <li>Business Card Designs</li>
+                                <li>Sign Designs</li>
+                            </ul>
+                        </div>
+                        <div className="card-footer">
+                            <a href="https://calendly.com/marketingwithjenn">
+                                <button value="https://calendly.com/marketingwithjenn" onClick={goToLink}>SCHEDULE NOW</button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             </>):(<span></span>)}
 
-            {/*<div className="socials">
-                <h1 className="pg-title">SOCIALS</h1>
-                <ul>
-                    <li>
-                        <a href="https://www.instagram.com/goldstonerealestate/">
-                            <img src="/images/socials/instagram.png"></img> 
-                            @goldstonerealestate
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.facebook.com/GoldstoneNewJersey">
-                           <img src="/images/socials/facebook.png"></img>
-                            @GoldstoneNewJersey
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
-                            <img src="/images/socials/LinkedIn.png"></img>
-                            @goldstone-real-estate
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.tiktok.com/@goldstonerealtynj">  
-                            <img src="/images/socials/tikTok.png"></img>
-                            @goldstonerealtynj
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/@goldstonerealtynj"> 
-                            <img src="/images/socials/youTube.png"></img>
-                            @goldstonerealtynj
-                        </a>
-                    </li>
-                </ul>
-                 </div>*/}
-    
         </div>
     );
 }

@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6em;
 }
 
 .Account h1{
@@ -21,14 +22,15 @@
 .Account .pg-title{
     text-align: center;
     max-width: 100%;
-    margin-bottom:1em;
 }
 
 .edit-account{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width:100%;
-    
+    margin-top:2em;    
 }
 
 .hide{
@@ -38,15 +40,19 @@
 
 .edit-account h1{
     text-align: center;
+    padding:.2em;
+    background-color: #292929;
 }
 
 .edit-name, .edit-pwd{
-    min-width: 30%;
-    background-color: #292929;
+    min-width: 25%;
+    max-width: 65%;
     border-radius: 25px;
     height:max-content;
     margin: 1em 2em;
+    overflow: hidden;
 }
+
 
 .edit-name form, .edit-pwd form{
     
@@ -54,17 +60,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #D9D9D9;
+     background-color: rgb(0, 0, 0, .05);
     border-radius: 0% 0% 20px 20px;
 }
 
 .edit-name form input, .edit-pwd form input{
     min-width:50%;
-    max-width: 75%;
+    max-width: 85%;
+}
+
+.edit-name input, .edit-pwd input, .submit input{
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border-bottom: .1em solid #292929;
+    margin:1em;
+
 }
 
 .instructions{
-    width:75%;
+    width:50%;
     color:red;
     padding: .5em;
 }
@@ -96,6 +113,11 @@
     .edit-account{
         flex-direction:column;
         align-items: center;
+    
+    }
+
+    .edit-name, .edit-pwd{
+        min-width: 65%;
     }
     .submit form{
         display: flex;
@@ -116,7 +138,6 @@
     }
     .edit-name, .edit-pwd{
         max-width: 75%;
-
     }
 
 }

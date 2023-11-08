@@ -10,6 +10,8 @@
     background-size: cover;
     position: relative;
     width: 70%;
+    border-left: 1em solid #d0ad50;
+    background-color: #292929;
 }
 
 .login-form {
@@ -25,9 +27,12 @@
     min-width:100%;
     height:100%;
     background-size: cover;
+    overflow:hidden;
+    opacity: 90%;
+}
 
-    /*border-image: linear-gradient(#cbcbcb,  #d0ad50) 45;*/
-    border-left: 1em solid #d0ad50;
+.background img{
+    width: 80%;
 }
 
 .login-graphic img{
@@ -54,19 +59,20 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     padding-bottom: 1rem;
     width:100%;
     
 }
 
-input, button, textarea {
+.login-form input, button, textarea {
   font-family: 'Nunito', sans-serif;
   font-size: 1.5em;
   padding: 0.25rem;
 
 }
 
-input{
+.login-form input{
     border: none;
     outline: none;
     font-family: 'Montserrat', sans-serif;
@@ -87,12 +93,6 @@ input{
   max-width:35%;
   border-radius: .5em;
   height:1.8em;
-}
-
-
-.login-form form{
-    display: flex;
-    align-items: center;
 }
 
 .login-form button:hover{
@@ -123,6 +123,7 @@ input{
         order: 1;   
         width:100%;
         height: 20%;
+        border: none;
     }
     .login-graphic img{
         max-height: 100%;
