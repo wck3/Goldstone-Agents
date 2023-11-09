@@ -1,5 +1,5 @@
 
-# Goldstone-Agents Built with react, node.js, mysql
+# Goldstone Connect Built with react, node.js, mysql
 
 
 Goldstone Agents is a user-friendly platform designed for real estate professionals. It offers a streamlined experience with the following features:
