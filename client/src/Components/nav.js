@@ -26,7 +26,7 @@ export default function Navbar(){
         async function fetchSession() {
             try {
                 // fetch session data to retrieve user role
-                const session = await get_from("http://localhost:4000/users/login");
+                const session = await get_from("api/users/login");
                 setRole(session.user.role);
             } catch (error) {
               console.error('Error fetching data:', error);

@@ -14,7 +14,7 @@ export default function Events(){
         async function fetchEventsAndSetState() {
             try {
                 // fetch all tools to display
-                const result = await get_from("http://localhost:4000/events/get-events");
+                const result = await get_from("api/events/get-events");
                 setEvents(result);
             } catch (error) {
               console.error('Error fetching data:', error);
