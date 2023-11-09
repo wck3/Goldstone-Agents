@@ -15,11 +15,7 @@ export default function Events(){
         async function fetchEventsAndSetState() {
             try {
                 // fetch all tools to display
-<<<<<<< HEAD
                 const result = await get_from(api_url + "events/get-events");
-=======
-                const result = await get_from("api/events/get-events");
->>>>>>> 7fa97c9249efcce070d6d5012404b85db3da6db9
                 setEvents(result);
             } catch (error) {
               console.error('Error fetching data:', error);
