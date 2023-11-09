@@ -13,7 +13,11 @@ export default function Contacts(){
         async function fetchContactsAndSetState() {
             try {
                 // fetch all contacts to display
+<<<<<<< HEAD
                 const result = await get_from(api_url + "contacts/get-contacts");
+=======
+                const result = await get_from("api/contacts/get-contacts");
+>>>>>>> 7fa97c9249efcce070d6d5012404b85db3da6db9
                 setContacts(result);
             } catch (error) {
               console.error('Error fetching data:', error);

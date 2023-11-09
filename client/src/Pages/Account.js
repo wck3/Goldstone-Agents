@@ -51,7 +51,11 @@ export default function Account(){
         async function fetchAccount(){
             try {
                 // fetch all user information from session to display
+<<<<<<< HEAD
                 const result = await get_from(api_url + "users/login");
+=======
+                const result = await get_from("api/users/login");
+>>>>>>> 7fa97c9249efcce070d6d5012404b85db3da6db9
                 if(result?.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);
