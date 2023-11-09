@@ -16,7 +16,7 @@ export default function Tools(){
     useEffect(() => {
         async function fetchToolsAndSetState() {
             try {
-                const result = await get_from("http://localhost:4000/tools/get-tools");
+                const result = await get_from("api/tools/get-tools");
                 setData(result);
                 const paginationData = {};
                 // set current page for each category of tool individually

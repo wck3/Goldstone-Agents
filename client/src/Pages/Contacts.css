@@ -63,11 +63,13 @@
 .contact li{
     text-align: center;
     margin: 0 1em;
+    width: 100%;
 }
 
 .contact a{
     text-decoration: none;
-    color:black
+    color:black;
+    max-width: 100%;
 }
 
 .contact a:hover{

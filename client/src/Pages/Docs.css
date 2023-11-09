@@ -66,9 +66,8 @@
     width: 50%;
     text-align: center;
     aspect-ratio: 9/10;
-
-
 }
+
 .commission{
     display: flex;
     flex-direction: column;
@@ -97,19 +96,18 @@
     height:1.8em;
 }
 
-
 .commission button:hover{
     color:#292929;
     background-color: #dbba6f;
 }
 
-
 .commission  h2, .commission input, .commission button{
+    -webkit-appearance: none;
+    border-radius: 0;
+    appearance: none;
     font-family: 'Montserrat', sans-serif;
     color: #292929;
 }
-
-
 
 .commission form{
     display: flex;
@@ -121,7 +119,6 @@
 
 
 }
-
 
 .commission input, button, textarea {
   font-family: 'Nunito', sans-serif;
@@ -161,13 +158,10 @@
   height:1.8em;
 }
 
-
 .commission form{
     display: flex;
     align-items: center;
 }
-
-
 
 @media (max-width:540px){
 

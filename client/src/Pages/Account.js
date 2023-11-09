@@ -50,7 +50,7 @@ export default function Account(){
         async function fetchAccount(){
             try {
                 // fetch all user information from session to display
-                const result = await get_from("http://localhost:4000/users/login");
+                const result = await get_from("api/users/login");
                 if(result?.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);
@@ -69,7 +69,7 @@ export default function Account(){
         setErrMsg('');
     }, [firstname, lastName, pwd, matchPwd, currentPwd]);
 
-    // client side password validation
+    // client-side password validation
     useEffect(() => {
         const result = PWD_REGEX.test(pwd);
         if(result){
