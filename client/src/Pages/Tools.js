@@ -11,12 +11,12 @@ export default function Tools(){
     const [data, setData] = useState();
     const [postsPerPage] = useState(3);
     const [paginationInfo, setPaginationInfo] = useState({});
-
+    const api_url = process.env.REACT_APP_API_URL;
     // retrieve external tool links from backend
     useEffect(() => {
         async function fetchToolsAndSetState() {
             try {
-                const result = await get_from("http://localhost:4000/tools/get-tools");
+                const result = await get_from(api_url + "tools/get-tools");
                 setData(result);
                 const paginationData = {};
                 // set current page for each category of tool individually

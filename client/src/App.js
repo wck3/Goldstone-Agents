@@ -16,7 +16,8 @@ import get_from from './API/get_from';
 
 function App() {
   const navigate = useNavigate();
-
+  const api_url = process.env.REACT_APP_API_URL;
+  // if user is not authenticated, return them to login page
   useEffect(() => {
     Logged_in().then((status) => {
         if(status === false){
@@ -26,13 +27,13 @@ function App() {
       })
   }, []);
 
+  // get the role of the user from their session
   const [role, setRole] = useState('');
   useEffect(() => {
-
     async function fetchSession() {
         try {
             // fetch all tools to display
-            const session = await get_from("http://localhost:4000/users/login");
+            const session = await get_from(api_url + "users/login");
             setRole(session.user.role);
         } catch (error) {
           console.error('Error fetching data:', error);

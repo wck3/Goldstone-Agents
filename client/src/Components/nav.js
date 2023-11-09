@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar(){
-
+    const api_url = process.env.REACT_APP_API_URL;
     const [role, setRole] = useState('');
     const navRef = useRef();
 
@@ -26,7 +26,7 @@ export default function Navbar(){
         async function fetchSession() {
             try {
                 // fetch session data to retrieve user role
-                const session = await get_from("http://localhost:4000/users/login");
+                const session = await get_from(api_url + "users/login");
                 setRole(session.user.role);
             } catch (error) {
               console.error('Error fetching data:', error);

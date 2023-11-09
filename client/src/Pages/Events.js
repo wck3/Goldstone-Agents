@@ -8,13 +8,14 @@ import { useState, useEffect } from 'react';
 
 export default function Events(){
     const[Events, setEvents] = useState();
+    const api_url = process.env.REACT_APP_API_URL;
     
     // fetch events from basck end
     useEffect(() => {
         async function fetchEventsAndSetState() {
             try {
                 // fetch all tools to display
-                const result = await get_from("http://localhost:4000/events/get-events");
+                const result = await get_from(api_url + "events/get-events");
                 setEvents(result);
             } catch (error) {
               console.error('Error fetching data:', error);

@@ -233,6 +233,13 @@
 
 }
 
+@media (max-width:440px){
+    
+    .contact li > a{
+        font-size: .8em;
+    }
+}   
+
 @media (max-width:300px){
     .Contacts{
         font-size: .5em;
