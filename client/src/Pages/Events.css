@@ -17,7 +17,14 @@
 
 .Events h1 > a{
     text-decoration: none;
+    color: #dbba6f;
 }
+
+.Events h1 > a:visited{
+    color: #dbba6f;
+}
+
+
 
 .Events h1 > a:hover{
     color:#292929;
