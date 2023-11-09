@@ -11,7 +11,8 @@ axios.defaults.withCredentials = true;
 // User Regex for validation
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-const LOGIN_URL = 'http://localhost:4000/users/login';
+const api_url = process.env.REACT_APP_API_URL;
+const LOGIN_URL = api_url + 'users/login';
 
 function Login (){
     const navigate = useNavigate();

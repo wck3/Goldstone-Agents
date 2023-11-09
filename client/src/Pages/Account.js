@@ -8,6 +8,7 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Account(){
+    const api_url = process.env.REACT_APP_API_URL;
     // state to store session information
     const [account, setAccount] = useState();
     // form states
@@ -50,7 +51,7 @@ export default function Account(){
         async function fetchAccount(){
             try {
                 // fetch all user information from session to display
-                const result = await get_from("api/users/login");
+                const result = await get_from(api_url + "users/login");
                 if(result?.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);

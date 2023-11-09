@@ -7,13 +7,13 @@ import { useState, useEffect } from 'react';
 
 export default function Contacts(){
     const [contacts, setContacts] = useState();
-
+    const api_url = process.env.REACT_APP_API_URL;
     // retrieve contact information from the back end
     useEffect(() => {
         async function fetchContactsAndSetState() {
             try {
                 // fetch all contacts to display
-                const result = await get_from("api/contacts/get-contacts");
+                const result = await get_from(api_url + "contacts/get-contacts");
                 setContacts(result);
             } catch (error) {
               console.error('Error fetching data:', error);
@@ -41,7 +41,6 @@ export default function Contacts(){
                             <li className="contact-name">{contact.name}</li>
                             <li className="contact-title"><b>{contact.title}</b></li>
                             <li>
-                               
                                 <a href={'tel: ' + contact.phone}>
                                     <FontAwesomeIcon icon={faPhone} className="icon"/>{contact.phone}
                                 </a>
