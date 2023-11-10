@@ -39,7 +39,7 @@ export default function Navbar(){
         return(
             <div className="nav">
                 <Link to="/" className="nav-link">
-                    <img  className="nav-logo" src={logo} alt="Goldstone Hub"/>
+                    <img loading="lazy" className="nav-logo" src={logo} alt="Goldstone Hub" />
                 </Link> 
                 
                 <button className="nav-btn nav-bars" onClick={showNav}>

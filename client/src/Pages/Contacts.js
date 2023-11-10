@@ -4,6 +4,7 @@ import get_from from "../API/get_from";
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
+import Loading from "../Components/loading";
 
 export default function Contacts(){
     const [contacts, setContacts] = useState();
@@ -37,7 +38,7 @@ export default function Contacts(){
                  {contacts?.map( (contact) => (
                     <div className="contact">
                         <ul>
-                            <li> <img src={contact.contact_img}></img></li>
+                            <li> <img loading="lazy" src={contact.contact_img}></img></li>
                             <li className="contact-name">{contact.name}</li>
                             <li className="contact-title"><b>{contact.title}</b></li>
                             <li>
@@ -60,7 +61,7 @@ export default function Contacts(){
                 <div className="card-container">
                     <div className="card card-1">
                         <h1 className="card-title">MEET WITH CARRIE</h1>
-                        <img src="/images/meeting/carrie.png"></img>
+                        <img loading="lazy" src="/images/meeting/carrie.png" ></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Comprehensive training classes</li>
@@ -78,7 +79,7 @@ export default function Contacts(){
 
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
-                        <img src="/images/meeting/erin.png"></img>
+                        <img loading="lazy" src="/images/meeting/erin.png" ></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>New Agent Orientations</li>
@@ -97,7 +98,7 @@ export default function Contacts(){
 
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
-                        <img src="/images/meeting/jennifer.png"></img>
+                        <img loading="lazy" src="/images/meeting/jennifer.png" ></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Headshots</li>
@@ -114,7 +115,10 @@ export default function Contacts(){
                     </div>
                 </div>
             </div>
-            </>):(<span></span>)}
+            </>):
+            (
+                <Loading/>
+            )}
 
         </div>
     );

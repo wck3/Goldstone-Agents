@@ -6,6 +6,7 @@ import './Account.css';
 import styles from "./Account.css";
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Loading from "../Components/loading";
 
 export default function Account(){
     const api_url = process.env.REACT_APP_API_URL;
@@ -28,7 +29,7 @@ export default function Account(){
     const [errMsg, setErrMsg] = useState(false);
     const [successMsg, setSuccess] = useState(false);
 
-    const EDIT_URL = 'http://localhost:4000/users/update-account';
+    const EDIT_URL = api_url  + 'users/update-account';
     const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
     // retrieve success message if it exists in local storage
@@ -243,7 +244,7 @@ export default function Account(){
             </div>
             </>
             ):(
-                <h1>LOADING...</h1>
+                <Loading/>
             )}
         
         </div>

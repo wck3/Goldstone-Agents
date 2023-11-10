@@ -6,12 +6,12 @@ import { useState, useEffect } from 'react';
 
 export default function Edit_Events(){
     const[Events, setEvents] = useState();
-    
+    const api_url = process.env.REACT_APP_API_URL;
     useEffect(() => {
         async function fetchEventsAndSetState() {
             try {
                 // fetch all tools to display
-                const result = await get_from("http://localhost:4000/events/get-events");
+                const result = await get_from(api_url + "events/get-events");
                 setEvents(result);
             } catch (error) {
               console.error('Error fetching data:', error);
@@ -32,7 +32,7 @@ export default function Edit_Events(){
                 <div key={eBlock.block_id} className={`event-block ${index % 2 === 0 ? 'even' : 'odd'}`}>
                     <form>
                          <div className="block-img">
-                            <img src={eBlock.img_path}></img>
+                            <img loading="lazy" src={eBlock.img_path} ></img>
                         </div>
                         <div className="block-content">
                             <h1>{eBlock.headline}</h1>
