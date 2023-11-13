@@ -79,11 +79,15 @@
     display: flex;
     justify-content: center;
     text-wrap:balance;
+}
+
+.tool-category li > p{
+    height:8em;
+    padding:1em;
     text-align: center;
 }
 
 .tool-category li > h2{
-    text-align: left;
     width:100%;
 }
 
