@@ -1,37 +1,65 @@
+# Goldstone Connect
 
-# Goldstone Connect Built with react, node.js, mysql
+Goldstone Connect is a user-friendly internal platform specifically designed for real estate professionals at Goldstone Realty. This documentation provides a detailed guide to the features and functionality of the application.
 
+## Quick Start
 
-Goldstone Agents is a user-friendly platform designed for real estate professionals. It offers a streamlined experience with the following features:
+1. Visit the hosted application at [Goldstoneconnect.com](https://www.goldstoneconnect.com/Login).
+2. Sign in using the demo account credientials: demo@goldstone.com, Welcome123!
+3. Explore the features, including Documents, External Links, Contacts, and more.
+
+## Features
 
 ### Accounts
-- [ ] Pre-made accounts using Goldstone email and standard password.
-- [x] Users can change their password after account creation.
-- [x] Defines if a user is an Administrator or not on account creation.
-- [ ] Admins can manage user roles.
-- [x] Session Authentication required to access all pages.
+
+- **Pre-made Accounts:** Users can access accounts using their Goldstone email and a standard premade password.
+- **Password Management:** Users can change their passwords after account creation.
+- **Administrator Definition:** User role defined on account creation. Users can either be an admin or agent.
+- **Admin Role Management:** Administrators have the ability to manage user roles and create new users.
+- **Session Authentication:** Session authentication is required to access all pages.
 
 ### Navbar
-- [x] Navigate effortlessly with a user-friendly navbar.
-- [x] Options include Home, Documents, External Links, Contacts, My Account, and Admin Tools (for admins).
+
+- **User-Friendly Navigation:** A streamlined navbar offers easy navigation.
+- **Options:** Navigation options include Events, Documents, External Links, Contacts, My Account, and Admin Tools (exclusive to administrators).
 
 ### Documents
-- [x] Access essential documents like Business Card request form, MLS applications, and Listing Sign order forms.
-- [ ] Agents are able to click a button that will send an automated email to the executive manager requesting their commision statment.
+
+- **Access to Essential Documents:** Users can access crucial documents such as Business Card request forms, MLS applications, and Listing Sign order forms.
 
 ### External Links
-- [x] Easily connect with external resources like Goldstone Design, WhatsApp, dotloop, kvcore, brokermint, outlook, YouTube training, MLS, and more.
+
+- **Seamless External Resource Connection:** Users can easily connect with external resources like Goldstone Design, WhatsApp, dotloop, kvcore, brokermint, Outlook, YouTube training, MLS, and more. Links to each tools are stored in a MySQL database for easy customization by administrators.
 
 ### Contacts
-- [x] Schedule appointments with Leadership via calendly.com.
-- [x] Contains important leadership contact information.
+
+- **Appointment Scheduling:** Users can schedule appointments with leadership through calendly.com.
+- **Leadership Contact Information:** Important leadership contact information is available.
 
 ### My Account
-- [x] Users can manage their account by changing passwords, first names, and last names.
+
+- **Account Management:** Users can manage their accounts by changing passwords, first names, and last names.
 
 ### Admin Tools
-- [ ] Admins have the power to create new agent accounts.
-- [ ] Admins can Manage external links.
-- [ ] Admins can upload and delete documents on the documents page.
-- [ ] Admins can edit the important contacts on the contact page.
 
+- **Agent Account Creation:** Administrators have the authority to create new agent accounts as well as edit existing account information.
+- **External Link Management:** Administrators can manage external links.
+- **Document Management:** Administrators can upload and delete documents on the documents page.
+- **Contact Management:** Administrators can edit important contacts on the contact page.
+
+## Technologies Used
+
+Goldstone Connect is built using the following technologies:
+
+- [React](https://reactjs.org/): A JavaScript library for building user interfaces.
+- [Node.js](https://nodejs.org/) / [Express](https://expressjs.com/): A JavaScript runtime and web application framework for server-side development.
+- [MySQL](https://www.mysql.com/): An open-source relational database management system.
+- [Digital Ocean VPS](https://www.digitalocean.com/): Cloud infrastructure provider for hosting the application.
+
+## Prerequisites
+
+Before getting started with Goldstone Connect, ensure you have the following:
+
+- [Node.js](https://nodejs.org/) installed
+- [npm](https://docs.npmjs.com/) installed
+- [MySQL](https://www.mysql.com/) database set up

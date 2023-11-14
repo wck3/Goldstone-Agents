@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const Logout = async(e) =>{
-    
     e.preventDefault();
-    const LOGOUT_URL = "http://localhost:4000/users/logout";
+    const api_url = process.env.REACT_APP_API_URL;
+    const LOGOUT_URL = api_url + "/users/logout";
+    window.location.href='/login';
     try{
         // post logout request to API
         await axios.post(LOGOUT_URL, { } , { withCredentials: true })
@@ -13,8 +14,6 @@ const Logout = async(e) =>{
             console.log('No Server Response');
         }
     }
-    
-    window.location.href='/login';
 };
 
 export default Logout;

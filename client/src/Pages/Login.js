@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./Login.css";
 import axios from 'axios';
 import logo from '../Media/Gold_slogan.png';
-import gif from '../Media/login_vid.gif'
+import video from '../Media/video.mp4'
 
 axios.defaults.withCredentials = true;
 
@@ -15,6 +15,7 @@ const api_url = process.env.REACT_APP_API_URL;
 const LOGIN_URL = api_url + 'users/login';
 
 function Login (){
+
     const navigate = useNavigate();
     const errRef = useRef();
     const emailRef = useRef();
@@ -28,6 +29,11 @@ function Login (){
     useEffect(() => {
         setErrMsg('');
     }, [email, pwd]);
+
+    useEffect(() => {
+        var video = document.getElementById('video-background');
+        video.play();
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -110,8 +116,13 @@ function Login (){
             </div>
             
             <div className='login-graphic' >
-                <div className="background"  style={{backgroundImage: 'url(' + require('../Media/login_vid.gif') + ')'}}> </div>
-                <img  className="logo" src={logo} alt="Goldstone Hub"/>
+                <div className="background"  style={{backgroundImage: 'url(' + require('../Media/video.mp4') + ')'}}>
+                <video id="video-background" autoplay muted loop>
+                    <source src={video} type="video/mp4"/>
+                    Your browser does not support the video tag.
+                </video>
+                 </div>
+                <img  loading="lazy" className="logo" src={logo} alt="Goldstone Hub" />
             </div>
         </div>
     );

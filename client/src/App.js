@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes, useNavigate} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Navbar from './Components/nav';
 import Footer from './Components/footer';
 import Events from './Pages/Events';
@@ -9,24 +9,16 @@ import Contacts from './Pages/Contacts';
 import Account from './Pages/Account';
 import Login from './Pages/Login';
 import NotFound from './Components/404';
-import Edit_Events from './Admin/edit_events';
+import EditEvents from './Admin/edit_events';
 import { useEffect, useState } from 'react';
-import Logged_in from './API/is_logged_in';
 import get_from from './API/get_from';
+import Login_Auth from './API/login_auth';
 
 function App() {
-  const navigate = useNavigate();
-
   const api_url = process.env.REACT_APP_API_URL;
+  
   // if user is not authenticated, return them to login page
-  useEffect(() => {
-    Logged_in().then((status) => {
-        if(status === false){
-          navigate('/Login')   
-          console.log("Not logged in");
-        }
-      })
-  }, []);
+  Login_Auth();
 
   // get the role of the user from their session
   const [role, setRole] = useState('');
@@ -41,7 +33,8 @@ function App() {
         }
     }
     fetchSession();
-}, []);
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
 
@@ -58,7 +51,7 @@ function App() {
 
         {role === "Admin" && (
           <>  
-          <Route exact path="Admin/Edit-Events"  element={<><Navbar/><Edit_Events/><Footer/></>} />
+          <Route exact path="Admin/Edit-Events"  element={<><Navbar/><EditEvents/><Footer/></>} />
           <Route exact path="Admin/Edit-Tools"  element={<><Navbar/><Docs/><Footer/></>} />
           <Route exact path="Admin/Edit-Docs"  element={<><Navbar/><Docs/><Footer/></>} />
           <Route exact path="Admin/View-Users"  element={<><Navbar/><Docs/><Footer/></>} />

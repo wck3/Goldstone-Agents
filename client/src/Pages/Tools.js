@@ -6,6 +6,7 @@ import Pagination_Pages from "../Components/pagination_pgs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import get_from from "../API/get_from";
+import Loading from "../Components/loading";
 
 export default function Tools(){
     const [data, setData] = useState();
@@ -39,8 +40,8 @@ export default function Tools(){
        
         <div className="Tools">
             <h1 className="pg-title">EXTERNAL TOOLS</h1>
-            
-            {data?.map((tool) => (
+            {data !== undefined ? (
+                data?.map((tool) => (
                 
                 <div key={tool.category} className="tool-category">
                     <h1>{tool.category}</h1>
@@ -68,7 +69,9 @@ export default function Tools(){
                         />
                     </div> 
                 </div>
-            ))}
+            )) ):(
+                <Loading/>
+            )}
             </div>
     
     );

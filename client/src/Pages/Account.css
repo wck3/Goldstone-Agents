@@ -45,12 +45,12 @@
 }
 
 .edit-name, .edit-pwd{
-    min-width: 25%;
-    max-width: 65%;
+    width:25%;
     border-radius: 25px;
     height:max-content;
     margin: 1em 2em;
     overflow: hidden;
+    transition: max-width 0.5s ease-in-out;
 }
 
 
@@ -60,7 +60,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-     background-color: rgb(0, 0, 0, .05);
+    background-color: rgb(0, 0, 0, .05);
     border-radius: 0% 0% 20px 20px;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .instructions{
-    width:50%;
+    max-width:50%;
     color:red;
     padding: .5em;
 }

@@ -11,7 +11,7 @@ export default function Footer(){
         <div className="Footer">
                 <div className="foot-1">
                     <div className="foot-socials">
-                        <a href='/'><img className="logo" alt="GOLDSTONE REALTY" src={GoldLogo}/></a>
+                        <a href='/'><img loading="lazy" className="logo" alt="GOLDSTONE REALTY" src={GoldLogo}/></a>
                         <ul>
                             <li>
                                 <a href="https://www.instagram.com/goldstonerealestate/">
