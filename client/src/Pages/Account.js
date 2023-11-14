@@ -31,7 +31,7 @@ export default function Account(){
 
     const EDIT_URL = api_url  + 'users/update-account';
     const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
+    
     // retrieve success message if it exists in local storage
     useEffect( () => {
         const storedMessage = localStorage.getItem('successMsg');
@@ -64,6 +64,7 @@ export default function Account(){
             }
         }
         fetchAccount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // clear error message if form is changed
@@ -82,6 +83,7 @@ export default function Account(){
         }
         const match = matchPwd === pwd;
         setValidMatch(match);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pwd, matchPwd]);
     
     
@@ -226,7 +228,7 @@ export default function Account(){
                 </div>
             </div>
             <div className="submit">
-                <h3 ref={errRef} className={"errMsg " + "errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
+                <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
                 <h3 className={"successMsg" + successMsg ? styles.successMsg : "hide"}>{successMsg}</h3>
                 <form onSubmit={handleSubmit}>    
                     <input

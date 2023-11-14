@@ -21,6 +21,7 @@ export default function Contacts(){
             }
         }
         fetchContactsAndSetState();
+    // eslint-disable-next-line
     }, []);
 
     // send user to link when button is clicked
@@ -38,7 +39,7 @@ export default function Contacts(){
                  {contacts?.map( (contact) => (
                     <div className="contact">
                         <ul>
-                            <li> <img loading="lazy" src={contact.contact_img}></img></li>
+                            <li> <img loading="lazy" src={contact.contact_img} alt={"headshot"}></img></li>
                             <li className="contact-name">{contact.name}</li>
                             <li className="contact-title"><b>{contact.title}</b></li>
                             <li>
@@ -61,7 +62,7 @@ export default function Contacts(){
                 <div className="card-container">
                     <div className="card card-1">
                         <h1 className="card-title">MEET WITH CARRIE</h1>
-                        <img loading="lazy" src="/images/meeting/carrie.png" ></img>
+                        <img loading="lazy" src="/images/meeting/carrie.png" alt={"carrie meeting"}></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Comprehensive training classes</li>
@@ -79,7 +80,7 @@ export default function Contacts(){
 
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
-                        <img loading="lazy" src="/images/meeting/erin.png" ></img>
+                        <img loading="lazy" src="/images/meeting/erin.png" alt="erin meeting"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>New Agent Orientations</li>
@@ -98,7 +99,7 @@ export default function Contacts(){
 
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
-                        <img loading="lazy" src="/images/meeting/jennifer.png" ></img>
+                        <img loading="lazy" src="/images/meeting/jennifer.png" alt="jennifer meeting"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Headshots</li>

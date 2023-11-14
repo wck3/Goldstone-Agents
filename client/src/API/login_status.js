@@ -1,6 +1,6 @@
 import get_from from './get_from.js';
 
-export default async function Logged_in(){
+export default async function Login_Status(){
     const api_url = process.env.REACT_APP_API_URL;
     // check if a user is logged in and return the result
     try{ 

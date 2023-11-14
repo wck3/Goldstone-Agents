@@ -23,6 +23,7 @@ export default function Events(){
             }
         }
         fetchEventsAndSetState();
+    // eslint-disable-next-line
     }, []);
 
    // ...
