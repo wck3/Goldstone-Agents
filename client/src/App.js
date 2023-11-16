@@ -25,9 +25,10 @@ function App() {
   useEffect(() => {
     async function fetchSession() {
         try {
-            // fetch all tools to display
             const session = await get_from(api_url + "users/login");
-            setRole(session.user.role);
+            if(session.user){
+              setRole(session.user.role);
+            }
         } catch (error) {
           console.error('Error fetching data:', error);
         }

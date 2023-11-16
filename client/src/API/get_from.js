@@ -2,9 +2,8 @@ import axios from 'axios';
 
 export default async function get_from(url){
     // get important session information such as user name, email, and login status
-    axios.defaults.withCredentials = true;
     try{
-        const response = await axios.get(url);
+        const response = await axios.get(url, {withCredentials: true});
         if(response){
            return response.data
         }

@@ -8,8 +8,7 @@ export default function Login_Auth(){
     useEffect(() => {
         Login_Status().then((status) => {
             if(status === false){
-              navigate('/Login')   
-              console.log("Not logged in");
+              navigate('/Login');
             }
           })
     // eslint-disable-next-line react-hooks/exhaustive-deps

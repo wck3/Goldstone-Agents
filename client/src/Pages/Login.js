@@ -6,7 +6,7 @@ import axios from 'axios';
 import logo from '../Media/Gold_slogan.png';
 import video from '../Media/video.mp4'
 
-axios.defaults.withCredentials = true;
+
 
 // User Regex for validation
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -117,7 +117,7 @@ function Login (){
             
             <div className='login-graphic' >
                 <div className="background"  style={{backgroundImage: 'url(' + require('../Media/video.mp4') + ')'}}>
-                <video id="video-background" autoplay muted loop>
+                <video id="video-background" autoPlay muted loop>
                     <source src={video} type="video/mp4"/>
                     Your browser does not support the video tag.
                 </video>

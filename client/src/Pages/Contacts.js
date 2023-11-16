@@ -37,7 +37,7 @@ export default function Contacts(){
             <>
             <div className="contact-info">
                  {contacts?.map( (contact) => (
-                    <div className="contact">
+                    <div className="contact" key={contact.c_id}>
                         <ul>
                             <li> <img loading="lazy" src={contact.contact_img} alt={"headshot"}></img></li>
                             <li className="contact-name">{contact.name}</li>

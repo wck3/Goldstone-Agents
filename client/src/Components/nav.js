@@ -27,7 +27,10 @@ export default function Navbar(){
             try {
                 // fetch session data to retrieve user role
                 const session = await get_from(api_url + "users/login");
-                setRole(session.user.role);
+                if(session.user){
+                    setRole(session.user.role);
+                }
+                
             } catch (error) {
               console.error('Error fetching data:', error);
             }
