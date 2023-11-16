@@ -13,7 +13,7 @@ const connection = mysql.createPool({
 })
 
 router.get("/get-contacts", (req, res) => {
-    const query =  "SELECT name, title, phone, email, contact_img from CONTACTS order by disp_order";
+    const query =  "SELECT c_id, name, title, phone, email, contact_img from CONTACTS order by disp_order";
     
     try{
         connection.query(query, function (error, results){
