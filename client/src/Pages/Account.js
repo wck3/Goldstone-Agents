@@ -115,6 +115,7 @@ export default function Account(){
 
         try{
             // send data to api after validation
+            axios.defaults.withCredentials = true;
             const response =  await axios.post(EDIT_URL, 
                 JSON.stringify({uID, firstname, lastName, pwd, currentPwd}),{
                     headers : {'Content-Type': 'application/json' },

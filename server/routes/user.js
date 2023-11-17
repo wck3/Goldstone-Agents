@@ -17,14 +17,22 @@ const connection = mysql.createPool({
     port:3306
 })
 
+
 router.use(cookieParser())
 router.use(bodyParser.urlencoded({extended:true}))
+
+const secure_mode = (process.env.PROD_MODE === 'true');
 router.use(
     session({
       key: "userID",
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
+      cookie : {
+        sameSite: "lax",
+        secure: secure_mode
+      }
+      
     })
 );
 
@@ -147,7 +155,7 @@ router.post('/login', async (req, res) => {
                         role_id: results[0].role_id,
                         role: results[0].role
                     };
-                    res.status(200).send('Success');
+                    res.status(200).send("Success");
                 } else {
                     // Password is not valid
                     res.status(409).send();
