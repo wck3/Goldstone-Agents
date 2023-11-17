@@ -135,7 +135,7 @@ router.get("/login", (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        let query = "SELECT u.user_id, u.email, u.fName, u.lName, u.role_id, u.password, r.name as role FROM USERS u join Roles r on u.role_id = r.id WHERE email = " + "'" + req.body.email + "';"
+        let query = "SELECT u.user_id, u.email, u.fName, u.lName, u.role_id, u.password, r.role FROM USERS u join ROLES r on u.role_id = r.role_id WHERE email = " + "'" + req.body.email + "';"
         connection.query(query, async function (error, results) {
             if (error) throw error;
             // no account found
@@ -211,6 +211,39 @@ router.post('/register', async (req , res) => {
     }
     catch{
         res.status(500)
+    }
+});
+
+router.get('/get-user-list', async (req, res) => {
+   
+    var query =  "SELECT user_id, fName, lName, email from USERS "; 
+    if(req.query.name !== undefined && req.query.name != ""){
+        console.log(req.query.name)
+        query += "WHERE CONCAT(fName, ' ', lName) LIKE '%" + req.query.name + "%' ";
+        //query += "WHERE fname LIKE '%" + req.query.name + "%' or lName LIKE '%" + req.query.name + "%' ";
+    }
+    query += "ORDER BY lName ";
+
+    if(req.query.order !== undefined && req.query.order != ""){
+        query += req.query.order;
+    }
+
+    query += ";";
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.send("none");
+            }
+            else{ 
+                res.send(results); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
     }
 });
 

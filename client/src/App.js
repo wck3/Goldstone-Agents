@@ -13,6 +13,7 @@ import EditEvents from './Admin/edit_events';
 import { useEffect, useState } from 'react';
 import get_from from './API/get_from';
 import Login_Auth from './API/login_auth';
+import ViewUsers from './Admin/view_users';
 
 function App() {
   const api_url = process.env.REACT_APP_API_URL;
@@ -52,11 +53,11 @@ function App() {
 
         {role === "Admin" && (
           <>  
-          <Route exact path="Admin/Edit-Events"  element={<><Navbar/><EditEvents/><Footer/></>} />
-          <Route exact path="Admin/Edit-Tools"  element={<><Navbar/><Docs/><Footer/></>} />
-          <Route exact path="Admin/Edit-Docs"  element={<><Navbar/><Docs/><Footer/></>} />
-          <Route exact path="Admin/View-Users"  element={<><Navbar/><Docs/><Footer/></>} />
-          <Route exact path="Admin/Edit-Contacts"  element={<><Navbar/><Docs/><Footer/></>} />
+          <Route exact path="/Admin/Edit-Events"  element={<><Navbar/><EditEvents/><Footer/></>} />
+          <Route exact path="/Admin/Edit-Tools"  element={<><Navbar/><Docs/><Footer/></>} />
+          <Route exact path="/Admin/Edit-Docs"  element={<><Navbar/><Docs/><Footer/></>} />
+          <Route exact path="/Admin/View-Users"  element={<><Navbar/><ViewUsers/><Footer/></>} />
+          <Route exact path="/Admin/Edit-Contacts"  element={<><Navbar/><Docs/><Footer/></>} />
           </>
         
         )}
