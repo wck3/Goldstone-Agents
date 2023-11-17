@@ -6,11 +6,13 @@ import './pagination_pgs.css';
 
 // pagination page selector
 const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
+    
     const clickRef = useRef();
+    
     const [activePage, setActivePage] = useState(1);
-
     const pageNumbers = [];
     const totalPages = Math.ceil(totalPosts/postsPerPage);
+    
     // get total page numbers needed
     if(totalPages > 1){
         for( let i=1; i <= Math.ceil(totalPosts/postsPerPage); i++){
@@ -36,6 +38,7 @@ const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
         }
         
     };
+    
     // shift page right if right arrow clicked 
     const rightArrow = () => {
         if(activePage !== totalPages){
@@ -48,17 +51,19 @@ const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
         }
     };
 
-    // prevent highlighting text when clicking arrows
+    // bug fix: stops highlighting text when clicking arrow buttons quickly
     const handleMouseDown = (e) =>{
         if(e.detail > 1){
             e.preventDefault();
         }
     }
 
-    const morePages = totalPages > 2;
-    const moreThanOne = totalPages > 1;
-    return(
 
+    // condition to show the pagination if there's more than one page
+    const moreThanOne = totalPages > 1;
+    // condition to show dot selectors if more than two pages
+    const morePages = totalPages > 2;
+    return(
         <>
         {moreThanOne ? 
         <div className="pages">

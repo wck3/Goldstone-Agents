@@ -1,26 +1,30 @@
 import React from "react";
 import './Contacts.css';
-import get_contacts from '../API/get_contacts';
+import get_from from "../API/get_from";
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
+import Loading from "../Components/loading";
 
 export default function Contacts(){
     const [contacts, setContacts] = useState();
-
+    const api_url = process.env.REACT_APP_API_URL;
+    // retrieve contact information from the back end
     useEffect(() => {
         async function fetchContactsAndSetState() {
             try {
                 // fetch all contacts to display
-                const result = await get_contacts();
+                const result = await get_from(api_url + "contacts/get-contacts");
                 setContacts(result);
             } catch (error) {
               console.error('Error fetching data:', error);
             }
         }
         fetchContactsAndSetState();
+    // eslint-disable-next-line
     }, []);
 
+    // send user to link when button is clicked
     const goToLink = async (e) => {
         e.preventDefault();
         window.location.href = e.target.value;
@@ -33,18 +37,20 @@ export default function Contacts(){
             <>
             <div className="contact-info">
                  {contacts?.map( (contact) => (
-                    <div className="contact">
+                    <div className="contact" key={contact.c_id}>
                         <ul>
-                            <li> <img src={contact.contact_img}></img></li>
+                            <li> <img loading="lazy" src={contact.contact_img} alt={"headshot"}></img></li>
                             <li className="contact-name">{contact.name}</li>
                             <li className="contact-title"><b>{contact.title}</b></li>
                             <li>
-                                <FontAwesomeIcon icon={faPhone} className="icon"/>
-                                <a href={'tel: ' + contact.phone}>{contact.phone}</a>
+                                <a href={'tel: ' + contact.phone}>
+                                    <FontAwesomeIcon icon={faPhone} className="icon"/>{contact.phone}
+                                </a>
                             </li>
                             <li>
-                                <FontAwesomeIcon icon={faEnvelope} className="icon"/>
-                                <a href={'mailto: ' + contact.email}>{contact.email}</a>
+                                <a href={'mailto: ' + contact.email}> 
+                                    <FontAwesomeIcon icon={faEnvelope} className="icon"/>{contact.email}
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -56,7 +62,7 @@ export default function Contacts(){
                 <div className="card-container">
                     <div className="card card-1">
                         <h1 className="card-title">MEET WITH CARRIE</h1>
-                        <img src="/images/meeting/meeting1.jpg"></img>
+                        <img loading="lazy" src="/images/meeting/carrie.png" alt={"carrie meeting"}></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Comprehensive training classes</li>
@@ -71,9 +77,10 @@ export default function Contacts(){
                             </a>
                         </div>
                     </div>
+
                     <div className="card card-2">
                         <h1 className="card-title">MEET WITH ERIN</h1>
-                        <img src="/images/meeting/meeting2.jpg"></img>
+                        <img loading="lazy" src="/images/meeting/erin.png" alt="erin meeting"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>New Agent Orientations</li>
@@ -89,9 +96,10 @@ export default function Contacts(){
                             </a>
                         </div>
                     </div>
+
                     <div className="card card-3">
                         <h1 className="card-title">MEET WITH JENNIFER</h1>
-                        <img src="/images/meeting/meeting3.jpg"></img>
+                        <img loading="lazy" src="/images/meeting/jennifer.png" alt="jennifer meeting"></img>
                         <div className="card-body">
                             <ul className="card-text">
                                 <li>Headshots</li>
@@ -104,50 +112,15 @@ export default function Contacts(){
                             <a href="https://calendly.com/marketingwithjenn">
                                 <button value="https://calendly.com/marketingwithjenn" onClick={goToLink}>SCHEDULE NOW</button>
                             </a>
-                           
                         </div>
                     </div>
                 </div>
             </div>
-            </>):(<span></span>)}
+            </>):
+            (
+                <Loading/>
+            )}
 
-            {/*<div className="socials">
-                <h1 className="pg-title">SOCIALS</h1>
-                <ul>
-                    <li>
-                        <a href="https://www.instagram.com/goldstonerealestate/">
-                            <img src="/images/socials/instagram.png"></img> 
-                            @goldstonerealestate
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.facebook.com/GoldstoneNewJersey">
-                           <img src="/images/socials/facebook.png"></img>
-                            @GoldstoneNewJersey
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/company/goldstone-real-estate-co/">
-                            <img src="/images/socials/LinkedIn.png"></img>
-                            @goldstone-real-estate
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.tiktok.com/@goldstonerealtynj">  
-                            <img src="/images/socials/tikTok.png"></img>
-                            @goldstonerealtynj
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/@goldstonerealtynj"> 
-                            <img src="/images/socials/youTube.png"></img>
-                            @goldstonerealtynj
-                        </a>
-                    </li>
-                </ul>
-                 </div>*/}
-    
         </div>
     );
 }

@@ -5,29 +5,20 @@ import {useState, useEffect } from "react";
 import Pagination_Pages from "../Components/pagination_pgs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
-
-async function get_tools(){
-    axios.defaults.withCredentials = true;
-    try{
-        const response = await axios.get("http://localhost:4000/tools/get-tools");
-        if(response){
-            return response.data
-        }
-    } catch(err){
-        console.log(err);
-    }
-}; 
+import get_from from "../API/get_from";
+import Loading from "../Components/loading";
 
 export default function Tools(){
     const [data, setData] = useState();
     const [postsPerPage] = useState(3);
     const [paginationInfo, setPaginationInfo] = useState({});
-
+    const api_url = process.env.REACT_APP_API_URL;
+    // retrieve external tool links from backend
     useEffect(() => {
         async function fetchToolsAndSetState() {
             try {
-                // fetch all tools to display
-                const result = await get_tools();
+                const result = await get_from(api_url + "tools/get-tools");
+
                 setData(result);
                 const paginationData = {};
                 // set current page for each category of tool individually
@@ -49,8 +40,8 @@ export default function Tools(){
        
         <div className="Tools">
             <h1 className="pg-title">EXTERNAL TOOLS</h1>
-            
-            {data?.map((tool) => (
+            {data !== undefined ? (
+                data?.map((tool) => (
                 
                 <div key={tool.category} className="tool-category">
                     <h1>{tool.category}</h1>
@@ -78,7 +69,9 @@ export default function Tools(){
                         />
                     </div> 
                 </div>
-            ))}
+            )) ):(
+                <Loading/>
+            )}
             </div>
     
     );

@@ -4,26 +4,36 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./Login.css";
 import axios from 'axios';
 import logo from '../Media/Gold_slogan.png';
+import video from '../Media/video.mp4'
 
-axios.defaults.withCredentials = true;
+
 
 // User Regex for validation
 const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-const LOGIN_URL = 'http://localhost:4000/users/login';
+const api_url = process.env.REACT_APP_API_URL;
+const LOGIN_URL = api_url + 'users/login';
 
 function Login (){
+
     const navigate = useNavigate();
     const errRef = useRef();
-    
     const emailRef = useRef();
+    
+    // form states
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState(false);
     
+    // clear form when an error occurs
     useEffect(() => {
         setErrMsg('');
     }, [email, pwd]);
+
+    useEffect(() => {
+        var video = document.getElementById('video-background');
+        video.play();
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -106,8 +116,13 @@ function Login (){
             </div>
             
             <div className='login-graphic' >
-                <div className="background" style={{backgroundImage: 'url(' + require('../Media/drone_img.jpg') + ')'}}></div>
-                <img  className="logo" src={logo} alt="Goldstone Hub"/>
+                <div className="background"  style={{backgroundImage: 'url(' + require('../Media/video.mp4') + ')'}}>
+                <video id="video-background" autoPlay muted loop>
+                    <source src={video} type="video/mp4"/>
+                    Your browser does not support the video tag.
+                </video>
+                 </div>
+                <img  loading="lazy" className="logo" src={logo} alt="Goldstone Hub" />
             </div>
         </div>
     );

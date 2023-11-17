@@ -35,7 +35,6 @@
     max-width: 50%;
     margin: 1em;
     margin-left:2.5em;
-
 }
 
 .nav-link img{
@@ -95,6 +94,35 @@
     display: none;
     visibility: hidden;
     opacity: 0;
+}
+
+.dropdown{
+    max-height: 20%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #292929;
+}
+
+.dropdown-content a{
+    width: 100%;
+    text-align: left;
+    margin:0;
+    padding:5px;
+}    
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  /* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
 }
 
 @media (max-width:1024px){

@@ -46,6 +46,7 @@
     display: flex;
     margin: 0 0em;
     font-size: 1em;
+
 }
 
 .contact ul{
@@ -57,17 +58,21 @@
     height:11em;
     width:11em;
     border-radius: 100%;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 
 
 .contact li{
     text-align: center;
     margin: 0 1em;
+    width: 100%;
 }
 
 .contact a{
     text-decoration: none;
-    color:black
+    color:black;
+    max-width: 100%;
 }
 
 .contact a:hover{
@@ -109,17 +114,16 @@
 }
 
 .card img{
-    max-width:20em;
-    max-height:15em;
+    max-width:18em;
+    max-height:13em;
     aspect-ratio: 16/9;
-    margin:1em;
+    margin:1em 1em 0 1em;
     object-fit: contain;
    
 }
 .card-body{
     display: flex;
     justify-content: center;
-    margin-bottom:1em;
 }
 .card .card-text{
     width:20em;
@@ -146,17 +150,13 @@
     width:15em;
 }
 
-
-
 .card-footer{
     position: absolute;
-    display: flex;  
-    bottom:1.1em;
+    display: flex;
+    bottom:1em;
     left:0;
     width:100%;
-
     justify-content: center;
-  
 }
 
 .card-footer button {
@@ -177,7 +177,19 @@
     background-color: #cbcbcb;
 }
 
+@media (max-width:1440px){
+    .contact-info{
+        width:75%;
+    }
 
+}
+
+@media (max-width:1195px){
+    .contact-info{
+        width:100%;
+    }
+
+}
 @media (max-width:1024px){
 
    .card-container{
@@ -212,11 +224,19 @@
         width:10em;
     }
 
-    .Contacts{
+    .contact-info, .meeting{
         font-size: .75em;
     }
 
+
 }
+
+@media (max-width:440px){
+    
+    .contact li > a{
+        font-size: .8em;
+    }
+}   
 
 @media (max-width:300px){
     .Contacts{

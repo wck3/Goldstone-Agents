@@ -10,8 +10,23 @@
     background-size: cover;
     position: relative;
     width: 70%;
+    border-left: 1em solid #d0ad50;
+    background-color: #292929;
 }
 
+.background{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #292929;
+
+}
+
+.background video{
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 80%;
+}
 .login-form {
     display: flex;
     align-items: center;
@@ -25,9 +40,12 @@
     min-width:100%;
     height:100%;
     background-size: cover;
+    overflow:hidden;
+    opacity: 90%;
+}
 
-    /*border-image: linear-gradient(#cbcbcb,  #d0ad50) 45;*/
-    border-left: 1em solid #d0ad50;
+.background img{
+    width: 80%;
 }
 
 .login-graphic img{
@@ -46,6 +64,9 @@
 }
 
 .login-form  h2, .login-form input, .login-form button{
+    -webkit-appearance: none;
+    border-radius: 0;
+    appearance: none;
     font-family: 'Montserrat', sans-serif;
     color: #292929;
 }
@@ -62,6 +83,9 @@
 
 .login-form input, button, textarea {
   font-family: 'Nunito', sans-serif;
+  -webkit-appearance: none;
+  border-radius: 0;
+  appearance: none;
   font-size: 1.5em;
   padding: 0.25rem;
 
@@ -118,6 +142,7 @@
         order: 1;   
         width:100%;
         height: 20%;
+        border: none;
     }
     .login-graphic img{
         max-height: 100%;
@@ -134,13 +159,13 @@
     }
 
     .login-form h1{
-        font-size: 5em;
+        font-size: 7em;
     }
     .login-form h2{
-        font-size: 1.5em;
+        font-size: 2.5em;
     }
     .login-form input, .login-form button{
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
 
 }
@@ -148,10 +173,10 @@
 
 @media (max-width: 440px){
     .login-form h1{
-        font-size: 7em;
+        font-size: 5em;
     }
     .login-form h2{
-        font-size: 2.5em;
+        font-size: 2em;
     }
     .login-form input, .login-form button{
         font-size: 1.2em;

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 export default function Docs(){
-    const [url, setURL] = useState('/forms/WK_Resume.pdf');
+    const [url, setURL] = useState('/forms/business_card_form.pdf');
     const [name, setName] = useState('BUSINESS CARDS');
 
     const handlePDF = (e) => {
@@ -21,14 +21,14 @@ export default function Docs(){
             <div className="pdf-view">
                 <div className="pdf-links">
                     <ul>
-                        <li><a href='/forms/WK_Resume.pdf' value="BUSINESS CARDS" onClick={handlePDF}>BUSINESS CARDS</a></li>
-                        <li><a href='/forms/sample.pdf' value="SIGNS" onClick={handlePDF}>SIGNS</a></li>
-                        <li><a href='/forms/sample.pdf' value="MLS APPLICATION" onClick={handlePDF}>MLS APPLICATION</a></li>
+                        <li><a href='/forms/business_card_form.pdf' value="BUSINESS CARDS" onClick={handlePDF}>BUSINESS CARDS</a></li>
+                        <li><a href='/forms/sign_order_form.pdf' value="SIGNS" onClick={handlePDF}>SIGNS</a></li>
+                        <li><a href='/forms/mls_application.pdf' value="MLS APPLICATION" onClick={handlePDF}>MLS APPLICATION</a></li>
                     </ul>
                 </div>
                 <div className="pdf-render">
                     <object id="pdf-object" type="application/pdf" data={url}>
-                        <h2>YOUR BROWSER DOES NOT SUPPORT PDF PREVIEWS</h2>
+                        <h2>PDF PREVIEWS NOT SUPPORTED ON MOBILE DEVICES</h2>
                         <br/>
                         <a href={url}>VIEW {name} HERE</a>
                     </object>

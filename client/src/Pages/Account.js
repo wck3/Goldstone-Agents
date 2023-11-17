@@ -1,13 +1,15 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
-import get_session from "../API/get_session";
+import get_from from "../API/get_from";
 import axios from "axios";
 import './Account.css';
 import styles from "./Account.css";
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Loading from "../Components/loading";
 
 export default function Account(){
+    const api_url = process.env.REACT_APP_API_URL;
     // state to store session information
     const [account, setAccount] = useState();
     // form states
@@ -27,9 +29,9 @@ export default function Account(){
     const [errMsg, setErrMsg] = useState(false);
     const [successMsg, setSuccess] = useState(false);
 
-    const EDIT_URL = 'http://localhost:4000/users/update-account';
+    const EDIT_URL = api_url  + 'users/update-account';
     const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
+    
     // retrieve success message if it exists in local storage
     useEffect( () => {
         const storedMessage = localStorage.getItem('successMsg');
@@ -49,8 +51,8 @@ export default function Account(){
     useEffect( () => {
         async function fetchAccount(){
             try {
-                // fetch all tools to display
-                const result = await get_session();
+                // fetch all user information from session to display
+                const result = await get_from(api_url + "users/login");
                 if(result?.loggedIn === true){
                     setAccount(result);
                     setFirstName(result.user.fName);
@@ -62,6 +64,7 @@ export default function Account(){
             }
         }
         fetchAccount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // clear error message if form is changed
@@ -69,7 +72,7 @@ export default function Account(){
         setErrMsg('');
     }, [firstname, lastName, pwd, matchPwd, currentPwd]);
 
-    // client side password validation
+    // client-side password validation
     useEffect(() => {
         const result = PWD_REGEX.test(pwd);
         if(result){
@@ -80,6 +83,7 @@ export default function Account(){
         }
         const match = matchPwd === pwd;
         setValidMatch(match);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pwd, matchPwd]);
     
     
@@ -111,6 +115,7 @@ export default function Account(){
 
         try{
             // send data to api after validation
+            axios.defaults.withCredentials = true;
             const response =  await axios.post(EDIT_URL, 
                 JSON.stringify({uID, firstname, lastName, pwd, currentPwd}),{
                     headers : {'Content-Type': 'application/json' },
@@ -224,7 +229,7 @@ export default function Account(){
                 </div>
             </div>
             <div className="submit">
-                <h3 ref={errRef} className={"errMsg " + "errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
+                <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
                 <h3 className={"successMsg" + successMsg ? styles.successMsg : "hide"}>{successMsg}</h3>
                 <form onSubmit={handleSubmit}>    
                     <input
@@ -242,7 +247,7 @@ export default function Account(){
             </div>
             </>
             ):(
-                <h1>LOADING...</h1>
+                <Loading/>
             )}
         
         </div>
