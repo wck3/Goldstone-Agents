@@ -10,35 +10,13 @@ import Account from './Pages/Account';
 import Login from './Pages/Login';
 import NotFound from './Components/404';
 import EditEvents from './Admin/edit_events';
-import { useEffect, useState } from 'react';
-import get_from from './API/get_from';
 import Login_Auth from './API/login_auth';
 import ViewUsers from './Admin/view_users';
+import EditUser from './Admin/edit_user';
 
-function App() {
-  const api_url = process.env.REACT_APP_API_URL;
-  
+function App() {  
   // if user is not authenticated, return them to login page
   Login_Auth();
-
-  // get the role of the user from their session
-  const [role, setRole] = useState('');
-  useEffect(() => {
-    async function fetchSession() {
-        try {
-            const session = await get_from(api_url + "users/login");
-            if(session.user){
-              setRole(session.user.role);
-            }
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-    }
-    fetchSession();
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
 
   return (
     <div className="App">
@@ -51,16 +29,14 @@ function App() {
         <Route exact path="/Login" element={<Login/>} />
         <Route exact path='*' element={<NotFound/>} />
 
-        {role === "Admin" && (
-          <>  
-          <Route exact path="/Admin/Edit-Events"  element={<><Navbar/><EditEvents/><Footer/></>} />
-          <Route exact path="/Admin/Edit-Tools"  element={<><Navbar/><Docs/><Footer/></>} />
-          <Route exact path="/Admin/Edit-Docs"  element={<><Navbar/><Docs/><Footer/></>} />
-          <Route exact path="/Admin/View-Users"  element={<><Navbar/><ViewUsers/><Footer/></>} />
-          <Route exact path="/Admin/Edit-Contacts"  element={<><Navbar/><Docs/><Footer/></>} />
-          </>
-        
-        )}
+       
+        <Route exact path="/Admin/EditEvents"  element={<><Navbar/><EditEvents/><Footer/></>} />
+        <Route exact path="/Admin/EditTools"  element={<><Navbar/><Docs/><Footer/></>} />
+        <Route exact path="/Admin/EditDocs"  element={<><Navbar/><Docs/><Footer/></>} />
+        <Route exact path="/Admin/ViewUsers"  element={<><Navbar/><ViewUsers/><Footer/></>}/>
+        <Route exact path="/Admin/EditUser/:userID"  element={<><Navbar/><EditUser/><Footer/></>} />
+        <Route exact path="/Admin/EditContacts"  element={<><Navbar/><Docs/><Footer/></>} />
+         
       </Routes>
     </div>
   );

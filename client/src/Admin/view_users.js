@@ -1,33 +1,36 @@
 import React from "react";
 import "./view_users.css";
-import axios from "axios";
 import get_from from "../API/get_from";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loading from "../Components/loading";
-import Pagination_Pages from "../Components/pagination_pgs";
+import PaginationPages from "../Components/pagination_pgs";
+import styles from "./view_users.css";
+import Admin_Auth from "../API/admin_auth";
 
 export default function ViewUsers(){
-
+    const navigate = useNavigate();
     const [usersPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
     const [userList, setUserList] = useState();
     const api_url = process.env.REACT_APP_API_URL;
-      // fetch events from back end
-      useEffect(() => {
-        async function fetchUsersAndSetState() {
-            try {
-                // fetch all tools to display
-                const result = await get_from(api_url + "users/get-user-list");
-                setUserList(result);
-            } catch (error) {
-              console.error('Error fetching data:', error);
-            }
+    
+    Admin_Auth();
+    
+    // fetch events from back end
+    useEffect(() => {
+    async function fetchUsersAndSetState() {
+        try {
+            // fetch all tools to display
+            const result = await get_from(api_url + "users/get-user-list");
+            setUserList(result);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        fetchUsersAndSetState();
+    }
+    fetchUsersAndSetState();
     // eslint-disable-next-line
     }, []);
-
-    console.log(userList);
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -41,7 +44,7 @@ export default function ViewUsers(){
             // fetch all filtered users to display
             const result = await get_from(api_url + "users/get-user-list", params);
         
-            if(result != "none"){
+            if(result !== "none"){
                 setUserList(result);
                
             }
@@ -56,6 +59,29 @@ export default function ViewUsers(){
         
     }
 
+    const [successMsg, setSuccess] = useState(false);
+
+     // retrieve success message if it exists in local storage
+     useEffect( () => {
+        const storedMessage = localStorage.getItem('successMsg');
+        if(storedMessage){
+            setSuccess(storedMessage);
+            const timer = setTimeout(() => {
+                setSuccess(false);
+                localStorage.removeItem('successMsg');
+            }, 4000);
+              
+              // Clear the timer when the component unmounts
+              return () => clearTimeout(timer);
+        }
+    }, [])
+
+    const handleEdit = (e) => {
+        e.preventDefault();
+        const uID = e.target.value;
+        navigate(`/Admin/EditUser/${uID}`)
+    }
+
     // Get current posts
     const indexOfLastPost = currentPage * usersPerPage;
     const indexOfFirstPost = indexOfLastPost - usersPerPage;
@@ -66,6 +92,8 @@ export default function ViewUsers(){
     return(
         <div className="View-Users">
             <h1 className="pg-title">ALL USERS</h1>
+
+            <h3 className={"successMsg" + successMsg ? styles.successMsg : "hide"}>{successMsg}</h3>
             
             <form className="filters" onSubmit={handleSearch} >
                 <input
@@ -104,14 +132,14 @@ export default function ViewUsers(){
                             <td>{user.email}</td>
                             <td className="user-options"> 
                                 <button>STATS</button>
-                                <button>EDIT</button>
+                                <button onClick={handleEdit} value={user.user_id}>EDIT</button>
                             </td>
                            
                         </tr>
                     </tbody>
                 ))}
                 </table>
-                <Pagination_Pages
+                <PaginationPages
                     postsPerPage={usersPerPage}
                     totalPosts={userList?.length}
                     paginate={paginate}

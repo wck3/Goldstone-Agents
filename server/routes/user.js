@@ -65,7 +65,7 @@ router.post("/update-account", async (req, res) => {
 
             if (isPasswordValid) {
                 // Update user if the current password is valid
-                const update = await update_user(u_id, fName, lName, pwd);
+                const update = await update_user(u_id, '', fName, lName, pwd);
                 // if update is successful, update session and send response
                 if(update){
                     req.session.user.fName=fName;
@@ -83,9 +83,38 @@ router.post("/update-account", async (req, res) => {
     }
 });
 
-async function update_user(u_id, fName, lName, pwd) {
+router.post("/update-user", async (req, res) => {
+    try {
+        // New account information from forms
+        const u_id = req.body.userID;
+        const email = req.body.email;
+        const fName = req.body.fName;
+        const lName = req.body.lName;
+         
+        const update = await update_user(u_id, email, fName, lName, '');
+        // if update is successful, update session and send response
+        if(update){
+            res.status(200).send('Account updated successfully');
+        }
+        else {
+            // Current password is invalid
+            res.status(409).send();
+        }
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+async function update_user(u_id, email, fName, lName, pwd) {
     return new Promise((resolve, reject) => {
         var query = "UPDATE USERS SET fName='" + fName + "', lName='" + lName + "'";
+
+        if(email != ''){
+            query += ", email='" + email + "'";
+        }
         
         if (pwd !== '') {
             // Hash and update the password if a new password is provided
@@ -218,7 +247,6 @@ router.get('/get-user-list', async (req, res) => {
    
     var query =  "SELECT user_id, fName, lName, email from USERS "; 
     if(req.query.name !== undefined && req.query.name != ""){
-        console.log(req.query.name)
         query += "WHERE CONCAT(fName, ' ', lName) LIKE '%" + req.query.name + "%' ";
         //query += "WHERE fname LIKE '%" + req.query.name + "%' or lName LIKE '%" + req.query.name + "%' ";
     }
@@ -246,5 +274,48 @@ router.get('/get-user-list', async (req, res) => {
         res.status(500);
     }
 });
+
+router.get('/get-user', async (req, res) => {
+    var query =  `SELECT fName, lName, email from USERS WHERE user_id = ${req.query.uID};`;
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.send("none");
+            }
+            else{ 
+                res.send(results); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+})
+
+router.post('/delete-user', async(req, res) => {
+
+    var query = `DELETE from USERS WHERE user_id = ${req.body.userID};`;
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.send("none");
+            }
+            else{ 
+                res.send("deleted"); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+
+
+})
 
 module.exports = router

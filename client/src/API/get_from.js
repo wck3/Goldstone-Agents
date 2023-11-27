@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async function get_from(url, param_data){
     // get important session information such as user name, email, and login status
-    console.log(param_data)
+    //console.log(param_data)
     try{
         var response;
         if(param_data){

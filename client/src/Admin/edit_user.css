@@ -1,0 +1,107 @@
+.Edit-User{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6em;
+}
+
+.Edit-User h1{
+    max-width:100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #dbba6f;
+    font-weight: 400;
+}
+
+.Edit-User .pg-title{
+    text-align: center;
+    max-width: 100%;
+    margin-bottom: 1em;
+}
+
+
+.Edit-User form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.edit-user-form  h2, .edit-user-form input, .edit-user-form button{
+    -webkit-appearance: none;
+    border-radius: 0;
+    appearance: none;
+    font-family: 'Montserrat', sans-serif;
+    color: #292929;
+}
+
+.edit-user-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 1rem;
+    width:100%;
+    
+}
+
+.edit-user-form input, button, textarea {
+  font-family: 'Nunito', sans-serif;
+  -webkit-appearance: none;
+  border-radius: 0;
+  appearance: none;
+  font-size: 1.5em;
+  padding: 0.25rem;
+
+}
+
+.edit-user-form input{
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border-bottom: .1em solid #292929;
+    margin:1em;
+    width:30%;
+}
+
+.edit-user-form button {
+  display: flex;
+  align-items: center;
+  margin:1em;
+  padding: 0.5rem;
+  background-color: #292929;
+  text-align: center;
+  color:#dbba6f;
+  border: none;
+  border-radius: .5em;
+  height:1.8em;
+}
+
+.edit-user-form button:hover{
+    color:#292929;
+    background-color: #dbba6f;
+}
+
+.edit-user-form .delete-btn{
+    background-color: red;
+    color:#FFFFFF;
+}
+
+.edit-user-form .delete-btn:hover{
+    color:red;
+    background-color: gray;
+}
+
+
+.edit-user-form .btn-wrapper{
+    display: flex;
+}
+
+.edit-user-form h3{
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}

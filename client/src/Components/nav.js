@@ -36,6 +36,7 @@ export default function Navbar(){
             }
         }
         fetchSession();
+     // eslint-disable-next-line
     }, []);
 
     if(window.location.pathname !== "/Login"){
@@ -62,11 +63,11 @@ export default function Navbar(){
                         <div className="dropdown">
                             <Link id="dropdown-title" to='/#'>ADMIN <FontAwesomeIcon icon={faCaretDown}/></Link>
                             <div className="dropdown-content">
-                                <Link to="/Admin/Edit-Events" onClick={hideNav}>EDIT EVENTS</Link>
-                                <Link to="/Admin/Edit-Tools"  onClick={hideNav}>EDIT TOOLS</Link>
-                                <Link to="/Admin/Edit-Docs" onClick={hideNav}>EDIT DOCS</Link>
-                                <Link to="/Admin/Edit-Contacts" onClick={hideNav}>EDIT CONTACTS</Link>
-                                <Link to="/Admin/View-Users" onClick={hideNav}>VIEW USERS</Link>
+                                <Link to="/Admin/EditEvents" onClick={hideNav}>EDIT EVENTS</Link>
+                                <Link to="/Admin/EditTools"  onClick={hideNav}>EDIT TOOLS</Link>
+                                <Link to="/Admin/EditDocs" onClick={hideNav}>EDIT DOCS</Link>
+                                <Link to="/Admin/EditContacts" onClick={hideNav}>EDIT CONTACTS</Link>
+                                <Link to="/Admin/ViewUsers" onClick={hideNav}>VIEW USERS</Link>
                             </div>
                         </div>
                     )}
