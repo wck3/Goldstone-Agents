@@ -59,6 +59,10 @@ export default function ViewUsers(){
         
     }
 
+    const handleNew = async (e) => {
+        e.preventDefault();
+        navigate("/Admin/AddUser")
+    }
     const [successMsg, setSuccess] = useState(false);
 
      // retrieve success message if it exists in local storage
@@ -108,6 +112,7 @@ export default function ViewUsers(){
                 </select>
         
                 <button>APPLY</button>
+                <button onClick={handleNew}>NEW USER</button>
             </form>
 
             {userList !== undefined ? (

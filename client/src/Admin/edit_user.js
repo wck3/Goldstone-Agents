@@ -112,7 +112,7 @@ export default function EditUser(){
                     }
                 );  
                 if(response.data.length > 0){
-                    const success='SUCCESSFULLY DELETED ACCOUNT';
+                    const success=`SUCCESSFULLY DELETED ${fName} ${lName}`;
                     localStorage.setItem('successMsg', success);
                     navigate("/Admin/ViewUsers");
             }

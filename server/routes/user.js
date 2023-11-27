@@ -226,17 +226,20 @@ router.post('/logout', async(req, res) => {
     });
 });
 
-router.post('/register', async (req , res) => {
+router.post('/add-user', async (req , res) => {
     //console.log(req.body);
     //res.json(req.body);
     try{
-        const hashedPwd = await bcrypt.hash(req.body.pwd, 10)
-        const user = {email : req.body.email, pwd : hashedPwd}
-        let query = "INSERT INTO USERS VALUES(NULL, 'bill', 'k'," + "'" + user.email + "', 1, '" + user.pwd + "');"   
+        const hashedPwd = await bcrypt.hash("Welcome123!", 10)
+        const user = {email : req.body.email, fName: req.body.fName, lName: req.body.lName, pwd : hashedPwd}
+        let query = `INSERT INTO USERS (fName, lName, email, password) VALUES('${user.fName}', '${user.lName}', '${user.email}', '${user.pwd}'); ` 
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
             //console.log(results);
-          });
+            if(results.length !== 0){
+                res.send("Added successfully");
+            }
+        });
     }
     catch{
         res.status(500)

@@ -13,6 +13,7 @@ import EditEvents from './Admin/edit_events';
 import Login_Auth from './API/login_auth';
 import ViewUsers from './Admin/view_users';
 import EditUser from './Admin/edit_user';
+import AddUser from './Admin/add_user';
 
 function App() {  
   // if user is not authenticated, return them to login page
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/Admin/EditTools"  element={<><Navbar/><Docs/><Footer/></>} />
         <Route exact path="/Admin/EditDocs"  element={<><Navbar/><Docs/><Footer/></>} />
         <Route exact path="/Admin/ViewUsers"  element={<><Navbar/><ViewUsers/><Footer/></>}/>
+        <Route exact path="/Admin/AddUser"  element={<><Navbar/><AddUser/><Footer/></>}/>
         <Route exact path="/Admin/EditUser/:userID"  element={<><Navbar/><EditUser/><Footer/></>} />
         <Route exact path="/Admin/EditContacts"  element={<><Navbar/><Docs/><Footer/></>} />
          
