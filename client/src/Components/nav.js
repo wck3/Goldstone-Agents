@@ -61,13 +61,13 @@ export default function Navbar(){
                     <Link to="/Account" onClick={hideNav} >ACCOUNT</Link>
                     {role === "Admin" && (
                         <div className="dropdown">
-                            <Link id="dropdown-title" to='/#'>ADMIN <FontAwesomeIcon icon={faCaretDown}/></Link>
+                            <Link id="dropdown-title" to='/#'>EDIT <FontAwesomeIcon icon={faCaretDown}/></Link>
                             <div className="dropdown-content">
-                                <Link to="/Admin/EditEvents" onClick={hideNav}>EDIT EVENTS</Link>
-                                <Link to="/Admin/EditTools"  onClick={hideNav}>EDIT TOOLS</Link>
-                                <Link to="/Admin/EditDocs" onClick={hideNav}>EDIT DOCS</Link>
-                                <Link to="/Admin/EditContacts" onClick={hideNav}>EDIT CONTACTS</Link>
-                                <Link to="/Admin/ViewUsers" onClick={hideNav}>VIEW USERS</Link>
+                                <Link to="/Admin/EditEvents" onClick={hideNav}>EVENTS</Link>
+                                <Link to="/Admin/ViewTools"  onClick={hideNav}>TOOLS</Link>
+                                <Link to="/Admin/EditDocs" onClick={hideNav}>DOCS</Link>
+                                <Link to="/Admin/EditContacts" onClick={hideNav}>CONTACTS</Link>
+                                <Link to="/Admin/ViewUsers" onClick={hideNav}>USERS</Link>
                             </div>
                         </div>
                     )}

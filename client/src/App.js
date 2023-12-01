@@ -14,6 +14,11 @@ import Login_Auth from './API/login_auth';
 import ViewUsers from './Admin/view_users';
 import EditUser from './Admin/edit_user';
 import AddUser from './Admin/add_user';
+import ViewTools from './Admin/view_tools';
+import EditTool from './Admin/edit_tool';
+import ViewCategory from './Admin/view_tool_category';
+import EditCategory from './Admin/edit_category';
+import AddTool from './Admin/add_tool';
 
 function App() {  
   // if user is not authenticated, return them to login page
@@ -32,11 +37,19 @@ function App() {
 
        
         <Route exact path="/Admin/EditEvents"  element={<><Navbar/><EditEvents/><Footer/></>} />
-        <Route exact path="/Admin/EditTools"  element={<><Navbar/><Docs/><Footer/></>} />
+        
+        <Route exact path="/Admin/EditTool/:tool_id"  element={<><Navbar/><EditTool/><Footer/></>} />
+        <Route exact path="/Admin/ViewTools"  element={<><Navbar/><ViewTools/><Footer/></>} />
+        <Route exact path="/Admin/AddTool"  element={<><Navbar/><AddTool/><Footer/></>} />
+        <Route exact path="/Admin/ViewCategories"  element={<><Navbar/><ViewCategory/><Footer/></>} />
+        <Route exact path="/Admin/EditCategory/:cID"  element={<><Navbar/><EditCategory/><Footer/></>} />
+        
         <Route exact path="/Admin/EditDocs"  element={<><Navbar/><Docs/><Footer/></>} />
+        
         <Route exact path="/Admin/ViewUsers"  element={<><Navbar/><ViewUsers/><Footer/></>}/>
         <Route exact path="/Admin/AddUser"  element={<><Navbar/><AddUser/><Footer/></>}/>
         <Route exact path="/Admin/EditUser/:userID"  element={<><Navbar/><EditUser/><Footer/></>} />
+        
         <Route exact path="/Admin/EditContacts"  element={<><Navbar/><Docs/><Footer/></>} />
          
       </Routes>

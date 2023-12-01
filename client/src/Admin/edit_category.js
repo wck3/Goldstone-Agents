@@ -1,54 +1,49 @@
 import React from "react";
 import axios from "axios";
 import {useEffect, useState, useRef} from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, redirect } from "react-router-dom";
 import get_from from "../API/get_from";
 import Loading from "../Components/loading";
 import styles from "./edit_user.css";
 import Admin_Auth from "../API/admin_auth";
 
 
-export default function EditUser(){
+export default function EditCategory(){
     const navigate = useNavigate();
-    const {userID} = useParams();
-    const [user, setUser] = useState();
+    const {cID} = useParams();
+    const [data, setData] = useState();
     const api_url = process.env.REACT_APP_API_URL;
     const errRef = useRef();
-    const emailRef = useRef();
-    const [email, setEmail] = useState();
-    const [fName, setFName] = useState();
-    const [lName, setLName] = useState();
+    const categoryRef = useRef();
+    const [category, setCategory] = useState();
     const [errMsg, setErrMsg] = useState(false);
 
-    const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-    const EDIT_URL = api_url + "users/update-user";
-    const DELETE_URL = api_url + "users/delete-user";
+    const EDIT_URL = api_url + "tools/update-category";
+    const DELETE_URL = api_url + "tools/delete-category";
 
     Admin_Auth();
 
     var params = {
-        uID : userID
+        cID : cID
     }   
     useEffect(() => {
-        async function fetchUserAndSetState() {
+        async function fetchCategoryAndSetState() {
             try {
                 // fetch all filtered users to display
-                const result = await get_from(api_url + "users/get-user", params);
+                const result = await get_from(api_url + "tools/get-category", params);
             
                 if(result !== "none"){
-                    setUser(result);
-                    setEmail(result[0].email);
-                    setFName(result[0].fName);
-                    setLName(result[0].lName);
+                    setData(result);
+                    setCategory(result[0].category);
                 }
                 else{
-                  setUser([]);  
+                  setData([]);  
                 }
             } catch (error) {
               console.log('Error fetching data:', error);
             }
         }
-        fetchUserAndSetState();
+        fetchCategoryAndSetState();
     // eslint-disable-next-line
     }, []);
 
@@ -57,20 +52,9 @@ export default function EditUser(){
         e.preventDefault();
         console.log("submitted");
 
-        const validate = EMAIL_REGEX.test(email);
-        if(!validate){  
-            setEmail('');
-            setFName('');
-            setLName('');
-            setTimeout(() => {
-                setErrMsg("INVALID CREDENTIALS");
-            }, 0)
-            emailRef.current.focus();
-            return;
-        }
         try{
             const response =  await axios.post(EDIT_URL, 
-                JSON.stringify({userID, email, fName, lName}),{
+                JSON.stringify({cID, category}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
@@ -79,9 +63,6 @@ export default function EditUser(){
                 setErrMsg("UPDATE SUCCESSFUL");
             }
         } catch (err){ 
-            setEmail('');
-            setFName('');
-            setLName('');
             if(!err.response){
                 setTimeout(() => {
                     setErrMsg('No Server Response');
@@ -92,7 +73,7 @@ export default function EditUser(){
                     setErrMsg('UPDATE FAILED');
                 }, 0)
             }  
-            emailRef.current.focus();
+            categoryRef.current.focus();
             errRef.current.focus();
         }
         
@@ -102,11 +83,11 @@ export default function EditUser(){
     const handleDelete = async (e) => {
         e.preventDefault();
        
-        if(window.confirm("Are you sure you want to delete this user?")){
+        /*if(window.confirm("Are you sure you want to delete this Category? All remaining tools under this category will be deleted.")){
            
             try{
                 const response =  await axios.post(DELETE_URL, 
-                    JSON.stringify({userID}),{
+                    JSON.stringify({cID}),{
                         headers : {'Content-Type': 'application/json' },
                         withCredentials: true
                     }
@@ -131,7 +112,7 @@ export default function EditUser(){
         
         return;
 
-        }
+        }*/
 
     }
 
@@ -142,39 +123,23 @@ export default function EditUser(){
 
     return(
         <div className="Edit-User">
-            <h1 className="pg-title">EDIT USER</h1>
+            <h1 className="pg-title">EDIT CATEGORY</h1>
 
-            {user !== undefined ? (
+            {data !== undefined ? (
             <>
              <form className="edit-user-form" onSubmit={handleSubmit}>
              <input 
-                type="email"
-                id="email" 
-                autoComplete="off" 
-                onChange={(e) => setEmail(e.target.value)} 
-                value={email}
-                ref={emailRef}
-              />
-              <input 
                 type="text"
-                id="fName" 
+                id="title" 
                 autoComplete="off" 
-                onChange={(e) => setFName(e.target.value)} 
-                value={fName}
-                placeholder={fName}
+                onChange={(e) => setCategory(e.target.value)} 
+                value={category}
+                ref={categoryRef}
               />
-
-            <input 
-                type="text"
-                id="fName" 
-                autoComplete="off" 
-                onChange={(e) => setLName(e.target.value)} 
-                value={lName}
-                placeholder={lName}
-              />
+              
               <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
               <div className="btn-wrapper">
-                <button onClick={redirect} value={"/Admin/ViewUsers"}>BACK</button>
+                <button onClick={redirect} value={"/Admin/ViewCategories"}>BACK</button>
                 <button>SAVE</button>
                 <button className="delete-btn"onClick={handleDelete}>DELETE</button>
               </div>

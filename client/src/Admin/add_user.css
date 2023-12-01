@@ -95,8 +95,9 @@
 }
 
 
-.add-user-form .btn-wrapper{
+.btn-wrapper{
     display: flex;
+    justify-content: center;
 }
 
 .add-user-form h3{

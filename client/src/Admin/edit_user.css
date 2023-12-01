@@ -66,6 +66,13 @@
     width:30%;
 }
 
+.edit-user-form textarea {
+    width:30%;
+    height:max-content;
+    border: .1em solid #292929;
+
+}
+
 .edit-user-form button {
   display: flex;
   align-items: center;

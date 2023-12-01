@@ -25,3 +25,18 @@ input[type="password"] {
   justify-content: center;
 }
 
+
+
+h1{
+  max-width:100%;
+  font-family: 'Montserrat', sans-serif;
+  color: #dbba6f;
+  font-weight: 400;
+}
+
+.pg-title{
+  text-align: center;
+  max-width: 100%;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
