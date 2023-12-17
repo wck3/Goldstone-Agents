@@ -58,6 +58,11 @@ export default function ViewUsers(){
         navigate(`/Admin/EditCategory/${cID}`)
     }
 
+    const redirect = async (e) => {
+        e.preventDefault();
+        navigate(e.target.value);
+    }
+
     return(
         <div className="View-Users">
             <h1 className="pg-title">TOOL CATEGORIES</h1>
@@ -88,8 +93,11 @@ export default function ViewUsers(){
                     </tbody>
                 ))}
                 </table>
-
-                <button className="tool-edit-btn" onClick={handleNew}> ADD NEW </button>
+                <div className="btn-wrapper">
+                    <button className="tool-edit-btn" onClick={redirect} value={"/Admin/ViewTools"}>BACK</button>
+                    <button className="tool-edit-btn" onClick={handleNew}> ADD NEW </button>
+                </div>
+               
             </>
             ) : (
                 <Loading />

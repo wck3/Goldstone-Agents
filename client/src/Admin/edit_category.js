@@ -83,7 +83,7 @@ export default function EditCategory(){
     const handleDelete = async (e) => {
         e.preventDefault();
        
-        /*if(window.confirm("Are you sure you want to delete this Category? All remaining tools under this category will be deleted.")){
+        if(window.confirm("Are you sure you want to delete this Category? All remaining tools under this category will be deleted.")){
            
             try{
                 const response =  await axios.post(DELETE_URL, 
@@ -93,9 +93,9 @@ export default function EditCategory(){
                     }
                 );  
                 if(response.data.length > 0){
-                    const success=`SUCCESSFULLY DELETED ${fName} ${lName}`;
+                    const success=`SUCCESSFULLY DELETED CATEGORY ${category}`;
                     localStorage.setItem('successMsg', success);
-                    navigate("/Admin/ViewUsers");
+                    navigate("/Admin/ViewCategories");
             }
             } catch (err){ 
                 if(!err.response){
@@ -112,7 +112,7 @@ export default function EditCategory(){
         
         return;
 
-        }*/
+        }
 
     }
 

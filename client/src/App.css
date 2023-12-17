@@ -8,11 +8,13 @@
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"]{
       appearance: none;
      -webkit-appearance: none;
      border-radius: 0;
 }
+
+
 
 .notFound{
   position: fixed;

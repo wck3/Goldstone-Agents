@@ -14,18 +14,17 @@ export default function AddTool(){
     
     const api_url = process.env.REACT_APP_API_URL;
 
-    const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
-    const ADD_URL = api_url + "users/add-user";
+    const ADD_URL = api_url + "tools/add-tool";
    
 
     const navigate = useNavigate();
-    const [data, setData] = useState();
     const [categories, setCatagories] = useState();
     const errRef = useRef();
     const titleRef = useRef();
     const [title, setTitle] = useState();
     const [url, setURL] = useState();
     const [description, setDescription] = useState();
+    const [catID, setCatID] = useState();
     
     const [errMsg, setErrMsg] = useState(false);
     Admin_Auth();
@@ -35,6 +34,7 @@ export default function AddTool(){
             try {
                 const categories = await get_from(api_url + "tools/get-categories");
                 setCatagories(categories);
+                setCatID(categories[0].c_id);
             } catch (error) {
               console.error('Error fetching data:', error);
             }
@@ -44,23 +44,19 @@ export default function AddTool(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("submitted");
-        /*try{
+        try{
             const response =  await axios.post(ADD_URL, 
-                JSON.stringify({email, fName, lName}),{
+                JSON.stringify({title, url, description, catID}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );  
             if(response.data.length > 0){
-                const success=`SUCCESSFULLY ADDED ${fName} ${lName}`;
+                const success=`SUCCESSFULLY ADDED ${title}`;
                 localStorage.setItem('successMsg', success);
-                navigate("/Admin/ViewUsers");
+                navigate("/Admin/ViewTools");
             }
         } catch (err){ 
-            setEmail('');
-            setFName('');
-            setLName('');
             if(!err.response){
                 setTimeout(() => {
                     setErrMsg('No Server Response');
@@ -71,10 +67,11 @@ export default function AddTool(){
                     setErrMsg('UPDATE FAILED');
                 }, 0)
             }  
-            emailRef.current.focus();
+            titleRef.current.focus();
             errRef.current.focus();
         }
-        */
+        console.log(catID);
+        
         return;
     }
 
@@ -121,7 +118,7 @@ export default function AddTool(){
             
             <div className="btn-wrapper">
                 <label htmlFor="category">CATEGORY:</label>
-                <select name="category">
+                <select name="category" onChange={ (e) => (setCatID(e.target.value))}>
                     {categories?.map( (item) => (
                    
                     <option key={item.c_id} value={item.c_id}>{item.category}</option>

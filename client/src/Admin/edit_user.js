@@ -18,6 +18,7 @@ export default function EditUser(){
     const [email, setEmail] = useState();
     const [fName, setFName] = useState();
     const [lName, setLName] = useState();
+    const [role, setRole] = useState(2);
     const [errMsg, setErrMsg] = useState(false);
 
     const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
@@ -40,6 +41,7 @@ export default function EditUser(){
                     setEmail(result[0].email);
                     setFName(result[0].fName);
                     setLName(result[0].lName);
+                    setRole(result[0].role_id);
                 }
                 else{
                   setUser([]);  
@@ -51,7 +53,6 @@ export default function EditUser(){
         fetchUserAndSetState();
     // eslint-disable-next-line
     }, []);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -70,7 +71,7 @@ export default function EditUser(){
         }
         try{
             const response =  await axios.post(EDIT_URL, 
-                JSON.stringify({userID, email, fName, lName}),{
+                JSON.stringify({userID, email, fName, lName, role}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
@@ -147,39 +148,43 @@ export default function EditUser(){
             {user !== undefined ? (
             <>
              <form className="edit-user-form" onSubmit={handleSubmit}>
-             <input 
-                type="email"
-                id="email" 
-                autoComplete="off" 
-                onChange={(e) => setEmail(e.target.value)} 
-                value={email}
-                ref={emailRef}
-              />
-              <input 
-                type="text"
-                id="fName" 
-                autoComplete="off" 
-                onChange={(e) => setFName(e.target.value)} 
-                value={fName}
-                placeholder={fName}
-              />
+                <input 
+                    type="email"
+                    id="email" 
+                    autoComplete="off" 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    value={email}
+                    ref={emailRef}
+                />
+                <input 
+                    type="text"
+                    id="fName" 
+                    autoComplete="off" 
+                    onChange={(e) => setFName(e.target.value)} 
+                    value={fName}
+                    placeholder={fName}
+                />
 
-            <input 
-                type="text"
-                id="fName" 
-                autoComplete="off" 
-                onChange={(e) => setLName(e.target.value)} 
-                value={lName}
-                placeholder={lName}
-              />
-              <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
-              <div className="btn-wrapper">
+                <input 
+                    type="text"
+                    id="fName" 
+                    autoComplete="off" 
+                    onChange={(e) => setLName(e.target.value)} 
+                    value={lName}
+                    placeholder={lName}
+                />
+
+                <label className="checkbox-label" htmlFor="checkbox">Make this user an administrator?</label>
+                <input id="checkbox" type="checkbox" checked={role === 1} value={role} onChange={() => setRole(role === 1 ? 2 : 1)} name="checkbox"/>
+
+                <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
+                <div className="btn-wrapper">
                 <button onClick={redirect} value={"/Admin/ViewUsers"}>BACK</button>
                 <button>SAVE</button>
                 <button className="delete-btn"onClick={handleDelete}>DELETE</button>
-              </div>
+                </div>
               
-             </form>
+            </form>
             </>
             ):
             (<Loading/>)

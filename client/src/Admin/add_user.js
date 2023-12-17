@@ -15,6 +15,7 @@ export default function AddUser(){
     const [email, setEmail] = useState();
     const [fName, setFName] = useState();
     const [lName, setLName] = useState();
+    const [role, setRole] = useState(2);
     const [errMsg, setErrMsg] = useState(false);
 
     const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
@@ -24,7 +25,6 @@ export default function AddUser(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("submitted");
 
         const validate = EMAIL_REGEX.test(email);
         if(!validate){  
@@ -39,7 +39,7 @@ export default function AddUser(){
         }
         try{
             const response =  await axios.post(ADD_URL, 
-                JSON.stringify({email, fName, lName}),{
+                JSON.stringify({email, fName, lName, role}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
@@ -73,8 +73,8 @@ export default function AddUser(){
     return(
         <div className="Add-User">
             <h1 className="pg-title">ADD USER</h1> 
-            <form className="add-user-form" onSubmit={handleSubmit}>
-             <input 
+            <form className="add-user-form" onSubmit={handleSubmit}>    
+                <input 
                 type="email"
                 id="email" 
                 autoComplete="off" 
@@ -82,30 +82,33 @@ export default function AddUser(){
                 value={email}
                 ref={emailRef}
                 placeholder="EMAIL"
-              />
-              <input 
+                />
+                <input 
                 type="text"
                 id="fName" 
                 autoComplete="off" 
                 onChange={(e) => setFName(e.target.value)} 
                 value={fName}
                 placeholder="FIRST NAME"
-              />
+                />
 
-            <input 
-                type="text"
-                id="fName" 
-                autoComplete="off" 
-                onChange={(e) => setLName(e.target.value)} 
-                value={lName}
-                placeholder="LASTNAME"
-              />
+                <input 
+                    type="text"
+                    id="fName" 
+                    autoComplete="off" 
+                    onChange={(e) => setLName(e.target.value)} 
+                    value={lName}
+                    placeholder="LASTNAME"
+                />
+            
+                <label className="checkbox-label" htmlFor="checkbox">Make this user an administrator?</label>
+                <input id="checkbox" type="checkbox" checked={role === 1} value={role} onChange={() => setRole(role === 1 ? 2 : 1)} name="checkbox"/>
+                
+                <p>NOTE: A default password "Welcome123!" is created for all new users</p>
+                <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
+                <button>CREATE</button>
 
-              <p>NOTE: A default password "Welcome123!" is created for all new users</p>
-              <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
-              <button>CREATE</button>
-
-             </form>
+            </form>
         
                
         </div>

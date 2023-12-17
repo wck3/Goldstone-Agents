@@ -19,6 +19,7 @@ import EditTool from './Admin/edit_tool';
 import ViewCategory from './Admin/view_tool_category';
 import EditCategory from './Admin/edit_category';
 import AddTool from './Admin/add_tool';
+import AddCategory from './Admin/add_category';
 
 function App() {  
   // if user is not authenticated, return them to login page
@@ -42,6 +43,7 @@ function App() {
         <Route exact path="/Admin/ViewTools"  element={<><Navbar/><ViewTools/><Footer/></>} />
         <Route exact path="/Admin/AddTool"  element={<><Navbar/><AddTool/><Footer/></>} />
         <Route exact path="/Admin/ViewCategories"  element={<><Navbar/><ViewCategory/><Footer/></>} />
+        <Route exact path="/Admin/AddCategory"  element={<><Navbar/><AddCategory/><Footer/></>} />
         <Route exact path="/Admin/EditCategory/:cID"  element={<><Navbar/><EditCategory/><Footer/></>} />
         
         <Route exact path="/Admin/EditDocs"  element={<><Navbar/><Docs/><Footer/></>} />
