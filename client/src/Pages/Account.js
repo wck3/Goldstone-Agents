@@ -31,7 +31,23 @@ export default function Account(){
 
     const EDIT_URL = api_url  + 'users/update-account';
     const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-    
+
+    const [role, setRole] = useState('');
+    useEffect(() => {
+        async function fetchSession() {
+        try {
+            const session = await get_from(api_url + "users/login");
+            if(session.user.role_id){
+                setRole(session.user.role_id);
+            }
+        } catch (error) {
+        console.error('Error fetching data:', error);
+        }
+        }
+        fetchSession();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
+
     // retrieve success message if it exists in local storage
     useEffect( () => {
         const storedMessage = localStorage.getItem('successMsg');
@@ -85,7 +101,6 @@ export default function Account(){
         setValidMatch(match);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pwd, matchPwd]);
-    
     
     // submission validation/post to api/error handling
     const handleSubmit = async (e) => {
@@ -204,6 +219,7 @@ export default function Account(){
                             aria-invalid={validPwd ? "false" : "true" }
                             onFocus={() => setPwdFocus(true)}
                             onBlur={() => setPwdFocus(true)}
+                            disabled={role === 3}
                         />
                         <p id="pwdnote" className={pwd && pwdFocus && !validPwd ? "instructions" : "hide"}>
                             <FontAwesomeIcon icon={faInfoCircle}/> 8 to 24 Characters. <br/>
@@ -220,6 +236,7 @@ export default function Account(){
                             aria-invalid={validMatch ? "false" : "true" }
                             onFocus={() => setMatchFocus(true)}
                             onBlur={() => setMatchFocus(true)}
+                            disabled={role === 3}
                         />
                         <p id="matchnote" className={matchPwd && matchFocus && !validMatch ? "instructions" : "hide"}>
                             <FontAwesomeIcon icon={faInfoCircle}/>{' '}
