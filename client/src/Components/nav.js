@@ -66,7 +66,7 @@ export default function Navbar(){
                                 <Link to="/Admin/EditEvents" onClick={hideNav}>EVENTS</Link>
                                 <Link to="/Admin/ViewTools"  onClick={hideNav}>TOOLS</Link>
                                 <Link to="/Admin/EditDocs" onClick={hideNav}>DOCS</Link>
-                                <Link to="/Admin/EditContacts" onClick={hideNav}>CONTACTS</Link>
+                                <Link to="/Admin/ViewContacts" onClick={hideNav}>CONTACTS</Link>
                                 <Link to="/Admin/ViewUsers" onClick={hideNav}>USERS</Link>
                             </div>
                         </div>

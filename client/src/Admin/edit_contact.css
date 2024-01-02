@@ -1,0 +1,37 @@
+.contact-link:hover .contact-edit{
+    opacity: 50%;
+    background-color: rgb(0, 0, 0, .05);
+
+}
+
+.contact-link{
+    position: relative;
+    text-decoration: none;
+    color:black;
+}
+
+
+.edit-banner{
+    width:100%;
+    position:absolute;
+    height:100%;
+    right:0;
+    text-align: right;
+    padding: .25em .5em;
+    z-index: 1;
+    visibility: hidden;
+    display: none;
+}
+
+.contact-link:hover .edit-banner{
+    visibility: visible;
+    display: initial;
+}
+
+.contact-edit{
+    padding:1em;
+}
+
+.contact-edit li{
+    margin:0;
+}

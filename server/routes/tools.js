@@ -104,6 +104,24 @@ router.get('/get-category', async (req, res) => {
     }
 })
 
+router.post('/add-category', async (req , res) => {
+    console.log(req.body);
+    //res.json(req.body);
+    try{
+        let query = `INSERT INTO T_CATEGORY (category) VALUES('${req.body.category}');` 
+        connection.query(query, function (error, results, fields) {
+            if (error) throw error;
+            //console.log(results);
+            if(results.affectedRows > 0){
+                res.send("Added successfully");
+            }
+        });
+    }
+    catch{
+        res.status(500)
+    }
+});
+
 router.post("/update-category", async (req, res) => {
     try {
         // New account information from forms
@@ -141,16 +159,39 @@ async function update_catgory(c_id, category) {
     })
 }
 
+router.post('/delete-category', async(req, res) => {
+
+    var query = `DELETE from T_CATEGORY WHERE c_id = ${req.body.cID};`;
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.affectedRows > 0){
+                res.send("none");
+            }
+            else{ 
+                res.status(409); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+
+
+})
+
 router.post('/add-tool', async (req , res) => {
     //console.log(req.body);
     //res.json(req.body);
     try{
-        const tool = {title : req.body.title, url : req.body.url , description : req.body.description}
-        let query = `INSERT INTO TOOLS (title, url, description) VALUES('${tool.title}', '${tool.url}', '${tool.description}', '${tool.pwd}'); ` 
+        const tool = {title : req.body.title, url : req.body.url , description : req.body.description, cat_id : req.body.catID}
+        let query = `INSERT INTO TOOLS (title, hyperlink, description, cat_id) VALUES('${tool.title}', '${tool.url}', '${tool.description}', ${tool.cat_id}); ` 
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
             //console.log(results);
-            if(results.length !== 0){
+            if(results.affectedRows > 0){
                 res.send("Added successfully");
             }
         });

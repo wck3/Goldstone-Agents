@@ -20,6 +20,8 @@ import ViewCategory from './Admin/view_tool_category';
 import EditCategory from './Admin/edit_category';
 import AddTool from './Admin/add_tool';
 import AddCategory from './Admin/add_category';
+import ViewContacts from './Admin/view_contacts';
+import EditContact from './Admin/edit_contact';
 
 function App() {  
   // if user is not authenticated, return them to login page
@@ -52,7 +54,8 @@ function App() {
         <Route exact path="/Admin/AddUser"  element={<><Navbar/><AddUser/><Footer/></>}/>
         <Route exact path="/Admin/EditUser/:userID"  element={<><Navbar/><EditUser/><Footer/></>} />
         
-        <Route exact path="/Admin/EditContacts"  element={<><Navbar/><Docs/><Footer/></>} />
+        <Route exact path="/Admin/ViewContacts"  element={<><Navbar/><ViewContacts/><Footer/></>} />
+        <Route exact path="/Admin/EditContact/:cID"  element={<><Navbar/><EditContact/><Footer/></>} />
          
       </Routes>
     </div>

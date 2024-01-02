@@ -90,8 +90,9 @@ router.post("/update-user", async (req, res) => {
         const email = req.body.email;
         const fName = req.body.fName;
         const lName = req.body.lName;
+        const role_id = req.body.role;
          
-        const update = await update_user(u_id, email, fName, lName, '');
+        const update = await update_user(u_id, email, fName, lName, '', role_id);
         // if update is successful, update session and send response
         if(update){
             res.status(200).send('Account updated successfully');
@@ -108,9 +109,9 @@ router.post("/update-user", async (req, res) => {
 });
 
 
-async function update_user(u_id, email, fName, lName, pwd) {
+async function update_user(u_id, email, fName, lName, pwd, role) {
     return new Promise((resolve, reject) => {
-        var query = "UPDATE USERS SET fName='" + fName + "', lName='" + lName + "'";
+        var query = "UPDATE USERS SET fName='" + fName + "', lName='" + lName + "', role_id=" + role;
 
         if(email != ''){
             query += ", email='" + email + "'";
@@ -231,13 +232,17 @@ router.post('/add-user', async (req , res) => {
     //res.json(req.body);
     try{
         const hashedPwd = await bcrypt.hash("Welcome123!", 10)
-        const user = {email : req.body.email, fName: req.body.fName, lName: req.body.lName, pwd : hashedPwd}
-        let query = `INSERT INTO USERS (fName, lName, email, password) VALUES('${user.fName}', '${user.lName}', '${user.email}', '${user.pwd}'); ` 
+        const user = {email : req.body.email, fName: req.body.fName, lName: req.body.lName, pwd : hashedPwd, role_id: req.body.role}
+        let query = `INSERT INTO USERS (fName, lName, email, password, role_id) VALUES('${user.fName}', '${user.lName}', '${user.email}', '${user.pwd}', ${user.role_id}); ` 
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
             //console.log(results);
-            if(results.length !== 0){
+            console.log(results);
+            if(results.affectedRows > 0){
                 res.send("Added successfully");
+            }
+            else{
+                res.status(409);
             }
         });
     }
@@ -279,7 +284,7 @@ router.get('/get-user-list', async (req, res) => {
 });
 
 router.get('/get-user', async (req, res) => {
-    var query =  `SELECT fName, lName, email from USERS WHERE user_id = ${req.query.uID};`;
+    var query =  `SELECT fName, lName, email, role_id from USERS WHERE user_id = ${req.query.uID};`;
     try{
         connection.query(query, function (error, results){
             if (error) throw error;
