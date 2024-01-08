@@ -3,7 +3,7 @@
 .dot{
     height: 15px;
     width: 15px;
-    background-color: #dbba6f;
+    background-color: #cbcbcb;
     border-radius: 50%;
     display: inline-block;
 }
@@ -14,13 +14,13 @@
 .dot:hover{
     height: 15px;
     width: 15px;
-    background-color: #d0ad50 ;
+    background-color: #cbcbcb;
     border-radius: 50%;
     display: inline-block;
 }
 
 .clicked .dot{
-    background-color: #cbcbcb;
+    background-color:  #dbba6f;
 }
 
 .arrow{

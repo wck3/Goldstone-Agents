@@ -62,7 +62,7 @@ const Pagination_Pages = ({postsPerPage, totalPosts, paginate}) => {
     // condition to show the pagination if there's more than one page
     const moreThanOne = totalPages > 1;
     // condition to show dot selectors if more than two pages
-    const morePages = totalPages > 2;
+    const morePages = totalPages > 1;
     return(
         <>
         {moreThanOne ? 
