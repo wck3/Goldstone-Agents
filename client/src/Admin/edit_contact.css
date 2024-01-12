@@ -10,6 +10,18 @@
     color:black;
 }
 
+.Edit-Contact ul{
+    list-style-type: none;
+}
+
+.contact-img img{
+    border-radius: 50%;
+    height:15em;
+    width:15em;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
 
 .edit-banner{
     width:100%;
@@ -26,6 +38,10 @@
 .contact-link:hover .edit-banner{
     visibility: visible;
     display: initial;
+}
+
+.contact-link:hover img{
+    opacity: 75%;
 }
 
 .contact-edit{

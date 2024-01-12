@@ -1,5 +1,6 @@
 import React from "react";
 import './edit_tool.css';
+import './edit_contact.css';
 import {useState, useEffect, useRef } from "react";
 import get_from from "../API/get_from";
 import Loading from "../Components/loading";
@@ -7,6 +8,9 @@ import axios from "axios";
 import Admin_Auth from "../API/admin_auth";
 import styles from "./edit_tool.css";
 import { useNavigate, useParams } from "react-router-dom";
+import ImageUpload from "../Components/image_upload";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 export default function EditContact(){
     const navigate = useNavigate();
@@ -128,15 +132,42 @@ export default function EditContact(){
         e.preventDefault();
         navigate(e.target.value);
     }
- 
+
+    const [isPopupOpen, setPopupOpen] = useState(false);
+
+    const openPopup = (e) => {
+        e.preventDefault();
+        setPopupOpen(true);
+    };
+
+    const closePopup = (e) => {
+        e.preventDefault();
+        setPopupOpen(false);
+    };
+    
     return(
-        <div className="Edit-Tool">
+        <div className="Edit-Contact">
+            <ImageUpload/>
             <h1 className="pg-title">EDIT CONTACT</h1>
 
             {data !== undefined && categories !== undefined? (
             <>
                 <form className="edit-user-form" onSubmit={handleSubmit}>
-                <li> <img loading="lazy" src={data.contact_img} alt={"headshot"}></img></li>
+                 
+                <a className="contact-img" onClick={openPopup}>
+                    <div className="contact-link">
+                        <h1 className="edit-banner"><FontAwesomeIcon icon={faEdit} className="ext"/></h1>
+                        <img loading="lazy" src={image} alt="headshot"></img>
+                    </div>
+                    
+                    <ImageUpload className="img-upload" isOpen={isPopupOpen} onClose={closePopup}>
+                        <h2>Upload an Image</h2>
+                        <input type="file" onChange={ (e) => setImage(URL.createObjectURL(e.target.files[0]))}/>
+                    </ImageUpload>
+            
+                    
+                </a>
+
                 <input 
                     type="text"
                     name="name"
