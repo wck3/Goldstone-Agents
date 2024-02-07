@@ -41,8 +41,6 @@
 }
 
 .userList button, .filters button, .filters select {
-    display: flex;
-    align-items: center;
     margin: 0 .5em; 
     padding: 0.5rem;
     background-color: #dbba6f;
@@ -55,7 +53,7 @@
 }
 
 
-.userList button:hover{
+.userList button:hover, .filters button:hover, .filters select:hover{
     color:#292929;
     background-color: #cbcbcb;
 }
