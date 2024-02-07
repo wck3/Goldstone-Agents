@@ -65,7 +65,7 @@ router.post("/update-account", async (req, res) => {
 
             if (isPasswordValid) {
                 // Update user if the current password is valid
-                const update = await update_user(u_id, fName, lName, pwd);
+                const update = await update_user(u_id, '', fName, lName, pwd);
                 // if update is successful, update session and send response
                 if(update){
                     req.session.user.fName=fName;
@@ -83,9 +83,39 @@ router.post("/update-account", async (req, res) => {
     }
 });
 
-async function update_user(u_id, fName, lName, pwd) {
+router.post("/update-user", async (req, res) => {
+    try {
+        // New account information from forms
+        const u_id = req.body.userID;
+        const email = req.body.email;
+        const fName = req.body.fName;
+        const lName = req.body.lName;
+        const role_id = req.body.role;
+         
+        const update = await update_user(u_id, email, fName, lName, '', role_id);
+        // if update is successful, update session and send response
+        if(update){
+            res.status(200).send('Account updated successfully');
+        }
+        else {
+            // Current password is invalid
+            res.status(409).send();
+        }
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+async function update_user(u_id, email, fName, lName, pwd, role) {
     return new Promise((resolve, reject) => {
-        var query = "UPDATE USERS SET fName='" + fName + "', lName='" + lName + "'";
+        var query = "UPDATE USERS SET fName='" + fName + "', lName='" + lName + "', role_id=" + role;
+
+        if(email != ''){
+            query += ", email='" + email + "'";
+        }
         
         if (pwd !== '') {
             // Hash and update the password if a new password is provided
@@ -135,7 +165,7 @@ router.get("/login", (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        let query = "SELECT user_id, email, fName, lName, role_id, password FROM USERS WHERE email = " + "'" + req.body.email + "';"
+        let query = "SELECT u.user_id, u.email, u.fName, u.lName, u.role_id, u.password, r.role FROM USERS u join ROLES r on u.role_id = r.role_id WHERE email = " + "'" + req.body.email + "';"
         connection.query(query, async function (error, results) {
             if (error) throw error;
             // no account found
@@ -197,21 +227,103 @@ router.post('/logout', async(req, res) => {
     });
 });
 
-router.post('/register', async (req , res) => {
+router.post('/add-user', async (req , res) => {
     //console.log(req.body);
     //res.json(req.body);
     try{
-        const hashedPwd = await bcrypt.hash(req.body.pwd, 10)
-        const user = {email : req.body.email, pwd : hashedPwd}
-        let query = "INSERT INTO USERS VALUES(NULL, 'bill', 'k'," + "'" + user.email + "', 1, '" + user.pwd + "');"   
+        const hashedPwd = await bcrypt.hash("Welcome123!", 10)
+        const user = {email : req.body.email, fName: req.body.fName, lName: req.body.lName, pwd : hashedPwd, role_id: req.body.role}
+        let query = `INSERT INTO USERS (fName, lName, email, password, role_id) VALUES('${user.fName}', '${user.lName}', '${user.email}', '${user.pwd}', ${user.role_id}); ` 
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
             //console.log(results);
-          });
+            console.log(results);
+            if(results.affectedRows > 0){
+                res.send("Added successfully");
+            }
+            else{
+                res.status(409);
+            }
+        });
     }
     catch{
         res.status(500)
     }
 });
+
+router.get('/get-user-list', async (req, res) => {
+   
+    var query =  "SELECT user_id, fName, lName, email from USERS "; 
+    if(req.query.name !== undefined && req.query.name != ""){
+        query += "WHERE CONCAT(fName, ' ', lName) LIKE '%" + req.query.name + "%' ";
+        //query += "WHERE fname LIKE '%" + req.query.name + "%' or lName LIKE '%" + req.query.name + "%' ";
+    }
+    query += "ORDER BY lName ";
+
+    if(req.query.order !== undefined && req.query.order != ""){
+        query += req.query.order;
+    }
+
+    query += ";";
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.send("none");
+            }
+            else{ 
+                res.send(results); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+});
+
+router.get('/get-user', async (req, res) => {
+    var query =  `SELECT fName, lName, email, role_id from USERS WHERE user_id = ${req.query.uID};`;
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.send("none");
+            }
+            else{ 
+                res.send(results); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+})
+
+router.post('/delete-user', async(req, res) => {
+
+    var query = `DELETE from USERS WHERE user_id = ${req.body.userID};`;
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.send("none");
+            }
+            else{ 
+                res.send("deleted"); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+
+
+})
 
 module.exports = router

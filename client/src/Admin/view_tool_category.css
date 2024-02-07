@@ -1,0 +1,27 @@
+.View-Category ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.View-Category li{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    margin: 1em 1em;
+    width:40%;
+    padding:1em;
+}
+
+.View-Category li > p{
+    width:100%;
+    text-align: center;
+}
+
+.View-h3{
+    margin:1em;
+    color:green;
+}

@@ -14,15 +14,17 @@
     font-weight: 400;
 }
 
+.Account .pg-title{
+    text-align: center;
+    max-width: 100%;
+}
+
 .Account h2{
     text-transform: uppercase;
     font-weight: 400;
 }
 
-.Account .pg-title{
-    text-align: center;
-    max-width: 100%;
-}
+
 
 .edit-account{
     display: flex;
