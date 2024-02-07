@@ -91,9 +91,11 @@
     width:100%;
 }
 
-/*.tool-category p{
-    max-width: 75%;
-}*/
+.tool-info li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 p{
     width:100%;

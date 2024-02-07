@@ -33,4 +33,25 @@ router.get("/get-contacts", (req, res) => {
     }
 });
 
+router.get("/get-contact", (req, res) => {
+    const query =  `SELECT c_id, name, title, phone, email, contact_img from CONTACTS WHERE c_id = ${req.query.cID}`;
+    
+    try{
+        connection.query(query, function (error, results){
+            if (error) throw error;
+            // no items found
+            if(results.length === 0){
+                res.status(409).send();
+            }
+            else{ 
+                res.send(results); 
+            }
+        });
+    }
+    catch (error){
+        console.log(error);
+        res.status(500);
+    }
+});
+
 module.exports = router

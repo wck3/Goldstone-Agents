@@ -1,9 +1,17 @@
 import axios from 'axios';
 
-export default async function get_from(url){
+export default async function get_from(url, param_data){
     // get important session information such as user name, email, and login status
+    //console.log(param_data)
     try{
-        const response = await axios.get(url, {withCredentials: true});
+        var response;
+        if(param_data){
+            response = await axios.get(url, {withCredentials: true, params : param_data });
+        }
+        else{
+            response = await axios.get(url, {withCredentials: true});
+        }
+        
         if(response){
            return response.data
         }
