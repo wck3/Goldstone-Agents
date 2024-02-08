@@ -164,7 +164,7 @@ export default function ViewCategory(){
                     <label htmlFor="category">CATEGORY:</label>
                     <select name="category">
                         <option value={data.cat_id}>{data.category}</option>
-                        {categories.map( (item) => (
+                        {categories?.map( (item) => (
                         item.c_id !== data.cat_id && (
                             <option key={item.c_id} value={item.c_id}>{item.category}</option>
                         )
