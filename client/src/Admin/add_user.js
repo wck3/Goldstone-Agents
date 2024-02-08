@@ -47,7 +47,7 @@ export default function AddUser(){
             if(response.data.length > 0){
                 const success=`SUCCESSFULLY ADDED ${fName} ${lName}`;
                 localStorage.setItem('successMsg', success);
-                navigate("/Admin/ViewUsers");
+                navigate("/ViewUsers");
             }
         } catch (err){ 
             setEmail('');

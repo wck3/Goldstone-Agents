@@ -63,11 +63,11 @@ export default function Navbar(){
                         <div className="dropdown">
                             <Link id="dropdown-title" to='/#'>EDIT <FontAwesomeIcon icon={faCaretDown}/></Link>
                             <div className="dropdown-content">
-                                <Link to="/Admin/EditEvents" onClick={hideNav}>EVENTS</Link>
-                                <Link to="/Admin/ViewTools"  onClick={hideNav}>TOOLS</Link>
-                                <Link to="/Admin/EditDocs" onClick={hideNav}>DOCS</Link>
-                                <Link to="/Admin/ViewContacts" onClick={hideNav}>CONTACTS</Link>
-                                <Link to="/Admin/ViewUsers" onClick={hideNav}>USERS</Link>
+                                <Link to="/EditEvents" onClick={hideNav}>EVENTS</Link>
+                                <Link to="/ViewTools"  onClick={hideNav}>TOOLS</Link>
+                                <Link to="/EditDocs" onClick={hideNav}>DOCS</Link>
+                                <Link to="/ViewContacts" onClick={hideNav}>CONTACTS</Link>
+                                <Link to="/ViewUsers" onClick={hideNav}>USERS</Link>
                             </div>
                         </div>
                     )}
