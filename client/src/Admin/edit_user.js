@@ -6,6 +6,8 @@ import get_from from "../API/get_from";
 import Loading from "../Components/loading";
 import styles from "./edit_user.css";
 import Admin_Auth from "../API/admin_auth";
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function EditUser(){
@@ -20,8 +22,16 @@ export default function EditUser(){
     const [lName, setLName] = useState();
     const [role, setRole] = useState(2);
     const [errMsg, setErrMsg] = useState(false);
+    const [resetPwd, setResestPwd] = useState(false);
+    const [pwd, setPwd] = useState('');
+    const [validPwd, setValidPwd] = useState(true);
+    const [pwdFocus, setPwdFocus] = useState(false)
+    const [matchPwd, setMatchPwd] = useState('');
+    const [validMatch, setValidMatch] = useState(true);
+    const [matchFocus, setMatchFocus] = useState(false);
 
     const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.+[a-zA-Z]{3,23}$/;
+    const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
     const EDIT_URL = api_url + "users/update-user";
     const DELETE_URL = api_url + "users/delete-user";
 
@@ -54,9 +64,51 @@ export default function EditUser(){
     // eslint-disable-next-line
     }, []);
 
+     // clear error message if form is changed
+     useEffect(() => {
+        setErrMsg('');
+    }, [pwd, matchPwd]);
+
+    // client-side password validation
+    useEffect(() => {
+        const result = PWD_REGEX.test(pwd);
+        if(result){
+            setValidPwd(pwd);
+        }
+        else{
+            setValidPwd(null);
+        }
+        const match = matchPwd === pwd;
+        setValidMatch(match);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pwd, matchPwd]);
+    
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("submitted");
+
+        // error if user tries to submit with improper new password
+        if( (pwd !== '' && matchPwd !== '') && (!validPwd || !validMatch) ){  
+            setTimeout(() => {
+                setErrMsg('New Password Requirements not met');
+            }, 0)
+            return
+        }
+
+        // prevent js hacking
+        const v1 = pwd === '' || PWD_REGEX.test(pwd);
+        const v2 = pwd === '' || PWD_REGEX.test(matchPwd);
+        if(!v1 || !v2 ){  
+            setPwd('');
+            setMatchPwd('');
+            setTimeout(() => {
+                setErrMsg("INVALID CREDENTIALS");
+            }, 0)
+            return;
+        }
+
 
         const validate = EMAIL_REGEX.test(email);
         if(!validate){  
@@ -71,7 +123,7 @@ export default function EditUser(){
         }
         try{
             const response =  await axios.post(EDIT_URL, 
-                JSON.stringify({userID, email, fName, lName, role}),{
+                JSON.stringify({userID, email, fName, lName, role, pwd}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
@@ -173,6 +225,47 @@ export default function EditUser(){
                     value={lName}
                     placeholder={lName}
                 />
+                
+                <label className="checkbox-label" htmlFor="checkbox">Reset Password?</label>
+                <input id="checkbox" type="checkbox" onChange={() => setResestPwd(resetPwd => !resetPwd)} name="checkbox"/>
+                
+                {resetPwd === true ? (
+                <>
+                <input 
+                    type="password"
+                    id="newPwd" 
+                    autoComplete="off"
+                    
+                    onChange={(e) => setPwd(e.target.value)} 
+                    value={pwd} 
+                    placeholder="NEW PASSWORD" 
+                    aria-invalid={validPwd ? "false" : "true" }
+                    onFocus={() => setPwdFocus(true)}
+                    onBlur={() => setPwdFocus(true)}
+                />
+                <p id="pwdnote" className={pwd && pwdFocus && !validPwd ? "instructions" : "hide"}>
+                    <FontAwesomeIcon icon={faInfoCircle}/> 8 to 24 Characters. <br/>
+                    Must include uppercase letters, lowercase letters, a number, and a special character. <br/>
+                    Allowed special characters: !@#$%
+                </p>
+                <input 
+                    type="password" 
+                    id="matchPwd"  
+                    autoComplete="off" 
+                    onChange={(e) => setMatchPwd(e.target.value)} 
+                    value={matchPwd}
+                    placeholder='CONFIRM'
+                    aria-invalid={validMatch ? "false" : "true" }
+                    onFocus={() => setMatchFocus(true)}
+                    onBlur={() => setMatchFocus(true)}
+                />
+                <p id="matchnote" className={matchPwd && matchFocus && !validMatch ? "instructions" : "hide"}>
+                    <FontAwesomeIcon icon={faInfoCircle}/>{' '}
+                    Passwords do not match.
+                </p>
+
+                </>
+                ) : null }
 
                 <label className="checkbox-label" htmlFor="checkbox">Make this user an administrator?</label>
                 <input id="checkbox" type="checkbox" checked={role === 1} value={role} onChange={() => setRole(role === 1 ? 2 : 1)} name="checkbox"/>

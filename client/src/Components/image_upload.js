@@ -3,10 +3,11 @@
 import React from 'react';
 import './image_upload.css';
 
-const ImageUpload = ({ isOpen, onClose, children }) => {
+const ImageUpload = ({ isOpen, onClose, children}) => {
   if (!isOpen) {
     return null;
   }
+
 
   return (
     <div className="popup-overlay" onClick={onClose}>
