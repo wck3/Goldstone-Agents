@@ -21,16 +21,18 @@ export default function EditContact(){
     const errRef = useRef();
     const nameRef = useRef();
     
+    const [imagePath, setImagePath] = useState();
     const [image, setImage] = useState();
     const [name, setName] = useState();
     const [title, setTitle] = useState();
     const [phone, setPhone] = useState();
     const [email, setEmail] = useState();
     
+    const [fileErr, setFileErr] = useState(false);
     const [errMsg, setErrMsg] = useState(false);
    
     const api_url = process.env.REACT_APP_API_URL;
-    const EDIT_URL = api_url + "tools/update-tool";
+    const EDIT_URL = api_url + "";
     const DELETE_URL = api_url + "tools/delete-tool";
 
     Admin_Auth();
@@ -43,7 +45,7 @@ export default function EditContact(){
             try {
                 const result = await get_from(api_url + "Contacts/get-contact", params);
                 setData(result[0]);
-                setImage(result[0].contact_img);
+                setImagePath(result[0].contact_img);
                 setName(result[0].name);
                 setTitle(result[0].title);
                 setPhone(result[0].phone);
@@ -59,12 +61,16 @@ export default function EditContact(){
 
 
     const handleSubmit = async (e) => {
-        /*e.preventDefault();
-
-        var cID = e.target.category.value;
+        e.preventDefault();
+        console.log(image);
+        console.log(name);
+        console.log(title);
+        console.log(phone);
+        console.log(email);
+        /*
         try{
             const response =  await axios.post(EDIT_URL, 
-                JSON.stringify({tool_id, title, , description, cID}),{
+                JSON.stringify({name, title, phone, email, image}),{
                     headers : {'Content-Type': 'application/json' },
                     withCredentials: true
                 }
@@ -89,13 +95,13 @@ export default function EditContact(){
             nameRef.current.focus();
             errRef.current.focus();
         }
-        
-        return;*/
+        */
+        return;
     }
     const handleDelete = async (e) => {
         e.preventDefault();
        
-        if(window.confirm("Are you sure you want to delete this Tool?")){
+        if(window.confirm("Are you sure you want to delete this Contact?")){
            
             try{
                 const response =  await axios.post(DELETE_URL, 
@@ -127,6 +133,18 @@ export default function EditContact(){
         }
 
     }
+    
+    const handleUpload = async (e) => { 
+        
+        if(e.target.files[0].size / 1024 > 200){
+            setFileErr("File exceeds size limit of 200KB");
+            return
+        }
+        setFileErr('');
+        setImagePath(URL.createObjectURL(e.target.files[0])); 
+        setImage(e.target.files[0])
+    }
+   
 
     const redirect = async (e) => {
         e.preventDefault();
@@ -143,7 +161,9 @@ export default function EditContact(){
     const closePopup = (e) => {
         e.preventDefault();
         setPopupOpen(false);
+        setFileErr('')
     };
+    
     
     return(
         <div className="Edit-Contact">
@@ -157,12 +177,13 @@ export default function EditContact(){
                 <a className="contact-img" onClick={openPopup}>
                     <div className="contact-link">
                         <h1 className="edit-banner"><FontAwesomeIcon icon={faEdit} className="ext"/></h1>
-                        <img loading="lazy" src={image} alt="headshot"></img>
+                        <img loading="lazy" src={imagePath} alt="headshot"></img>
                     </div>
                     
                     <ImageUpload className="img-upload" isOpen={isPopupOpen} onClose={closePopup}>
                         <h2>Upload an Image</h2>
-                        <input type="file" onChange={ (e) => setImage(URL.createObjectURL(e.target.files[0]))}/>
+                        <input type="file" accept=".jpg, .png, .jpeg" onChange={ handleUpload }/>
+                        <h3 ref={errRef} className={"errmsg" + fileErr ? styles.fileErr : "hide"}>{fileErr}</h3>
                     </ImageUpload>
             
                     
