@@ -33,7 +33,7 @@ return (
       <h1 className="pg-title">OUR UPCOMING EVENTS</h1>
       {Events !== undefined ? (
         <>
-          {Events.map((eBlock, index) => (
+          {Events?.map((eBlock, index) => (
             <div key={eBlock.block_id} className={`event-block ${index % 2 === 0 ? 'even' : 'odd'}`}>
               <div className="block-img">
                 <img loading="lazy" src={eBlock.img_path} alt={eBlock.headline} />
