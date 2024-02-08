@@ -33,7 +33,7 @@ export default function ViewUsers(){
 
     const handleNew = async (e) => {
         e.preventDefault();
-        navigate("/Admin/AddCategory")
+        navigate("/AddCategory")
     }
     const [successMsg, setSuccess] = useState(false);
 
@@ -55,7 +55,7 @@ export default function ViewUsers(){
     const handleEdit = (e) => {
         e.preventDefault();
         const cID = e.target.value;
-        navigate(`/Admin/EditCategory/${cID}`)
+        navigate(`/EditCategory/${cID}`)
     }
 
     const redirect = async (e) => {
@@ -94,7 +94,7 @@ export default function ViewUsers(){
                 ))}
                 </table>
                 <div className="btn-wrapper">
-                    <button className="tool-edit-btn" onClick={redirect} value={"/Admin/ViewTools"}>BACK</button>
+                    <button className="tool-edit-btn" onClick={redirect} value={"/ViewTools"}>BACK</button>
                     <button className="tool-edit-btn" onClick={handleNew}> ADD NEW </button>
                 </div>
                

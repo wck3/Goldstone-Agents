@@ -98,7 +98,7 @@ export default function ViewCategory(){
                 if(response.data.length > 0){
                     const success=`SUCCESSFULLY DELETED ${title}`;
                     localStorage.setItem('successMsg', success);
-                    navigate("/Admin/ViewTools");
+                    navigate("/ViewTools");
             }
             } catch (err){ 
                 if(!err.response){
@@ -175,7 +175,7 @@ export default function ViewCategory(){
                 
                 <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
                 <div className="btn-wrapper">
-                    <button onClick={redirect} value={"/Admin/ViewTools"}>BACK</button>
+                    <button onClick={redirect} value={"/ViewTools"}>BACK</button>
                     <button>SAVE</button>
                     <button className="delete-btn" onClick={handleDelete}>DELETE</button>
                 </div>

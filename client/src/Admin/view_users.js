@@ -61,7 +61,7 @@ export default function ViewUsers(){
 
     const handleNew = async (e) => {
         e.preventDefault();
-        navigate("/Admin/AddUser")
+        navigate("/AddUser")
     }
     const [successMsg, setSuccess] = useState(false);
 
@@ -83,7 +83,7 @@ export default function ViewUsers(){
     const handleEdit = (e) => {
         e.preventDefault();
         const uID = e.target.value;
-        navigate(`/Admin/EditUser/${uID}`)
+        navigate(`/EditUser/${uID}`)
     }
 
     // Get current posts

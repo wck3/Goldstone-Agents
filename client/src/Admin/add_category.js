@@ -71,7 +71,7 @@ export default function AddCategory(){
               
               <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
               <div className="btn-wrapper">
-                <button onClick={redirect} value={"/Admin/ViewCategories"}>BACK</button>
+                <button onClick={redirect} value={"/ViewCategories"}>BACK</button>
                 <button>SAVE</button>
               </div>
               

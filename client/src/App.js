@@ -39,23 +39,23 @@ function App() {
         <Route exact path='*' element={<NotFound/>} />
 
        
-        <Route exact path="/Admin/EditEvents"  element={<><Navbar/><EditEvents/><Footer/></>} />
+        <Route exact path="/EditEvents"  element={<><Navbar/><EditEvents/><Footer/></>} />
         
-        <Route exact path="/Admin/EditTool/:tool_id"  element={<><Navbar/><EditTool/><Footer/></>} />
-        <Route exact path="/Admin/ViewTools"  element={<><Navbar/><ViewTools/><Footer/></>} />
-        <Route exact path="/Admin/AddTool"  element={<><Navbar/><AddTool/><Footer/></>} />
-        <Route exact path="/Admin/ViewCategories"  element={<><Navbar/><ViewCategory/><Footer/></>} />
-        <Route exact path="/Admin/AddCategory"  element={<><Navbar/><AddCategory/><Footer/></>} />
-        <Route exact path="/Admin/EditCategory/:cID"  element={<><Navbar/><EditCategory/><Footer/></>} />
+        <Route exact path="/EditTool/:tool_id"  element={<><Navbar/><EditTool/><Footer/></>} />
+        <Route exact path="/ViewTools"  element={<><Navbar/><ViewTools/><Footer/></>} />
+        <Route exact path="/AddTool"  element={<><Navbar/><AddTool/><Footer/></>} />
+        <Route exact path="/ViewCategories"  element={<><Navbar/><ViewCategory/><Footer/></>} />
+        <Route exact path="/AddCategory"  element={<><Navbar/><AddCategory/><Footer/></>} />
+        <Route exact path="/EditCategory/:cID"  element={<><Navbar/><EditCategory/><Footer/></>} />
         
-        <Route exact path="/Admin/EditDocs"  element={<><Navbar/><Docs/><Footer/></>} />
+        <Route exact path="/EditDocs"  element={<><Navbar/><Docs/><Footer/></>} />
         
-        <Route exact path="/Admin/ViewUsers"  element={<><Navbar/><ViewUsers/><Footer/></>}/>
-        <Route exact path="/Admin/AddUser"  element={<><Navbar/><AddUser/><Footer/></>}/>
-        <Route exact path="/Admin/EditUser/:userID"  element={<><Navbar/><EditUser/><Footer/></>} />
+        <Route exact path="/ViewUsers"  element={<><Navbar/><ViewUsers/><Footer/></>}/>
+        <Route exact path="/AddUser"  element={<><Navbar/><AddUser/><Footer/></>}/>
+        <Route exact path="/EditUser/:userID"  element={<><Navbar/><EditUser/><Footer/></>} />
         
-        <Route exact path="/Admin/ViewContacts"  element={<><Navbar/><ViewContacts/><Footer/></>} />
-        <Route exact path="/Admin/EditContact/:cID"  element={<><Navbar/><EditContact/><Footer/></>} />
+        <Route exact path="/ViewContacts"  element={<><Navbar/><ViewContacts/><Footer/></>} />
+        <Route exact path="/EditContact/:cID"  element={<><Navbar/><EditContact/><Footer/></>} />
          
       </Routes>
     </div>

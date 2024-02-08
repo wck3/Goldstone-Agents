@@ -167,7 +167,7 @@ export default function EditUser(){
                 if(response.data.length > 0){
                     const success=`SUCCESSFULLY DELETED ${fName} ${lName}`;
                     localStorage.setItem('successMsg', success);
-                    navigate("/Admin/ViewUsers");
+                    navigate("/ViewUsers");
             }
             } catch (err){ 
                 if(!err.response){
@@ -272,7 +272,7 @@ export default function EditUser(){
 
                 <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
                 <div className="btn-wrapper">
-                <button onClick={redirect} value={"/Admin/ViewUsers"}>BACK</button>
+                <button onClick={redirect} value={"/ViewUsers"}>BACK</button>
                 <button>SAVE</button>
                 <button className="delete-btn"onClick={handleDelete}>DELETE</button>
                 </div>

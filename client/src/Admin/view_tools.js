@@ -45,7 +45,7 @@ export default function ViewTools(){
     const handleEdit = (e) => {
         e.preventDefault();
         const tool_ID = e.target.value;
-        navigate(`/Admin/EditTool/${tool_ID}`)
+        navigate(`/EditTool/${tool_ID}`)
     }
 
     const [successMsg, setSuccess] = useState(false);
@@ -75,8 +75,8 @@ export default function ViewTools(){
         <div className="Tools">
             <h1 className="pg-title">EDIT TOOLS</h1>
             <div className="btn-wrapper">
-                <button className="tool-edit-btn" value="/Admin/AddTool" onClick={redirect}>NEW TOOL</button>
-                <button className="tool-edit-btn" value="/Admin/ViewCategories" onClick={redirect}>EDIT CATEGORIES</button>
+                <button className="tool-edit-btn" value="/AddTool" onClick={redirect}>NEW TOOL</button>
+                <button className="tool-edit-btn" value="/ViewCategories" onClick={redirect}>EDIT CATEGORIES</button>
             </div>
             <h3 className={"successMsg" + successMsg ? styles.successMsg : "hide"}>{successMsg}</h3>
             {data !== undefined ? (
