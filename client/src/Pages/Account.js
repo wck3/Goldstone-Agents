@@ -27,19 +27,19 @@ export default function Account(){
     // message states
     const errRef = useRef();
     const [errMsg, setErrMsg] = useState(false);
-    const [successMsg, setSuccess] = useState(false);
+    const [AccountSuccessMsg, setAccountSuccess] = useState(false);
 
     const EDIT_URL = api_url  + 'users/update-account';
     const PWD_REGEX = /^(?=.*[a-z])(.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
     
     // retrieve success message if it exists in local storage
     useEffect( () => {
-        const storedMessage = localStorage.getItem('successMsg');
+        const storedMessage = localStorage.getItem('AccountSuccessMsg');
         if(storedMessage){
-            setSuccess(storedMessage);
+            setAccountSuccess(storedMessage);
             const timer = setTimeout(() => {
-                setSuccess(false);
-                localStorage.removeItem('successMsg');
+                setAccountSuccess(false);
+                localStorage.removeItem('AccountSuccessMsg');
             }, 4000);
               
               // Clear the timer when the component unmounts
@@ -126,7 +126,7 @@ export default function Account(){
             // user validated, send success message and reload
             if(response){
                 const success='SUCCESSFULLY UPDATED ACCOUNT';
-                localStorage.setItem('successMsg', success);
+                localStorage.setItem('AccountSuccessMsg', success);
                 window.location.reload(); 
             }
         } catch (err){ // error handling  
@@ -230,7 +230,7 @@ export default function Account(){
             </div>
             <div className="submit">
                 <h3 ref={errRef} className={"errmsg" + errMsg ? styles.errmsg : "hide"}>{errMsg}</h3>
-                <h3 className={"successMsg" + successMsg ? styles.successMsg : "hide"}>{successMsg}</h3>
+                <h3 className={"successMsg" + AccountSuccessMsg ? styles.AccountSuccessMsg : "hide"}>{AccountSuccessMsg}</h3>
                 <form onSubmit={handleSubmit}>    
                     <input
                         required

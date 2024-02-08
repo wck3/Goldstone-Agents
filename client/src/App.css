@@ -42,3 +42,16 @@ h1{
   margin-bottom: 1em;
   text-transform: uppercase;
 }
+
+video::-webkit-media-controls {
+  pointer-events: none;
+}
+
+video::-webkit-media-controls-panel {
+  pointer-events: none;
+}
+
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-start-playback-button {
+  display: none; /* Optionally, you can also hide the play button */
+}
