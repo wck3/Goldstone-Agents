@@ -27,7 +27,7 @@ router.get("/get-tools", (req, res) => {
                 res.status(409).send();
             }
             else{ 
-                const data = results.map(item => ({
+                const data = results?.map(item => ({
                     c_id: item.c_id,
                     category: item.category,
                     info: item.info // Parse the JSON string to an object

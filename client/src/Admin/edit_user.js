@@ -41,12 +41,32 @@ export default function EditUser(){
         uID : userID
     }   
     useEffect(() => {
-        async function fetchUserAndSetState() {
-            try {
+        //async function fetchUserAndSetState() {
+            //try {
                 // fetch all filtered users to display
-                const result = await get_from(api_url + "users/get-user", params);
+                //const result = await get_from(api_url + "users/get-user", params);
+                 // Define your backend API URL
+            if(userID){
+
             
-                if(result !== "none"){
+                const apiUrl = `${api_url}users/get-user/${userID}`;
+                console.log(apiUrl);
+
+                // Fetch user data from the backend
+                axios.get(apiUrl)
+                .then(result => {
+                    //setUserData(response.data);
+                    setUser(result.data);
+                    setEmail(result.data[0].email);
+                    setFName(result.data[0].fName);
+                    setLName(result.data[0].lName);
+                    setRole(result.data[0].role_id);
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                });
+            }
+            /*    if(result !== "none"){
                     setUser(result);
                     setEmail(result[0].email);
                     setFName(result[0].fName);
@@ -58,12 +78,13 @@ export default function EditUser(){
                 }
             } catch (error) {
               console.log('Error fetching data:', error);
-            }
-        }
-        fetchUserAndSetState();
+            }*/
+        //}
+        //fetchUserAndSetState();
+        
     // eslint-disable-next-line
     }, []);
-
+console.log(user);
      // clear error message if form is changed
      useEffect(() => {
         setErrMsg('');
