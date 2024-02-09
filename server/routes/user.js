@@ -46,7 +46,7 @@ router.post("/update-account", async (req, res) => {
         const currentPwd = req.body.currentPwd;
 
         // Fetch the current hashed password from the database
-        let query = 'SELECT password FROM USERS WHERE user_id = ' + u_id + ';';
+        let query = `SELECT password FROM USERS WHERE user_id = ${u_id};`;
         connection.query(query, async function (error, results) {
             if (error) {
                 console.log(error);
@@ -65,7 +65,7 @@ router.post("/update-account", async (req, res) => {
 
             if (isPasswordValid) {
                 // Update user if the current password is valid
-                const update = await update_user(u_id, '', fName, lName, pwd);
+                const update = await update_user(u_id, '', fName, lName, pwd, '');
                 // if update is successful, update session and send response
                 if(update){
                     req.session.user.fName=fName;
@@ -91,8 +91,10 @@ router.post("/update-user", async (req, res) => {
         const fName = req.body.fName;
         const lName = req.body.lName;
         const role_id = req.body.role;
+        const pwd = req.body.pwd !== undefined ? req.body.pwd : '';
+
          
-        const update = await update_user(u_id, email, fName, lName, '', role_id);
+        const update = await update_user(u_id, email, fName, lName, pwd, role_id);
         // if update is successful, update session and send response
         if(update){
             res.status(200).send('Account updated successfully');
@@ -111,10 +113,14 @@ router.post("/update-user", async (req, res) => {
 
 async function update_user(u_id, email, fName, lName, pwd, role) {
     return new Promise((resolve, reject) => {
-        var query = "UPDATE USERS SET fName='" + fName + "', lName='" + lName + "', role_id=" + role;
+        var query = `UPDATE USERS SET fName='${fName}', lName='${lName}' `;
+
+        if(role != ''){
+            query += `, role_id = ${role} `;
+        }
 
         if(email != ''){
-            query += ", email='" + email + "'";
+            query += `, email = '${email}' `;
         }
         
         if (pwd !== '') {
@@ -124,8 +130,8 @@ async function update_user(u_id, email, fName, lName, pwd, role) {
                     console.log(hashErr);
                     resolve(false); // Return false on hashing error
                 } else {
-                    query += ", password='" + hashedPwd + "' ";
-                    query += "WHERE user_id=" + u_id + ";";
+                    query += `, password='${hashedPwd}' `;
+                    query += `WHERE user_id=${u_id};`;
                     
                     connection.query(query, (queryErr, results) => {
                         if (queryErr) {
@@ -140,7 +146,7 @@ async function update_user(u_id, email, fName, lName, pwd, role) {
         } 
         else {
             // If no password update is requested, just update name fields
-            query += "WHERE user_id=" + u_id + ";";
+            query += `WHERE user_id=${u_id};`;
             
             connection.query(query, (queryErr, results) => {
                 if (queryErr) {
@@ -165,7 +171,7 @@ router.get("/login", (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        let query = "SELECT u.user_id, u.email, u.fName, u.lName, u.role_id, u.password, r.role FROM USERS u join ROLES r on u.role_id = r.role_id WHERE email = " + "'" + req.body.email + "';"
+        let query = `SELECT u.user_id, u.email, u.fName, u.lName, u.role_id, u.password, r.role FROM USERS u join ROLES r on u.role_id = r.role_id WHERE email = '${req.body.email}';`
         connection.query(query, async function (error, results) {
             if (error) throw error;
             // no account found
@@ -283,8 +289,8 @@ router.get('/get-user-list', async (req, res) => {
     }
 });
 
-router.get('/get-user', async (req, res) => {
-    var query =  `SELECT fName, lName, email, role_id from USERS WHERE user_id = ${req.query.uID};`;
+router.get('/get-user/:uID', async (req, res) => {
+    var query =  `SELECT fName, lName, email, role_id from USERS WHERE user_id = ${req.params.uID};`;
     try{
         connection.query(query, function (error, results){
             if (error) throw error;
