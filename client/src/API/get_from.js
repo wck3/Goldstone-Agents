@@ -5,6 +5,7 @@ export default async function get_from(url, param_data){
     //console.log(param_data)
     try{
         var response;
+        console.log(param_data);
         if(param_data){
             response = await axios.get(url, {withCredentials: true, params : param_data });
         }
